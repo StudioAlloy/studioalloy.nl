@@ -1,21 +1,9 @@
-import Vuex from "vuex";
+export const state = () => ({
+  // counter: 0
+});
 
-const createStore = () => {
-  return new Vuex.Store({
-    state: {
-      items: [],
-      errors: [],
-      title: "studioalloy",
-      author: "Mitchel van Eijgen <mvaneijgen@gmail.com>",
-      description: "WIJ MAKEN IMPACT MET PIXELS",
-    },
-    mutations: {
-      add(state, payload) {
-        state.items = payload;
-      },
-      error(state, payload) {},
-    },
-  });
+export const mutations = {
+  // increment(state) {
+  //   state.counter++;
+  // }
 };
-
-export default createStore;

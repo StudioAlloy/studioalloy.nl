@@ -1,23 +1,21 @@
-// Grid settings
-$main-sm-columns: 12;
-$sidebar-sm-columns: 4;
-
 // Colors
-$brand-one: #8f57ea;
-// $brand-one-alpha: #8e2de2;
-$brand-two: #4a00e0;
-$brand-three: #8dd;
-$brand-four: #d16;
+$brand-one: #e64;
+$brand-two: #8dd;
+$brand-three: #344;
+$brand-four: #fff;
 
-$brand-dark: #000;
+$brand-dark: #344;
 $brand-light: #fff;
-$brand-grey: #dbd8e6;
+$brand-lightgrey: #eee;
+$brand-midgrey: #ddd;
+$brand-grey: #aaa;
+$dbrand-darkgrey: #444;
 
 $base-margin: 15px;
 $base-alpha: 0.6;
 
-$font-base: 'Roboto', sans-serif;
-$font-header: 'Roboto Condensed', sans-serif;
+$font-base: "Roboto", sans-serif;
+$font-header: "Roboto Condensed", sans-serif;
 ///
 /// Viewport sized typography with minimum and maximum values
 ///
@@ -36,7 +34,7 @@ $font-header: 'Roboto Condensed', sans-serif;
 ///
 @mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
   $responsive-unitless: $responsive / ($responsive - $responsive + 1);
-  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $dimension: if(unit($responsive) == "vh", "height", "width");
   $min-breakpoint: $min / $responsive-unitless * 100;
 
   @media (max-#{$dimension}: #{$min-breakpoint}) {
@@ -128,7 +126,7 @@ $grid-breakpoints: (
 //    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 //    "-sm"
 @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-  @return if(breakpoint-min($name, $breakpoints) == null, '', '-#{$name}');
+  @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
 }
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.

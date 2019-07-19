@@ -1,10 +1,10 @@
 const routerBase =
   process.env.DEPLOY_ENV === "GH_PAGES"
     ? {
-        router: {
-          base: "/wish-list/",
-        },
-      }
+      router: {
+        base: "/wish-list/",
+      },
+    }
     : {};
 
 module.exports = {
@@ -49,8 +49,52 @@ module.exports = {
   },
   modules: [
     "@nuxtjs/axios",
+    "@nuxtjs/apollo",
     // "@nuxtjs/pwa"
   ],
+  apollo: {
+    authenticationType: 'Basic', // optional, default: 'Bearer'
+    // (Optional) Default 'apollo' definition
+    defaultOptions: {
+      // See 'apollo' definition
+      // For example: default query options
+      $query: {
+        loadingKey: 'loading',
+        fetchPolicy: 'cache-and-network',
+      },
+    },
+    // optional
+    // errorHandler: '~/plugins/apollo-error-handler.js',
+    // required
+    clientConfigs: {
+      default: {
+        // required  
+        httpEndpoint: 'api.studioalloy.nl/graphql/',
+        // optional
+        // See https://www.apollographql.com/docs/link/links/http.html#options
+        // httpLinkOptions: {
+        //   credentials: 'same-origin'
+        // },
+        // You can use `wss` for secure connection (recommended in production)
+        // Use `null` to disable subscriptions
+        // wsEndpoint: 'ws://localhost:4000', // optional
+        // LocalStorage token
+        tokenName: 'apollo-token', // optional
+        // Enable Automatic Query persisting with Apollo Engine
+        persisting: false, // Optional
+        // Use websockets for everything (no HTTP)
+        // You need to pass a `wsEndpoint` for this to work
+        websocketsOnly: false // Optional
+      },
+      // test: {
+      //   httpEndpoint: 'http://localhost:5000',
+      //   wsEndpoint: 'ws://localhost:5000',
+      //   tokenName: 'apollo-token'
+      // },
+      // alternative: user path to config which returns exact same config options
+      // test2: '~/plugins/my-alternative-apollo-config.js'
+    }
+  },
   manifest: {
     name: "studioalloy | Mitchel van Eijgen <mvaneijgen@gmail.com>",
     short_name: "studioalloy",

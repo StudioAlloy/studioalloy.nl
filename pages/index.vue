@@ -1,8 +1,10 @@
 <template>
   <div>
     <RenameMe></RenameMe>
+    {{pages.edges}}
+    <hr>
     <ul>
-      <li v-for="(item, index) in pages" :key="index">{{item.title}}</li>
+      <li v-for="(item, index) in pages.edges" :key="index">{{item.node.title}}</li>
     </ul>
   </div>
 </template>

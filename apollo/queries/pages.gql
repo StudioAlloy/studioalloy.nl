@@ -1,0 +1,11 @@
+query GET_PAGES {
+  pages {
+    edges {
+      node {
+        id
+        title
+        date
+      }
+    }
+  }
+}

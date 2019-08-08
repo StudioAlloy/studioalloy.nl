@@ -1,5 +1,8 @@
 body {
   font-family: $font-base;
+  color: $brand-light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 @include media-breakpoint-up(md) {
   body {
@@ -20,8 +23,20 @@ h4,
 h5,
 h6,
 p {
+  margin-top: 0;
+  margin-bottom: $base-margin;
 }
 h1 {
+  font-size: 30px;
+  line-height: 1.4em;
+}
+.intro {
+  .alloy-title {
+    font-weight: 400;
+  }
+  a {
+    text-decoration: none;
+  }
 }
 footer,
 header {
@@ -50,4 +65,8 @@ h5 {
 h6 {
 }
 p {
+}
+a {
+  color: $brand-light;
+
 }

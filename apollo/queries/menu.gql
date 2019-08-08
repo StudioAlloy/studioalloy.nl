@@ -1,0 +1,15 @@
+query GET_MENUS($slug: String) {
+  menus(where: {slug: $slug}) {
+    nodes {
+      menuItems {
+        edges {
+          node {
+            id
+            label
+            url
+          }
+        }
+      }
+    }
+  }
+}

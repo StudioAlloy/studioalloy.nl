@@ -60,7 +60,6 @@ module.exports = {
       }
     }
   },
-
   manifest: {
     name: "studioalloy",
     short_name: "studioalloy",
@@ -73,7 +72,7 @@ module.exports = {
       },
     ],
     theme_color: "#e64",
-    background_color: "#e64",
+    background_color: "#e64lll",
     display: "standalone",
   },
   // workbox: {

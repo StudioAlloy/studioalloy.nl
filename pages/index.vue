@@ -1,37 +1,19 @@
 <template>
   <div>
-    <RenameMe></RenameMe>
-    {{pages.edges}}
-    <hr>
-    <ul>
-      <li v-for="(item, index) in pages.edges" :key="index">{{item.node.title}}</li>
-    </ul>
+    <Header />
   </div>
 </template>
 
 <script>
-import pages from "~/apollo/queries/pages";
 // Compontents
-import RenameMe from "~/components/RenameMe.vue";
+import Header from "@/components/default/Header.vue";
 
 export default {
   data() {
     return {};
   },
   components: {
-    RenameMe,
+    Header,
   },
-  apollo: {
-    pages: {
-      prefetch: true,
-      query: pages,
-    },
-  },
-  // mounted() {
-  //   console.warn(this.$apollo.queries.pages);
-  // },
 };
 </script>
-
-<style></style>
-

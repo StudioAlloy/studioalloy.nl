@@ -1,0 +1,10 @@
+query GetDiensten {
+  diensten {
+    nodes {
+      title
+      content
+      link
+      slug
+    }
+  }
+}

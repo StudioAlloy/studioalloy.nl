@@ -1,15 +1,27 @@
-query GET_MENUS($slug: String) {
-  menus(where: {slug: $slug}) {
-    nodes {
-      menuItems {
-        edges {
-          node {
-            id
-            label
-            url
-          }
-        }
+# query GET_MENUS($slug: String) {
+#   menus(where: {slug: $slug}) {
+#     nodes {
+#       menuItems {
+#         edges {
+#           node {
+#             id
+#             label
+#             url
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
+{
+  menuItems(where: {location: PRIMARY_NAVIGATION}) {
+    edges {
+      node {
+        id
+        label
+        url
       }
     }
   }
 }
+

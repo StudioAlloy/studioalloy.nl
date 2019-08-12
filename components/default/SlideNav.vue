@@ -10,7 +10,6 @@
             </li>
           </ul>
         </nav>
-        <pre>{{menu}}</pre>
       </div>
     </div>
   </div>
@@ -53,7 +52,7 @@ export default {
         slug: "main-menu",
       },
       update(data) {
-        return data.menus.nodes[0].menuItems.edges;
+        return data.menuItems.edges;
       },
     },
   },

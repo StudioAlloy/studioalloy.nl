@@ -1,0 +1,17 @@
+.alloy-cards {
+  > .inner {
+    background-color: $brand-light;
+    color: $brand-dark;
+    padding: $base-margin;
+    border-radius: $radius;
+  }
+}
+
+.alloy-cards--diensten {
+  .alloy-title {
+    font-size: 32px;
+    @include media-breakpoint-up(lg) {
+    font-size: 44px;
+}
+  }
+}

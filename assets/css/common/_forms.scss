@@ -1,8 +1,22 @@
 .btn, 
 button, 
 [type="submit"] {
+  background-color: $brand-dark;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 6px $base-margin;
+  line-height: 1em;
+  border-radius: $radius;
   &:active, 
   &:focus {
     outline: none;
+  }
+}
+.btn--alt {
+  background-color: $brand-one;
+}
+.alloy-cards {
+  .btn {
+    
   }
 }

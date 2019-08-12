@@ -1,4 +1,6 @@
 #default-Navigation {
+  position: relative;
+  z-index: 3500;
   > .inner {
     display: flex;
     justify-content: space-between;
@@ -9,7 +11,7 @@
   width: 100%;
   max-width: 350px;
   position: fixed;
-  background-color: $brand-one;
+background-color: $brand-dark;
   top: 0;
   right: 0;
   height: 100vh;

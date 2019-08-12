@@ -57,6 +57,10 @@ module.exports = {
       default: {
         httpEndpoint: 'https://api.studioalloy.nl/graphql',
         errorHandler: '~/plugins/apollo-error-handler.js',
+      },
+      dev: {
+        httpEndpoint: 'https://api.studioalloy.nl/graphql',
+        errorHandler: '~/plugins/apollo-error-handler.js',
       }
     }
   },

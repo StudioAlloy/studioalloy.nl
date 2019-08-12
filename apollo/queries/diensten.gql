@@ -2,9 +2,12 @@ query GetDiensten {
   diensten {
     nodes {
       title
-      content
+      excerpt
       link
       slug
+      acfDiensten {
+        featured
+      }
     }
   }
 }

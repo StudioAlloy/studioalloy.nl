@@ -5,13 +5,31 @@
     padding: $base-margin;
     border-radius: $radius;
   }
+  
 }
 
 .alloy-cards--diensten {
   .alloy-title {
     font-size: 32px;
     @include media-breakpoint-up(lg) {
-    font-size: 44px;
-}
+      font-size: 44px;
+    }
+  }
+  > .inner--custom,
+  > .inner {
+    display: flex;
+    align-items: flex-end;
+
+    * {
+      order: 2;
+    }
+    spacer,
+    svg {
+      order: 1;
+      display: block;
+    }
+    svg {
+      margin-top: -100px;
+    }
   }
 }

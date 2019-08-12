@@ -1,7 +1,7 @@
 <template>
   <div class="elements-Diensten container--medium">
     <div class="inner">
-      <template v-for="(item, index) in diensten.nodes">
+      <template v-for="(item, index) in diensten">
         <DienstenItem :item="item" :key="index" />
       </template>
     </div>
@@ -26,12 +26,15 @@ export default {
     diensten: {
       prefetch: true,
       query: diensten,
-      // update(data) {
-      //   console.log(data);
-      //   // The returned value will update
-      //   // the vue property 'pingMessage'
-      //   return data.diensten;
-      // },
+      update(data) {
+        const items = data.diensten.nodes;
+
+        const itemsFeatured = items.filter(function(item) {
+          return item.acfDiensten.featured;
+        });
+
+        return itemsFeatured.reverse();
+      },
     },
   },
 };

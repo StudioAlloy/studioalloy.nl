@@ -5,31 +5,130 @@
     padding: $base-margin;
     border-radius: $radius;
   }
-  
 }
-
+//------------------------------------------------------//
+// 🏅 Diensten
+//------------------------------------------------------//
 .alloy-cards--diensten {
+  padding-bottom: $base-margin * 8;
+  padding-top: $base-margin * 8;
+
   .alloy-title {
     font-size: 32px;
+    // margin-right: $base-margin * 4;
     @include media-breakpoint-up(lg) {
       font-size: 44px;
     }
   }
-  > .inner--custom,
-  > .inner {
-    display: flex;
-    align-items: flex-end;
-
-    * {
-      order: 2;
-    }
-    spacer,
-    svg {
-      order: 1;
-      display: block;
-    }
-    svg {
-      margin-top: -100px;
+  .alloy-btn-group {
+    text-align: right;
+    padding-right: $base-margin * 2;
+    margin-bottom: -$base-margin;
+    .btn {
+      background-color: $brand-one;
     }
   }
+  .alloy-content {
+    p {
+      margin-top: $base-margin * 2;
+      margin-bottom: $base-margin * 2;
+      padding-right: $base-margin * 2;
+
+      // @include media-breakpoint-up(lg) {
+      //   margin-top: $base-margin * 4;
+      //   margin-bottom: $base-margin * 4;
+      // }
+    }
+  }
+  .alloy-illustration {
+    @include media-breakpoint-up(lg) {
+      order: -1;
+      margin-top: -200px;
+      padding-right: $base-margin;
+    }
+    svg {
+      vertical-align: bottom;
+    }
+  }
+
+  //------------------------------------------------------//
+  // Custom Grid/layout logic
+  //------------------------------------------------------//
+  > .inner {
+    padding: 0;
+  }
+  .container-col {
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  // END Custom Grid/layout logic -------------------------------------//
 }
+// END 🏅 Diensten -------------------------------------//
+
+//------------------------------------------------------//
+// 🔀 Fases
+//------------------------------------------------------//
+.flex-Fases {
+  padding-bottom: $base-margin * 6;
+  @include media-breakpoint-up(lg) {
+    padding-bottom: $base-margin * 12;
+  }
+  > .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    > * {
+      max-width: 32%;
+      width: 100%;
+    }
+  }
+  svg {
+    width: 100%;
+  }
+  .flex-FasesItem {
+    text-align: center;
+  }
+}
+// END 🔀 Fases  -------------------------------------//
+
+//------------------------------------------------------//
+// Call to action
+//------------------------------------------------------//
+.flex-CallToAction {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: $base-margin * 2;
+  @include media-breakpoint-up(lg) {
+    padding-bottom: $base-margin * 6;
+  }
+  .alloy-cards {
+    max-width: 85vw;
+    @include media-breakpoint-up(lg) {
+      max-width: 65vw;
+    }
+    width: 100%;
+    > .inner {
+      border-radius: $radius 0 0 $radius;
+      display: flex;
+      // justify-content: center;
+      // align-items: center;
+      position: relative;
+      padding: $base-margin * 2;
+      > * {
+        position: relative;
+        min-height: 100%;
+      }
+    }
+  }
+  .alloy-logo {
+    display: block;
+    position: relative;
+    // position: absolute;
+    // top: 50%;
+    // left: -100px;
+    transform: translateX(-100px);
+    // height: 240px;
+    height: 100%;
+  }
+}
+// END Call to action -------------------------------------//

@@ -1,0 +1,13 @@
+query GetFases {
+  fases(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
+    nodes {
+      title
+      excerpt
+      link
+      slug
+      acfFases {
+        illustrationName
+      }
+    }
+  }
+}

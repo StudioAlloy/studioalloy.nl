@@ -56,10 +56,10 @@ export default {
     transition-timing-function: ease;
   }
   &:before {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   &:after {
-    margin-top: 7px;
+    margin-top: 8px;
   }
   &[data-navigation-toggle="true"] {
     color: transparent;

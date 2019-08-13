@@ -33,13 +33,9 @@ export default {
           return item.acfDiensten.featured;
         });
 
-        return itemsFeatured.reverse();
+        return itemsFeatured;
       },
     },
   },
 };
 </script>
-
-<style lang="scss" scoped>
-// @import '~/assets/css/common/_variables.scss';
-</style>

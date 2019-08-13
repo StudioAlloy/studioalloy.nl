@@ -35,6 +35,13 @@ h1 {
   font-size: 30px;
   line-height: 1.4em;
 }
+h2 {
+  line-height: 1.3em;
+  margin-bottom: $base-margin;
+  @include media-breakpoint-up(lg) {
+    margin-bottom: $base-margin*3;
+  }
+}
 .intro {
   .alloy-title {
     font-weight: 400;

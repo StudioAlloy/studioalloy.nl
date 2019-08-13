@@ -3,10 +3,10 @@ body {
   margin: 0;
 }
 //------------------------------------------------------//
-// Container logic 
+// Container logic
 //------------------------------------------------------//
 [class*="container--"] {
-    position: relative;
+  position: relative;
 
   > .inner {
     position: relative;
@@ -33,21 +33,28 @@ body {
 // END Container logic -------------------------------------//
 
 //------------------------------------------------------//
-// Column logic 
+// Column logic
 //------------------------------------------------------//
 .container-col {
   display: flex;
   justify-content: center;
   align-items: center;
-  > [class^="col-"] {
-flex-grow: 1;
+
+  // // Saidly this is not supported
+  // > [data-column] {
+  //   flex-grow: 1;
+  //   max-width: attr(data-column);
+  // }
+
+  > [class*="col-"] {
+    flex-grow: 1;
+    width: 100%;
   }
   .col-60 {
-    width: 60%;
+    max-width: 60%;
   }
   .col-40 {
-    width: 40%;
+    max-width: 40%;
   }
 }
 // END Column logic -------------------------------------//
-

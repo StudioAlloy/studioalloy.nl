@@ -1,38 +1,35 @@
 <template>
   <div class="elements-DienstenItem alloy-cards alloy-cards--diensten">
-    <div class="inner--custom">
-      <span class="spacer"></span>
-      <h2 class="alloy-title" v-html="item.title"></h2>
+    <div class="container-col">
+      <span class="spacer col-60"></span>
+      <h2 class="alloy-title col-40" v-html="item.title"></h2>
     </div>
     <div class="inner">
-      <div class="alloy-content">
-        <p v-html="item.excerpt"></p>
-        <nuxt-link :to="item.slug" class="btn">Lees meer</nuxt-link>
+      <div class="container-col">
+        <div class="alloy-content col-40">
+          <p v-html="item.excerpt"></p>
+          <div class="alloy-btn-group">
+            <nuxt-link :to="item.slug" class="btn">Lees meer</nuxt-link>
+          </div>
+        </div>
+        <div class="alloy-illustration col-60">
+          <component :is="componentSVG"></component>
+        </div>
       </div>
-      <!-- <component :is="`DienstenItemSVG${item.slug}`" :slug="item.slug"> -->
-      <!-- <DienstenItemSVG :slug="item.slug" /> -->
-      <component :is="componentSVG"></component>
     </div>
   </div>
 </template>
 
 <script>
-import DienstenItemSVG from "@/components/elements/flex/DienstenItemSVG.vue";
-
 export default {
   props: ["item"],
-  name: "Diensten",
-  components: {
-    DienstenItemSVG,
-  },
+  name: "DienstenItem",
   data() {
-    return {
-      title: "Diensten",
-    };
+    return {};
   },
   computed: {
     componentSVG() {
-      const name = this.item.slug;
+      const name = this.item.acfDiensten.illustrationName;
       return () => import(`@/components/elements/flex/DienstenItemSVG${name}`);
     },
   },

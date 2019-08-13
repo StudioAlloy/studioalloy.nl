@@ -4,5 +4,10 @@ query GET_PAGE_BY_URI($uri: String) {
     title
     content
     uri
+    acfFlex {
+      flex {
+        __typename
+      }
+    }
   }
 }

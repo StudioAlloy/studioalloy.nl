@@ -6,6 +6,7 @@
           <img src="~/assets/images/logo-studio-alloy.svg" alt="Logo Studio Alloy" class="alloy-logo">
         </div>
         <div class="alloy-content">
+
           <p>Stuur ons een mail</p>
           <h2>hello@stutdioalloy.nl</h2>
           <p>Stuur ons een mail</p>

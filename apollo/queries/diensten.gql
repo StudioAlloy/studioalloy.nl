@@ -1,3 +1,17 @@
+# query GetDiensten {
+#   diensten(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
+#     nodes {
+#       title
+#       excerpt
+#       link
+#       slug
+#       acfDiensten {
+#         featured,
+#         illustrationName,
+#       }
+#     }
+#   }
+# }
 query GetDiensten {
   diensten(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
     nodes {
@@ -6,7 +20,7 @@ query GetDiensten {
       link
       slug
       acfDiensten {
-        featured,
+        featured
         illustrationName,
       }
     }

@@ -5,6 +5,7 @@
       <div class="inner container-col">
 
         <div class="intro col-60">
+          <!-- <pre>{{introContent}}</pre> -->
           <h1 class="alloy-title" v-html="introContent.content"></h1>
         </div>
 

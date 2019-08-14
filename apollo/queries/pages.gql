@@ -1,11 +1,17 @@
 query GET_PAGES {
-  pages {
+  pages(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
     edges {
       node {
-        id
         title
-        date
+        content
+        slug
+        acfFlex {
+          flex {
+            __typename
+          }
+        }
       }
     }
   }
 }
+

@@ -43,6 +43,12 @@ module.exports = {
   },
   generate: {
     dir: "docs",
+    routes: [
+      'portfolio',
+      'about',
+      'contact',
+      'privacy',
+    ],
     // router: {
     //   base: '/wish-list/',
     // },
@@ -54,15 +60,18 @@ module.exports = {
   ],
   apollo: {
     clientConfigs: {
-      default: {
-        httpEndpoint: 'https://api.studioalloy.nl/graphql',
-        errorHandler: '~/plugins/apollo-error-handler.js',
-      },
-      dev: {
-        httpEndpoint: 'https://api.studioalloy.nl/graphql',
-        errorHandler: '~/plugins/apollo-error-handler.js',
-      }
+      default: '@/apollo/client-configs/default.js'
     }
+    // clientConfigs: {
+    //   default: {
+    //     httpEndpoint: 'https://api.studioalloy.nl/graphql',
+    //     errorHandler: '~/plugins/apollo-error-handler.js',
+    //   },
+    //   dev: {
+    //     httpEndpoint: 'https://api.studioalloy.nl/graphql',
+    //     errorHandler: '~/plugins/apollo-error-handler.js',
+    //   }
+    // }
   },
   manifest: {
     name: "studioalloy",

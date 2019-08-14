@@ -6,16 +6,17 @@ query GET_PAGE_BY_URI($uri: String) {
     uri
     acfFlex {
       flex {
-        __typename # Gives back all layout groups
-        ... on Page_Acfflex_Flex_CallToAction {
-          content
-          button {
-            target
-            title
-            url
-          }
-        }
+        __typename
+        # ... on Page_Acfflex_Flex_CallToAction {
+        #   content
+        #   button {
+        #     target
+        #     title
+        #     url
+        #   }
+        # }
       }
     }
   }
 }
+

@@ -8,6 +8,14 @@ query GET_PAGES {
         acfFlex {
           flex {
             __typename
+            ... on Page_Acfflex_Flex_CallToAction {
+              content
+              button {
+                target
+                title
+                url
+              }
+            }
           }
         }
       }

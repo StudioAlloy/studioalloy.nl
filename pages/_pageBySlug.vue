@@ -24,8 +24,8 @@ export default {
       query: pages,
       update(data) {
         const items = data.pages.edges; // Format the data
-        const currentSlug = this.$route.params.slug; // Get the slug of the current page
-
+        const currentSlug = this.$route.params.pageBySlug; // Get the slug of the current page
+        console.warn(currentSlug);
         // 🕵️‍♂Search for the page content based on slug
         const filteredItem = items.filter(function(item) {
           return item.node.slug == currentSlug;

@@ -1,0 +1,12 @@
+query {
+  __schema {
+    types {
+      name
+      kind
+      possibleTypes {
+        name
+        description
+      }
+    }
+  }
+}

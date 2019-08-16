@@ -77,6 +77,10 @@
             "description": "The TeamLid type"
           },
           {
+            "name": "Tool",
+            "description": "The Tool type"
+          },
+          {
             "name": "Plugin",
             "description": "An plugin object"
           },
@@ -137,6 +141,10 @@
           {
             "name": "TeamLid",
             "description": "The TeamLid type"
+          },
+          {
+            "name": "Tool",
+            "description": "The Tool type"
           }
         ]
       },
@@ -171,6 +179,10 @@
             "description": "Group within the flex field"
           },
           {
+            "name": "Post_Acfflex_Flex_Locaties",
+            "description": "Group within the flex field"
+          },
+          {
             "name": "Post_Acfflex_Flex_Toolbox",
             "description": "Group within the flex field"
           },
@@ -197,6 +209,11 @@
       },
       {
         "name": "Post_Acfflex_Flex_Team",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Post_Acfflex_Flex_Locaties",
         "kind": "OBJECT",
         "possibleTypes": null
       },
@@ -594,6 +611,10 @@
             "description": "Group within the flex field"
           },
           {
+            "name": "Page_Acfflex_Flex_Locaties",
+            "description": "Group within the flex field"
+          },
+          {
             "name": "Page_Acfflex_Flex_Toolbox",
             "description": "Group within the flex field"
           },
@@ -620,6 +641,11 @@
       },
       {
         "name": "Page_Acfflex_Flex_Team",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Page_Acfflex_Flex_Locaties",
         "kind": "OBJECT",
         "possibleTypes": null
       },
@@ -760,6 +786,26 @@
       },
       {
         "name": "TeamLidToRevisionConnectionEdge",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UserToToolConnectionWhereArgs",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UserToToolConnection",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UserToToolConnectionEdge",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Tool",
         "kind": "OBJECT",
         "possibleTypes": null
       },
@@ -1148,6 +1194,21 @@
         "possibleTypes": null
       },
       {
+        "name": "RootQueryToToolConnectionWhereArgs",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "RootQueryToToolConnection",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "RootQueryToToolConnectionEdge",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
         "name": "RootQueryToUserRoleConnection",
         "kind": "OBJECT",
         "possibleTypes": null
@@ -1328,6 +1389,16 @@
         "possibleTypes": null
       },
       {
+        "name": "CreateToolInput",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "CreateToolPayload",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
         "name": "CreateUserInput",
         "kind": "INPUT_OBJECT",
         "possibleTypes": null
@@ -1434,6 +1505,16 @@
       },
       {
         "name": "DeleteTeamLidPayload",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "DeleteToolInput",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "DeleteToolPayload",
         "kind": "OBJECT",
         "possibleTypes": null
       },
@@ -1564,6 +1645,16 @@
       },
       {
         "name": "UpdateTeamLidPayload",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UpdateToolInput",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UpdateToolPayload",
         "kind": "OBJECT",
         "possibleTypes": null
       },

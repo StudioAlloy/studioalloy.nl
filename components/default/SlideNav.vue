@@ -2,7 +2,6 @@
   <div class="elements-CallToAction" :data-navigation-toggle="getNavigationToggle">
     <div class="alloy-slide-nav">
       <div class="inner">
-        <button @click="updateNavigationToggle">Close</button>
         <nav>
           <ul>
             <li v-for="item in menu" :key="item.node.id">

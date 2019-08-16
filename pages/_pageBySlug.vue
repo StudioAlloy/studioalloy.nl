@@ -1,9 +1,9 @@
 <template>
   <main>
-    <div class="flex-Content container--medium">
+    <div class="flex-Content container--small">
       <div class="inner">
         <h1>{{pages.title}}</h1>
-        <div v-html="pages.content"></div>
+        <div class="alloy-intro" v-html="pages.content"></div>
       </div>
     </div>
 

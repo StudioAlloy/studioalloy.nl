@@ -6,7 +6,7 @@
           <img src="~/assets/images/logo-studio-alloy.svg" alt="Logo Studio Alloy" class="alloy-logo">
         </div>
         <div class="alloy-content">
-          <div v-html="item.content"></div>
+          <div class="alloy-text" v-html="item.content"></div>
 
           <div class="alloy-btn-group" v-if="item.button !== null">
             <nuxt-link :to="item.button.url" class="btn btn--alt">{{item.button.title}}</nuxt-link>

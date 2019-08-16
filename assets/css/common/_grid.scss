@@ -9,8 +9,11 @@ main {
   min-height: 100vh;
   overflow-x: hidden;
   padding-top: $base-margin * 2;
+  padding-bottom: $base-margin * 2;
+
   @include media-breakpoint-up(lg) {
     padding-top: $base-margin * 6;
+    padding-bottom: $base-margin * 6;
   }
 }
 #page- {
@@ -52,6 +55,11 @@ section {
 .container--medium {
   > .inner {
     max-width: 1100px;
+  }
+}
+.container--small {
+  > .inner {
+    max-width: 770px;
   }
 }
 // END Container logic -------------------------------------//

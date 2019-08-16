@@ -1,6 +1,6 @@
 <template>
   <section class="flex-Content">
-    <div class="container--medium">
+    <div class="container--small">
       <div class="inner">
         <div v-html="item.content"></div>
       </div>

@@ -1,0 +1,11 @@
+query GetLocaties {
+  locaties(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
+    nodes {
+      title
+      acfLocaties {
+        adres
+      }
+    }
+  }
+}
+

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <Header :item="pageByUri" />
 
     <!-- 💪 Load the flexible blocks one by one with a middle man called the FlexLoader  -->
@@ -7,7 +7,7 @@
       <FlexLoader :item="item" :key="index" />
     </template>
 
-  </div>
+  </main>
 </template>
 
 <script>
@@ -33,6 +33,7 @@ export default {
         uri: "home",
       },
       update(data) {
+        // ↩️ Return the data
         return data.pageBy;
       },
     },

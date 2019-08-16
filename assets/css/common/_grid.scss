@@ -5,6 +5,19 @@ body {
   background-color: $brand-dark-lighten;
   margin: 0;
 }
+main {
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding-top: $base-margin * 2;
+  @include media-breakpoint-up(lg) {
+    padding-top: $base-margin * 6;
+  }
+}
+#page- {
+  main {
+    padding-top: 0;
+  }
+}
 //------------------------------------------------------//
 // Container logic
 //------------------------------------------------------//
@@ -72,3 +85,41 @@ section {
   }
 }
 // END Column logic -------------------------------------//
+//------------------------------------------------------//
+// Footer
+//------------------------------------------------------//
+footer {
+  background-color: $brand-light;
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+
+  a {
+    color: $brand-dark;
+
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .alloy-nav--privacy {
+    background-color: $brand-three;
+    padding: $base-margin;
+    a {
+      color: $brand-light;
+    }
+  }
+  nav {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        display: inline-block;
+        a {
+          padding: 10px;
+          display: block;
+        }
+      }
+    }
+  }
+}
+// END Footer -------------------------------------//

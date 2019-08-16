@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <div class="flex-Content container--medium">
       <div class="inner">
         <h1>{{pages.title}}</h1>
@@ -12,7 +12,7 @@
       <FlexLoader :item="item" :key="index" />
     </template>
 
-  </div>
+  </main>
 </template>
 
 <script>

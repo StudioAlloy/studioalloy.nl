@@ -1,0 +1,252 @@
+//------------------------------------------------------//
+// Page transtions
+//------------------------------------------------------//
+$base-transition: 300ms;
+// hide scrollbars when transtioning
+.page-enter-active,
+.page-leave-active,
+.page-enter,
+.page-leave-to {
+  // overflow: hidden;
+}
+
+// Set the transtions on all states
+.page-enter-active,
+.page-leave-active {
+  // transition: transform, opacity;
+  // transition-duration: 300ms * 4;
+  // transition-timing-function: ease;
+}
+.page-enter,
+.page-leave-to {
+  // opacity: 0;
+}
+.page-enter-active {
+  animation-name: slideInPop;
+  animation-duration: $base-transition * 2;
+  animation-delay: 0s;
+  animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
+  animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
+  animation-iteration-count: 1; // infinite or number
+  animation-fill-mode: forwards; // none, forwards, backwards, both
+  animation-play-state: running; // running, paused
+}
+@keyframes slideInPop {
+  0% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+  50% {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    transform: translateX(0);
+  }
+  100% {
+    animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    transform: translateX(0);
+  }
+}
+
+.page-leave-to {
+  animation-name: slideOut;
+  animation-duration: $base-transition * 2;
+  animation-delay: 0s;
+  animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
+  animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
+  animation-iteration-count: 1; // infinite or number
+  animation-fill-mode: forwards; // none, forwards, backwards, both
+  animation-play-state: running; // running, paused
+}
+@keyframes slideOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+}
+// Page alternative
+.page-alt-enter-active {
+  animation-name: slideInPopReverse;
+  animation-duration: $base-transition * 2;
+  animation-delay: 0s;
+  animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
+  animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
+  animation-iteration-count: 1; // infinite or number
+  animation-fill-mode: forwards; // none, forwards, backwards, both
+  animation-play-state: running; // running, paused
+}
+@keyframes slideInPopReverse {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px);
+  }
+  50% {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    transform: translateX(0);
+  }
+  100% {
+    animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    transform: translateX(0);
+  }
+}
+
+.page-alt-leave-to {
+  animation-name: slideOutReverse;
+  animation-duration: $base-transition * 2;
+  animation-delay: 0s;
+  animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
+  animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
+  animation-iteration-count: 1; // infinite or number
+  animation-fill-mode: forwards; // none, forwards, backwards, both
+  animation-play-state: running; // running, paused
+}
+@keyframes slideOutReverse {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(500px);
+  }
+}
+//-----------------------------------------------------//
+// END Page transtions
+//------------------------------------------------------//
+//------------------------------------------------------//
+// UI transtions /starr
+//------------------------------------------------------//
+.ui-slide-enter-active,
+.ui-slide-leave-active {
+  transition: transform, opacity;
+  transition-duration: $base-transition * 2;
+  transition-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+}
+.ui-slide-enter,
+.ui-slide-leave-to {
+  opacity: 0;
+  transform: translateY(300px);
+}
+.ui-slide-enter-to,
+.ui-slide-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.alloy-intro {
+  > .inner {
+    max-width: 650px;
+  }
+}
+//------------------------------------------------------//
+// END UI transtions /starr
+//------------------------------------------------------//
+//------------------------------------------------------//
+// Slide in
+//------------------------------------------------------//
+.slide-in-enter-active,
+.slide-in-leave-active {
+  transition: transform, opacity;
+  // transition: opacity;
+  transition-duration: $base-transition * 2, $base-transition * 2;
+  transition-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+
+  @for $i from 1 through 20 {
+    // &:nth-child(#{$i}n+18),
+    &:nth-child(#{$i}) {
+      transition-delay: 50ms * $i;
+    }
+  }
+}
+.slide-in-enter,
+.slide-in-leave-to {
+  opacity: 0;
+  // transform: translateY(100px);
+  transform: scale(0);
+}
+.slide-in-enter-to,
+.slide-in-leave {
+  opacity: 1;
+  // transform: translateY(0);
+  transform: scale(1);
+}
+// END Slide in
+//------------------------------------------------------//
+// Fade transition
+//------------------------------------------------------//
+// .fade-enter-active,
+// .fade-leave-active {
+//   transition: transform, opacity;
+//   transition-duration: $base-transition * 2, $base-transition * 2;
+//   transition-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+// }
+// .fade-enter,
+// .fade-leave-to {
+//   opacity: 0;
+//   transform: translateY(150px);
+// }
+// .fade-enter-to,
+// .fade-leave {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1000ms;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+// END Fade transition
+.slide-up-enter-active,
+.slide-up-active {
+  transition: transform;
+  transition-delay: 1200ms;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+.slide-up-enter, .slide-up-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(100px);
+}
+//------------------------------------------------------//
+// 🎉 Pop transtion
+//------------------------------------------------------//
+.pop-enter-active,
+.pop-leave-active {
+  transition: transform;
+  transition-duration: $base-transition * 2, $base-transition * 2;
+  transition-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
+}
+.pop-enter,
+.pop-leave-to {
+  transform: scale(10);
+}
+.pop-enter-to,
+.pop-leave {
+  transform: scale(0);
+}
+// END 🎉 Pop transtion
+
+//------------------------------------------------------//
+// Fade out and slide in transition
+//------------------------------------------------------//
+.fade-out-slide-it-enter-active,
+.fade-out-slide-it-leave-active {
+  transition: transform, opacity;
+  transition-duration: 600ms;
+  transition-timing-function: ease;
+}
+.fade-out-slide-it-enter {
+  opacity: 0;
+  transform: translateX(400px);
+}
+.fade-out-slide-it-leave-to {
+  transform: scale(0.6);
+  opacity: 0;
+}
+// END Fade out and slide in transition -------------------------------------//

@@ -1,4 +1,3 @@
-
 # query GET_MENUS($slug: String) {
 #   menus(where: {slug: $slug}) {
 #     nodes {
@@ -14,8 +13,8 @@
 #     }
 #   }
 # }
-{
-  menuItems(where: {location: PRIMARY_NAVIGATION}) {
+query {
+  menuItems(where: {location: PRIVACY_FOOTER}) {
     edges {
       node {
         id

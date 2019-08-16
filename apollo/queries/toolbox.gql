@@ -1,0 +1,13 @@
+query GetToolbox {
+  toolbox(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
+    nodes {
+      title
+      content
+      featuredImage {
+        sourceUrl
+        altText
+      }
+    }
+  }
+}
+

@@ -28,18 +28,34 @@ h4,
 h5,
 h6,
 p {
+  line-height: 1.4em;
+
   margin-top: 0;
   margin-bottom: $base-margin;
 }
 h1 {
-  font-size: 30px;
-  line-height: 1.4em;
+  font-size: 52px;
+  text-align: center;
 }
 h2 {
-  line-height: 1.3em;
+  font-size: 34px;
   margin-bottom: $base-margin;
   @include media-breakpoint-up(lg) {
-    margin-bottom: $base-margin*3;
+    margin-bottom: $base-margin * 3;
+  }
+}
+h4 {
+  font-size: 24px;
+}
+.alloy-title--large {
+  font-size: 85px;
+  transform: translateY(30px);
+  line-height: 1em;
+  text-align: center;
+  text-transform: lowercase;
+  @include media-breakpoint-up(lg) {
+    font-size: 185px;
+    transform: translateY(60px);
   }
 }
 .intro {
@@ -80,5 +96,4 @@ p {
 }
 a {
   color: $brand-light;
-
 }

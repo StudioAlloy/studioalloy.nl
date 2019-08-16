@@ -5,8 +5,7 @@
       <div class="inner container-col">
 
         <div class="intro col-60">
-          <!-- <pre>{{introContent}}</pre> -->
-          <h1 class="alloy-title" v-html="introContent.content"></h1>
+          <h1 class="alloy-title" v-html="item.content"></h1>
         </div>
 
         <div class="col-40">comonent animation at hover</div>
@@ -21,30 +20,11 @@
 </template>
 
 <script>
-import pageByUri from "~/apollo/queries/pageByUri";
-import pages from "~/apollo/queries/pages";
-// import HeaderBackground from "@/components/default/HeaderBackground.vue";
-
 export default {
-  // props: ['item'],
+  props: ["item"],
   name: "Header",
   data() {
     return {};
-  },
-  // components: {
-  //   HeaderBackground,
-  // },
-  apollo: {
-    introContent: {
-      prefetch: true,
-      query: pageByUri,
-      variables: {
-        uri: "home",
-      },
-      update(data) {
-        return data.pageBy;
-      },
-    },
   },
 };
 </script>
@@ -58,6 +38,10 @@ export default {
   }
   // font-size: 30px;
   // line-height: 1.4em;
+  .alloy-title {
+    font-size: 30px;
+    text-align: left;
+  }
 }
 #default-Header {
   overflow: hidden;

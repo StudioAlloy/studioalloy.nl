@@ -1,9 +1,45 @@
 .alloy-cards {
   > .inner {
     background-color: $brand-light;
-    color: $brand-dark;
     padding: $base-margin;
     border-radius: $radius;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    span,
+    strong,
+    label,
+    blockquote {
+      color: $brand-dark;
+    }
+    .btn {
+      color: inherit;
+    }
+  }
+}
+.alloy-cards--dark {
+  > .inner {
+    background-color: $brand-dark;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    span,
+    strong,
+    label,
+    blockquote {
+      color: $brand-light;
+    }
   }
 }
 //------------------------------------------------------//
@@ -68,20 +104,20 @@
 //------------------------------------------------------//
 // 🔀 Fases
 //------------------------------------------------------//
-.flex-Fases {
-  padding-bottom: $base-margin * 6;
-  @include media-breakpoint-up(lg) {
-    padding-bottom: $base-margin * 12;
-  }
-  > .inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    > * {
-      max-width: 32%;
-      width: 100%;
-    }
-  }
+.container-type--fases {
+  // padding-bottom: $base-margin * 6;
+  // @include media-breakpoint-up(lg) {
+  //   padding-bottom: $base-margin * 12;
+  // }
+  // > .inner {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: flex-start;
+  //   > * {
+  //     max-width: 32%;
+  //     width: 100%;
+  //   }
+  // }
   svg {
     width: 100%;
   }
@@ -102,14 +138,19 @@
     padding-bottom: $base-margin * 6;
   }
   .alloy-cards {
-    max-width: 85vw;
+    width: 100%;
     @include media-breakpoint-up(lg) {
+      max-width: 85vw;
       max-width: 65vw;
     }
-    width: 100%;
     > .inner {
       border-radius: $radius 0 0 $radius;
       display: flex;
+      flex-direction: column;
+
+      @include media-breakpoint-up(lg) {
+        flex-direction: row;
+      }
       // justify-content: center;
       // align-items: center;
       position: relative;
@@ -123,12 +164,119 @@
   .alloy-logo {
     display: block;
     position: relative;
-    // position: absolute;
-    // top: 50%;
-    // left: -100px;
-    transform: translateX(-100px);
-    // height: 240px;
-    height: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateY(-100px);
+
+    @include media-breakpoint-up(lg) {
+      width: auto;
+      height: 100%;
+      transform: translateX(-100px);
+    }
+  }
+  .alloy-btn-group {
+    margin-top: $base-margin;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span,
+  strong,
+  label,
+  blockquote {
+    margin-bottom: 0;
+  }
+  h2 {
+    @include media-breakpoint-down(sm) {
+      font-size: 24px;
+    }
   }
 }
 // END Call to action -------------------------------------//
+
+//------------------------------------------------------//
+// 👨‍💻 Team
+//------------------------------------------------------//
+.flex-Team {
+  text-align: center;
+}
+.container-type--team {
+  position: relative;
+  color: $brand-dark;
+  padding-bottom: $base-margin * 4;
+
+  .background-clipped {
+    background-color: $brand-light;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include media-breakpoint-up(lg) {
+      clip-path: polygon(0 0, 100% 60%, 100% 100%, 0% 100%);
+    }
+  }
+}
+.alloy-item--team {
+  text-align: center;
+  .alloy-image {
+    padding: $base-margin * 2;
+    img {
+      max-width: 100%;
+      // clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+      clip-path: polygon(100% 50%, 85% 15%, 50% 0%, 15% 15%, 0% 50%, 15% 85%, 50% 100%, 85% 85%);
+      filter: grayscale(1);
+    }
+  }
+}
+// END 👨‍💻 Team -------------------------------------//
+//------------------------------------------------------//
+// 🧰 Toolbox
+//------------------------------------------------------//
+.container-type--toolbox {
+  > .inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-column-gap: $base-margin;
+    // grid-row-gap: $base-margin;
+    @include media-breakpoint-up(lg) {
+      grid-column-gap: $base-margin * 2;
+      // grid-row-gap: $base-margin * 2;
+    }
+  }
+}
+.alloy-item--toolbox {
+  position: relative;
+  margin-bottom: $base-margin;
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: $base-margin * 2;
+  }
+
+  > .inner {
+    @include media-breakpoint-up(lg) {
+      padding: $base-margin * 2;
+    }
+    // padding-bottom: $base-margin * 4;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    img {
+      position: absolute;
+      object-fit: contain;
+      top: 0;
+      right: -50px;
+      max-width: 150px;
+      filter: grayscale(1);
+      opacity: 0.2;
+    }
+  }
+}
+// END 🧰 Toolbox -------------------------------------//

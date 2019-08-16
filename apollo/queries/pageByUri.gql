@@ -3,18 +3,21 @@ query GET_PAGE_BY_URI($uri: String) {
     pageId
     title
     content
-    uri
+    slug
     acfFlex {
       flex {
         __typename
-        # ... on Page_Acfflex_Flex_CallToAction {
-        #   content
-        #   button {
-        #     target
-        #     title
-        #     url
-        #   }
-        # }
+        ... on Page_Acfflex_Flex_Content {
+          content
+        }
+        ... on Page_Acfflex_Flex_CallToAction {
+          content
+          button {
+            target
+            title
+            url
+          }
+        }
       }
     }
   }

@@ -1,5 +1,5 @@
-.btn, 
-button, 
+.btn,
+button,
 [type="submit"] {
   background-color: $brand-dark;
   font-weight: 700;
@@ -7,7 +7,7 @@ button,
   padding: 6px $base-margin;
   line-height: 1em;
   border-radius: $radius;
-  &:active, 
+  &:active,
   &:focus {
     outline: none;
   }
@@ -17,6 +17,13 @@ button,
 }
 .alloy-cards {
   .btn {
-    
   }
+}
+pre {
+  background-color: $brand-light;
+  color: $brand-dark;
+  overflow: scroll;
+  border: 1px solid $brand-dark;
+  font-size: 12px;
+  line-height: 1.4em;
 }

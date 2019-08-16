@@ -1,12 +1,13 @@
 <template>
-  <div class="flex-Fases container--large">
-    <div class="inner">
-      <template v-for="(item, index) in fases">
-        <FasesItem :item="item" :key="index" />
-      </template>
-
+  <section class="flex-Fases">
+    <div class="container--large container-type--fases">
+      <div class="inner container-col">
+        <template v-for="(item, index) in fases">
+          <FasesItem :item="item" :key="index" />
+        </template>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

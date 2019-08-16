@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   background-color: $brand-dark-lighten;
   margin: 0;
@@ -5,6 +8,14 @@ body {
 //------------------------------------------------------//
 // Container logic
 //------------------------------------------------------//
+section {
+  padding-top: $base-margin * 3;
+  padding-bottom: $base-margin * 3;
+  @include media-breakpoint-up(lg) {
+    padding-top: $base-margin * 6;
+    padding-bottom: $base-margin * 6;
+  }
+}
 [class*="container--"] {
   position: relative;
 
@@ -39,6 +50,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: row wrap;
 
   // // Saidly this is not supported
   // > [data-column] {
@@ -46,9 +58,11 @@ body {
   //   max-width: attr(data-column);
   // }
 
-  > [class*="col-"] {
+  // > [class*="col-"] {
+  > * {
     flex-grow: 1;
-    width: 100%;
+    max-width: 32%;
+    min-width: 300px;
   }
   .col-60 {
     max-width: 60%;

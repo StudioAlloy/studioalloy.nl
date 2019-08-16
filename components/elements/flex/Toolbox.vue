@@ -1,0 +1,40 @@
+<template>
+  <section class="flex-Toolbox">
+    <div class="container--medium container-type--toolbox">
+      <h3 class="alloy-title alloy-title--large">Toolbox</h3>
+      <div class="inner">
+        <template v-for="(item, index) in toolbox">
+          <ToolboxItem :item="item" :key="index" />
+        </template>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+import toolbox from "@/apollo/queries/toolbox";
+
+import ToolboxItem from "@/components/elements/flex/ToolboxItem";
+
+export default {
+  props: ["item"],
+  name: "FlexToolbox",
+  data() {
+    return {};
+  }, // End data
+  components: {
+    ToolboxItem,
+  },
+  apollo: {
+    toolbox: {
+      prefetch: true,
+      query: toolbox,
+      update(data) {
+        const items = data.toolbox.nodes;
+        // ↩️ Return the data
+        return items;
+      },
+    },
+  },
+};
+</script>

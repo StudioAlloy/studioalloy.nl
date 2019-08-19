@@ -13,6 +13,10 @@ module.exports = {
   */
   head: {
     title: "studioalloy",
+    script: [
+      { src: "/js/DrawSVGPlugin.min.js" },
+      { src: "/js/MorphSVGPlugin.min.js" },
+    ],
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -111,6 +115,7 @@ module.exports = {
   axios: {
     // proxyHeaders: false
   },
+
   ...routerBase,
   css: ["@/assets/css/main.scss"],
   /*

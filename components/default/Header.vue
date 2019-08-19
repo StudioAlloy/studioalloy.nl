@@ -8,7 +8,9 @@
           <h1 class="alloy-title" v-html="item.content"></h1>
         </div>
 
-        <div class="col-40">comonent animation at hover</div>
+        <div class="col-40">
+          <component :is="componentSVG"></component>
+        </div>
 
       </div>
 
@@ -24,7 +26,15 @@ export default {
   props: ["item"],
   name: "Header",
   data() {
-    return {};
+    return {
+      svg: "design",
+    };
+  },
+  computed: {
+    componentSVG() {
+      const name = this.svg;
+      return () => import(`@/components/elements/flex/HeaderItemSVG${name}`);
+    },
   },
 };
 </script>

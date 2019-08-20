@@ -104,16 +104,39 @@ import { TweenMax, TimelineMax } from "gsap";
 export default {
   name: "FasesItemSVG",
   data() {
-    return {};
+    return {
+      fase: "faseThree",
+      faseWatching: "faseTwo",
+    };
   }, // End data
+  computed: {
+    getFasePlayed() {
+      // This is going to change as soon as fase one is dont playing
+      return this.$store.getters["items/getFasePlayed"](this.faseWatching);
+    },
+  },
   mounted() {
+    const timelineComplete = () => {
+      // 🎬 Start playing the looping part of the animation
+      this.timelineFaseThree.add(nestedTimelineFaseThreeSlowMove());
+      this.timelineFaseThree.add(nestedTimelineBubbles());
+
+      // Tell the 🛍 store that this fase has finished playing
+      this.$store.commit({
+        type: "items/setFasePlayed",
+        fase: this.fase,
+        bool: true,
+      });
+    };
     // Basic values
     const baseTiming = 0.3;
 
     // Timeline stuff
-    const timelineFaseOne = new TimelineMax({});
+    this.timelineFaseThree = new TimelineMax({ onComplete: timelineComplete });
 
-    function nestedTimelineFaseOneSlowMove(elm) {
+    this.timelineFaseThree.pause();
+
+    function nestedTimelineFaseThreeSlowMove(elm) {
       const tl = new TimelineMax({
         repeat: -1,
       });
@@ -141,7 +164,8 @@ export default {
       });
       return tl;
     }
-    timelineFaseOne
+    this.timelineFaseThree
+      .from("#faseThree", baseTiming, { opacity: 0 })
       .set("#faseThree #oven #fade", { autoAlpha: 0 })
       .to("#faseThree #modules #bottom", baseTiming * 4, { y: -16.5 })
       .to(
@@ -168,15 +192,19 @@ export default {
         { y: -200, opacity: 0 },
         `-=${baseTiming}`,
       )
-      .add(nestedTimelineFaseOneSlowMove(), "sameTime")
+      // .add(nestedTimelineFaseThreeSlowMove(), "sameTime")
       .from(
         "#faseThree #oven #side #slide",
         baseTiming * 2,
         { x: -4, y: -3 },
         "sameTime",
-      )
-
-      .add(nestedTimelineBubbles());
+      );
+    // .add(nestedTimelineBubbles())
+  },
+  watch: {
+    getFasePlayed(values) {
+      this.timelineFaseThree.play();
+    },
   },
 };
 </script>

@@ -74,16 +74,43 @@ import { TweenMax, TimelineMax } from "gsap";
 export default {
   name: "FasesItemSVG",
   data() {
-    return {};
+    return {
+      fase: "faseTwo",
+      faseWatching: "faseOne",
+    };
   }, // End data
+  computed: {
+    getFasePlayed() {
+      // This is going to change as soon as fase one is dont playing
+      return this.$store.getters["items/getFasePlayed"](this.faseWatching);
+    },
+  },
   mounted() {
+    const timelineComplete = () => {
+      // 🎬 Start playing the looping part of the animation
+      this.timelineFaseTwo.add(
+        nestedTimelineFaseTwoSlowMove(),
+        `-=${baseTiming}`,
+      );
+
+      // Tell the 🛍 store that this fase has finished playing
+      this.$store.commit({
+        type: "items/setFasePlayed",
+        fase: this.fase,
+        bool: true,
+      });
+    };
     // Basic values
     const baseTiming = 0.3;
 
     // Timeline stuff
-    const timelineFaseOne = new TimelineMax({});
+    // const timelineFaseTwo = new TimelineMax({ onComplete: timelineComplete });
+    this.timelineFaseTwo = new TimelineMax({ onComplete: timelineComplete });
 
-    function nestedTimelineFaseOneSlowMove(elm) {
+    // Stop the timeline and wait for fase one to complete
+    this.timelineFaseTwo.pause();
+
+    function nestedTimelineFaseTwoSlowMove(elm) {
       const tl = new TimelineMax({
         repeat: -1,
         yoyo: true,
@@ -126,13 +153,14 @@ export default {
 
       return tl;
     }
-    timelineFaseOne
+
+    this.timelineFaseTwo
       .from("#faseTwo", baseTiming, { opacity: 0 })
       .to("#faseTwo #prev #boxPrev", baseTiming * 3, {
         y: 18,
         ease: Power4.easeIn,
       })
-      .from("#faseOne #platfrom #boxPrev", baseTiming, { opacity: 0 })
+      .from("#FaseTwo #platfrom #boxPrev", baseTiming, { opacity: 0 })
       .from("#faseTwo #fase", baseTiming * 7, { opacity: 0 })
       .from("#faseTwo #modules #shadow", baseTiming, { opacity: 0 }, "same")
       .from("#faseTwo #modules #bottom", baseTiming, { opacity: 0 }, "same")
@@ -160,8 +188,12 @@ export default {
       .to("#faseTwo #modules #top", baseTiming * 2, { y: 6 }, "threeDown")
       .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 0 }, "threeUp")
       .to("#faseTwo #modules #middle", baseTiming * 2, { y: 0 }, "threeUp")
-      .to("#faseTwo #modules #top", baseTiming * 2, { y: 0 }, "threeUp")
-      .add(nestedTimelineFaseOneSlowMove(), `-=${baseTiming}`);
+      .to("#faseTwo #modules #top", baseTiming * 2, { y: 0 }, "threeUp");
+  },
+  watch: {
+    getFasePlayed(values) {
+      this.timelineFaseTwo.play();
+    },
   },
 };
 </script>

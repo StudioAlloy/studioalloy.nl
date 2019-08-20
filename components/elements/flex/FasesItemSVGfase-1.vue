@@ -32,7 +32,6 @@
       </g>
     </g>
   </svg>
-
 </template>
 
 <script>
@@ -42,14 +41,33 @@ export default {
   props: ["slug"],
   name: "FasesItemSVG",
   data() {
-    return {};
+    return {
+      fase: "faseOne",
+    };
   }, // End data
+  computed: {
+    getFasePlayed() {
+      return this.$store.getters["items/getFasePlayed"](this.fase);
+    },
+  },
   mounted() {
+    const timelineComplete = () => {
+      // 🎬 Start playing the looping part of the animation
+      timelineFaseOne.add(nestedTimelineFaseOneSlowMove());
+
+      // Tell the 🛍 store that this fase has finished playing
+      this.$store.commit({
+        type: "items/setFasePlayed",
+        fase: this.fase,
+        bool: true,
+      });
+    };
+
     // Basic values
     const baseTiming = 0.3;
 
     // Timeline stuff
-    const timelineFaseOne = new TimelineMax({});
+    const timelineFaseOne = new TimelineMax({ onComplete: timelineComplete });
 
     function nestedTimelineFaseOneSlowMove(elm) {
       const tl = new TimelineMax({
@@ -80,8 +98,8 @@ export default {
       .from("#faseOne #platfrom #box", baseTiming * 4, {
         y: -500,
         ease: Elastic.easeOut.config(0.75, 0.95),
-      })
-      .add(nestedTimelineFaseOneSlowMove());
+      });
+    // .add(nestedTimelineFaseOneSlowMove());
   },
 };
 </script>

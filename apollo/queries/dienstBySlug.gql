@@ -1,0 +1,12 @@
+query GET_DIENST_BY_URI($uri: String) {
+  dienstBy(uri: $uri) {
+    dienstId
+    title(format: RENDERED)
+    slug
+    content(format: RENDERED)
+    acfDiensten {
+      illustrationName
+    }
+  }
+}
+

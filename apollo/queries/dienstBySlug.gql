@@ -1,12 +1,28 @@
 query GET_DIENST_BY_URI($uri: String) {
   dienstBy(uri: $uri) {
     dienstId
-    title(format: RENDERED)
+    title
     slug
-    content(format: RENDERED)
+    content
     acfDiensten {
       illustrationName
+      whiteContent
+    }
+    acfFlex {
+      flex {
+        __typename
+        ... on Dienst_Acfflex_Flex_Content {
+          content
+        }
+        ... on Dienst_Acfflex_Flex_CallToAction {
+          content
+          button {
+            target
+            title
+            url
+          }
+        }
+      }
     }
   }
 }
-

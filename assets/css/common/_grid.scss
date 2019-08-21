@@ -82,14 +82,21 @@ section {
   // > [class*="col-"] {
   > * {
     flex-grow: 1;
-    max-width: 32%;
+    @include media-breakpoint-up(lg) {
+      max-width: 32%;
+    }
     min-width: 300px;
+    // width: 100%;
   }
   .col-60 {
-    max-width: 60%;
+    @include media-breakpoint-up(lg) {
+      max-width: 60%;
+    }
   }
   .col-40 {
-    max-width: 40%;
+    @include media-breakpoint-up(lg) {
+      max-width: 40%;
+    }
   }
 }
 // END Column logic -------------------------------------//
@@ -99,31 +106,59 @@ section {
 footer {
   background-color: $brand-light;
   display: flex;
+  flex-direction: column;
+  @include media-breakpoint-up(lg) {
+    flex-direction: row;
+  }
   justify-content: space-between;
   // align-items: center;
-
+  .alloy-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    img {
+      margin-right: $base-margin;
+    }
+  }
   a {
     color: $brand-dark;
-
     text-decoration: none;
-    font-weight: 700;
+    // font-weight: 400;
+  }
+  #alloy-nav--footer {
+    margin-left: auto;
+    margin-right: auto;
+    ul {
+      flex-direction: column;
+      @include media-breakpoint-up(lg) {
+        flex-direction: row;
+      }
+    }
   }
   .alloy-nav--privacy {
     background-color: $brand-three;
     padding: $base-margin;
+    width: 500px;
+    max-width: 100%;
+
     a {
       color: $brand-light;
+      font-weight: 700;
     }
   }
   nav {
     ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       list-style: none;
       padding: 0;
       margin: 0;
       li {
         display: inline-block;
         a {
-          padding: 10px;
+          padding: $base-margin;
           display: block;
         }
       }
@@ -131,3 +166,25 @@ footer {
   }
 }
 // END Footer -------------------------------------//
+
+//------------------------------------------------------//
+// backgrounds
+//------------------------------------------------------//
+.background--light {
+  background-color: $brand-light;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span,
+  strong,
+  label,
+  blockquote {
+    color: $brand-dark;
+  }
+}
+// END backgrounds -------------------------------------//

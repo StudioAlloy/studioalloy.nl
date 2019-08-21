@@ -1,3 +1,9 @@
+::-moz-selection {
+  background: $brand-two;
+}
+::selection {
+  background: $brand-two;
+}
 body {
   font-family: $font-base;
   color: $brand-light;

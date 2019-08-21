@@ -61,6 +61,10 @@
             "description": "The tag type"
           },
           {
+            "name": "Locatie",
+            "description": "The Locatie type"
+          },
+          {
             "name": "MediaItem",
             "description": "The mediaItem type"
           },
@@ -106,6 +110,85 @@
         "possibleTypes": null
       },
       {
+        "name": "Dienst_Acfflex",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Dienst_Acfflex_Flex",
+        "kind": "UNION",
+        "possibleTypes": [
+          {
+            "name": "Dienst_Acfflex_Flex_Content",
+            "description": "Group within the flex field"
+          },
+          {
+            "name": "Dienst_Acfflex_Flex_Diensten",
+            "description": "Group within the flex field"
+          },
+          {
+            "name": "Dienst_Acfflex_Flex_Fases",
+            "description": "Group within the flex field"
+          },
+          {
+            "name": "Dienst_Acfflex_Flex_Team",
+            "description": "Group within the flex field"
+          },
+          {
+            "name": "Dienst_Acfflex_Flex_Locaties",
+            "description": "Group within the flex field"
+          },
+          {
+            "name": "Dienst_Acfflex_Flex_Toolbox",
+            "description": "Group within the flex field"
+          },
+          {
+            "name": "Dienst_Acfflex_Flex_CallToAction",
+            "description": "Group within the flex field"
+          }
+        ]
+      },
+      {
+        "name": "Dienst_Acfflex_Flex_Content",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Dienst_Acfflex_Flex_Diensten",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Dienst_Acfflex_Flex_Fases",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Dienst_Acfflex_Flex_Team",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Dienst_Acfflex_Flex_Locaties",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Dienst_Acfflex_Flex_Toolbox",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Dienst_Acfflex_Flex_CallToAction",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "ACF_Link",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
         "name": "PostTypeEnum",
         "kind": "ENUM",
         "possibleTypes": null
@@ -145,6 +228,10 @@
           {
             "name": "Tool",
             "description": "The Tool type"
+          },
+          {
+            "name": "Locatie",
+            "description": "The Locatie type"
           }
         ]
       },
@@ -224,11 +311,6 @@
       },
       {
         "name": "Post_Acfflex_Flex_CallToAction",
-        "kind": "OBJECT",
-        "possibleTypes": null
-      },
-      {
-        "name": "ACF_Link",
         "kind": "OBJECT",
         "possibleTypes": null
       },
@@ -506,17 +588,27 @@
         "possibleTypes": null
       },
       {
-        "name": "UserToMediaItemConnectionWhereArgs",
+        "name": "UserToLocatieConnectionWhereArgs",
         "kind": "INPUT_OBJECT",
         "possibleTypes": null
       },
       {
-        "name": "UserToMediaItemConnection",
+        "name": "UserToLocatieConnection",
         "kind": "OBJECT",
         "possibleTypes": null
       },
       {
-        "name": "UserToMediaItemConnectionEdge",
+        "name": "UserToLocatieConnectionEdge",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Locatie",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Locatie_Acflocaties",
         "kind": "OBJECT",
         "possibleTypes": null
       },
@@ -563,6 +655,21 @@
       {
         "name": "MediaItemSizeEnum",
         "kind": "ENUM",
+        "possibleTypes": null
+      },
+      {
+        "name": "UserToMediaItemConnectionWhereArgs",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UserToMediaItemConnection",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UserToMediaItemConnectionEdge",
+        "kind": "OBJECT",
         "possibleTypes": null
       },
       {
@@ -960,6 +1067,21 @@
         "possibleTypes": null
       },
       {
+        "name": "RootQueryToLocatieConnectionWhereArgs",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "RootQueryToLocatieConnection",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "RootQueryToLocatieConnectionEdge",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
         "name": "RootQueryToMediaItemConnectionWhereArgs",
         "kind": "INPUT_OBJECT",
         "possibleTypes": null
@@ -1038,6 +1160,10 @@
           {
             "name": "TeamLid",
             "description": "The TeamLid type"
+          },
+          {
+            "name": "Locatie",
+            "description": "The Locatie type"
           },
           {
             "name": "Category",
@@ -1314,6 +1440,16 @@
         "possibleTypes": null
       },
       {
+        "name": "CreateLocatieInput",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "CreateLocatiePayload",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
         "name": "CreateMediaItemInput",
         "kind": "INPUT_OBJECT",
         "possibleTypes": null
@@ -1445,6 +1581,16 @@
       },
       {
         "name": "DeleteFasePayload",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "DeleteLocatieInput",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "DeleteLocatiePayload",
         "kind": "OBJECT",
         "possibleTypes": null
       },
@@ -1595,6 +1741,16 @@
       },
       {
         "name": "UpdateFasePayload",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UpdateLocatieInput",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "UpdateLocatiePayload",
         "kind": "OBJECT",
         "possibleTypes": null
       },

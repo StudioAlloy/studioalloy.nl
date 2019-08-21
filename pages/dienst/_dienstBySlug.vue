@@ -1,16 +1,29 @@
 <template>
-  <main>
+  <main id="single-dienst">
     <div class="container--small">
       <div class="inner">
         <h1>{{dienstBySlug.title}}</h1>
         <div class="alloy-intro" v-html="dienstBySlug.content"></div>
-        <pre>{{dienstBySlug}}</pre>
+      </div>
+    </div>
+    <div class="container--small">
+      <div class="background-clipped"></div>
+      <div class="inner">
+        <div class="alloy-illustration">
+          <component :is="componentSVG"></component>
+        </div>
+      </div>
+    </div>
+    <div class="container--small background--light">
+      <div class="inner">
+        <div v-html="dienstBySlug.acfDiensten.whiteContent"></div>
       </div>
     </div>
 
-    <div class="alloy-illustration col-60">
-      <component :is="componentSVG"></component>
-    </div>
+    <template v-for="(item, index) in dienstBySlug.acfFlex.flex">
+      <FlexLoader :item="item" :key="index" />
+    </template>
+
   </main>
 </template>
 
@@ -33,7 +46,7 @@ export default {
   },
   apollo: {
     dienstBySlug: {
-      prefetch: true,
+      // prefetch: true,
       query: dienstBySlug,
       variables() {
         return {

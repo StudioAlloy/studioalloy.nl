@@ -1,12 +1,17 @@
 <template>
   <footer>
-    <div>
-      <nuxt-link to="/">
-        <img src="~/assets/images/logo-studio-alloy.svg" alt="Logo Studio Alloy">
-      </nuxt-link>
-      <a href="mailto:contact@studioalloy.nl">contact@studioalloy.nl</a>
-      <a href="tel:+31233020044">023 30 20 044</a>
-    </div>
+    <nav id="alloy-nav--footer">
+      <ul>
+        <li>
+          <nuxt-link to="/" class="alloy-logo">
+            <img src="~/assets/images/logo-studio-alloy.svg" alt="Logo Studio Alloy">
+            <span>Studio Alloy</span>
+          </nuxt-link>
+        </li>
+        <li><a href="mailto:contact@studioalloy.nl">contact@studioalloy.nl</a></li>
+        <li><a href="tel:+31233020044">023 30 20 044</a></li>
+      </ul>
+    </nav>
 
     <nav class="alloy-nav--privacy">
       <ul>

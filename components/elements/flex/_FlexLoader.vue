@@ -12,7 +12,9 @@ export default {
   computed: {
     componentFlex() {
       const rawFileName = this.item.__typename;
-      const fileName = rawFileName.replace("Page_Acfflex_Flex_", "");
+      const regex = /.+?_Acfflex_Flex_/gm;
+      // const fileName = rawFileName.replace("Dienst_Acfflex_Flex_", "");
+      const fileName = rawFileName.replace(regex, "");
 
       return () => import(`@/components/elements/flex/${fileName}`);
     },

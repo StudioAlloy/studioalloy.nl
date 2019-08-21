@@ -1,9 +1,9 @@
 <template>
   <main>
-    <Header :item="pageByUri" />
+    <Header :item="pageBySlug" />
 
     <!-- 💪 Load the flexible blocks one by one with a middle man called the FlexLoader  -->
-    <template v-for="(item, index) in pageByUri.acfFlex.flex">
+    <template v-for="(item, index) in pageBySlug.acfFlex.flex">
       <FlexLoader :item="item" :key="index" />
     </template>
 
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import pageByUri from "~/apollo/queries/pageByUri";
+import pageBySlug from "~/apollo/queries/pageBySlug";
 
 // Compontents
 import Header from "@/components/default/Header.vue";
@@ -26,11 +26,13 @@ export default {
     FlexLoader,
   },
   apollo: {
-    pageByUri: {
+    pageBySlug: {
       prefetch: true,
-      query: pageByUri,
-      variables: {
-        uri: "home",
+      query: pageBySlug,
+      variables() {
+        return {
+          uri: "home",
+        };
       },
       update(data) {
         // ↩️ Return the data

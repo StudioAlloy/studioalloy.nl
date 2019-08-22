@@ -130,7 +130,8 @@ export default {
     const baseTiming = 0.3;
 
     // Timeline stuff
-    this.timelineFaseThree = new TimelineMax({ onComplete: timelineComplete });
+    // this.timelineFaseThree = new TimelineMax({ onComplete: timelineComplete });
+    this.timelineFaseThree = new TimelineMax();
 
     this.timelineFaseThree.pause();
 

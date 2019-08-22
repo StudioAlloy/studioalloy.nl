@@ -112,16 +112,14 @@ export default {
   props: ["slug"],
   name: "DienstenItemSVGintranet",
   data() {
-    return {
-      title: "DienstenItemSVG",
-    };
+    return {};
   }, // End data
   mounted() {
     // Basic values
     const baseTiming = 0.3;
 
     // Timeline stuf
-    const timelineHeaderDevelopment = new TimelineMax();
+    const timelineHeaderDevelopment = new this.$GSAP.TimelineMax();
     // Base ease full timeline
 
     timelineHeaderDevelopment
@@ -163,7 +161,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-// @import '~/assets/css/common/_variables.scss';
-</style>

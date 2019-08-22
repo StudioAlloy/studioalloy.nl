@@ -71,40 +71,43 @@ export default {
 
     timelineHeaderDevelopment
       .from(
-        "#base #screen",
+        "#headerDesign #base #screen",
         baseTiming * 4,
         { morphSVG: "#base-screen-morph" },
         "sameTime",
       )
       .from(
-        "#base #side",
+        "#headerDesign #base #side",
         baseTiming * 4,
         { scaleY: 0, transformOrigin: "bottom" },
         "sameTime",
       )
-      .from("#base #bar", 0, { opacity: 0 })
-      .from("#base #bar", baseTiming * 2, { y: 40 })
-      .from("#header", baseTiming, { scale: 0, transformOrigin: "center" })
-      .from("#header #interactive", baseTiming * 6, {
+      .from("#headerDesign #base #bar", 0, { opacity: 0 })
+      .from("#headerDesign #base #bar", baseTiming * 2, { y: 40 })
+      .from("#headerDesign #header", baseTiming, {
+        scale: 0,
+        transformOrigin: "center",
+      })
+      .from("#headerDesign #header #interactive", baseTiming * 6, {
         scale: 0,
         transformOrigin: "center",
         ease: Elastic.easeOut.config(1, 0.3),
       })
       .staggerFromTo(
-        "#header-text *",
+        "#headerDesign #header-text *",
         baseTiming,
         { drawSVG: "100% 100%" },
         { drawSVG: "100%" },
         0.1,
         `-=${baseTiming * 4}`,
       )
-      .staggerFrom("#images *", baseTiming * 2, {
+      .staggerFrom("#headerDesign #images *", baseTiming * 2, {
         y: 40,
         opacity: 0,
         stagger: 0.5,
       })
       .staggerFromTo(
-        "#text-header *",
+        "#headerDesign #text-header *",
         baseTiming,
         { drawSVG: "0%" },
         { drawSVG: "100%" },
@@ -112,14 +115,14 @@ export default {
         `-=${baseTiming * 4}`,
       )
       .staggerFromTo(
-        "#text-body *",
+        "#headerDesign #text-body *",
         baseTiming,
         { drawSVG: "0%" },
         { drawSVG: "100%" },
         0.1,
         `-=${baseTiming * 2}`,
       )
-      .from("#large", baseTiming * 2, { y: -20, opacity: 0 });
+      .from("#headerDesign #large", baseTiming * 2, { y: -20, opacity: 0 });
   },
 };
 </script>

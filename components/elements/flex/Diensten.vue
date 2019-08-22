@@ -37,5 +37,53 @@ export default {
       },
     },
   },
+  mounted() {
+    this.$nextTick(this.animationDiensten);
+  },
+  // destroyed() {
+  //   // Destroy ScrollMagic when our component is removed from DOM
+  //   controller = controller.destroy();
+  // },
+  methods: {
+    animationDiensten() {
+      //------------------------------------------------------//
+      // Timeline ❇️ 🧦 GSAP
+      //------------------------------------------------------//
+      // Basic values
+      const baseTiming = 0.3;
+
+      // Timeline stuff
+      const timelineDiensten = new this.$GSAP.TimelineMax();
+
+      timelineDiensten
+        .staggerFrom(
+          ".elements-Diensten > .inner > *",
+          baseTiming * 2,
+          {
+            y: 100,
+            opacity: 0,
+          },
+          baseTiming,
+        )
+        .staggerFrom(
+          ".flex-Toolbox .container-type--toolbox > .inner > *",
+          baseTiming * 2,
+          { y: 100, opacity: 0 },
+          baseTiming,
+        );
+      // END Timeline ❇️ 🧦  GSAP -------------------------------------//
+      //------------------------------------------------------//
+      // 🎩 ScrollMagic scene
+      //------------------------------------------------------//
+      const controller = new this.$ScrollMagic.Controller();
+      const scene = new this.$ScrollMagic.Scene({
+        triggerElement: ".elements-Diensten",
+        reverse: false,
+      })
+        .setTween(timelineDiensten)
+        .addTo(controller);
+      // END 🎩 ScrollMagic scene -------------------------------------//
+    },
+  },
 };
 </script>

@@ -45,13 +45,7 @@ export default {
   props: ["slug"],
   name: "DienstenItemSVGdatavisualisatie",
   data() {
-    return {
-      title: "DienstenItemSVGdatavisualisatie",
-    };
+    return {};
   }, // End data
 };
 </script>
-
-<style lang="scss" scoped>
-// @import '~/assets/css/common/_variables.scss';
-</style>

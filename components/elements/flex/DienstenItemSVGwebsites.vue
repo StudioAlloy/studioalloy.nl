@@ -87,108 +87,105 @@ export default {
   props: ["slug"],
   name: "DienstenItemSVGwebsite",
   data() {
-    return {
-      title: "DienstenItemSVG",
-    };
+    return {};
   }, // End data
   mounted() {
     // Basic values
     const baseTiming = 0.3;
 
     // Timeline stuf
-    const timelineHeaderDevelopment = new TimelineMax();
+    const timelineHeaderDevelopment = new this.$GSAP.TimelineMax();
     // Base ease full timeline
-
-    timelineHeaderDevelopment
-      // 💻 laptop animation
-      .from(
-        "#laptop #laptop-base-screen",
-        baseTiming * 2,
-        { scaleY: 0, transformOrigin: "center bottom" },
-        "sameTime",
-      )
-      .from(
-        "#laptop #header",
-        baseTiming,
-        { scale: 0, transformOrigin: "center" },
-        "sameTimeTwo",
-      )
-      .staggerFrom(
-        "#laptop #header-text *",
-        baseTiming,
-        { drawSVG: "100% 100%" },
-        { drawSVG: "100%" },
-        0.1,
-        `-=${baseTiming * 4}`,
-      )
-      .from(
-        "#laptop #interactive",
-        baseTiming * 4,
-        {
-          scale: 0,
-          transformOrigin: "center",
-          ease: Elastic.easeOut.config(1, 0.3),
-        },
-        "sameTimeThree",
-      )
-      .staggerFrom(
-        "#laptop #images *",
-        baseTiming * 2,
-        { y: 40, opacity: 0 },
-        0.5,
-        "sameTimeFour",
-      )
-      .from(
-        "#laptop #text",
-        baseTiming * 2,
-        { y: 50, opacity: 0 },
-        "sameTimeFive",
-      )
-      .from(
-        "#laptop #extra-image",
-        baseTiming * 2,
-        { scale: 0, transformOrigin: "center" },
-        "sameTimeFive",
-      )
-      // 📱 phone animation
-      .from("#phone", baseTiming * 2, { y: 300 }, "sameTime")
-      .from(
-        "#phone #phone-header",
-        baseTiming,
-        { scale: 0, transformOrigin: "center" },
-        "sameTimeTwo",
-      )
-      .staggerFrom(
-        "#phone #phone-header-text *",
-        baseTiming,
-        { drawSVG: "100% 100%" },
-        { drawSVG: "100%" },
-        0.1,
-        `-=${baseTiming * 4}`,
-      )
-      .from(
-        "#phone #phone-interactive",
-        baseTiming * 4,
-        {
-          scale: 0,
-          transformOrigin: "center",
-          ease: Elastic.easeOut.config(1, 0.3),
-        },
-        "sameTimeThree",
-      )
-      .staggerFrom(
-        "#phone #phone-images *",
-        baseTiming * 2,
-        { y: 40, opacity: 0 },
-        0.5,
-        "sameTimeFour",
-      )
-      .from(
-        "#phone #phone-text",
-        baseTiming * 2,
-        { y: 50, opacity: 0 },
-        "sameTimeFive",
-      );
+    // timelineHeaderDevelopment
+    //   // 💻 laptop animation
+    //   .from(
+    //     "#DienstWebsite #laptop #laptop-base-screen",
+    //     baseTiming * 2,
+    //     { scaleY: 0, transformOrigin: "center bottom" },
+    //     "sameTime",
+    //   )
+    //   .from(
+    //     "#DienstWebsite #laptop #header",
+    //     baseTiming,
+    //     { scale: 0, transformOrigin: "center" },
+    //     "sameTimeTwo",
+    //   )
+    //   .staggerFrom(
+    //     "#DienstWebsite #laptop #header-text *",
+    //     baseTiming,
+    //     { drawSVG: "100% 100%" },
+    //     { drawSVG: "100%" },
+    //     0.1,
+    //     `-=${baseTiming * 4}`,
+    //   )
+    //   .from(
+    //     "#DienstWebsite #laptop #interactive",
+    //     baseTiming * 4,
+    //     {
+    //       scale: 0,
+    //       transformOrigin: "center",
+    //       ease: Elastic.easeOut.config(1, 0.3),
+    //     },
+    //     "sameTimeThree",
+    //   )
+    //   .staggerFrom(
+    //     "#DienstWebsite #laptop #images *",
+    //     baseTiming * 2,
+    //     { y: 40, opacity: 0 },
+    //     0.5,
+    //     "sameTimeFour",
+    //   )
+    //   .from(
+    //     "#DienstWebsite #laptop #text",
+    //     baseTiming * 2,
+    //     { y: 50, opacity: 0 },
+    //     "sameTimeFive",
+    //   )
+    //   .from(
+    //     "#DienstWebsite #laptop #extra-image",
+    //     baseTiming * 2,
+    //     { scale: 0, transformOrigin: "center" },
+    //     "sameTimeFive",
+    //   )
+    //   // 📱 phone animation
+    //   .from("#DienstWebsite #phone", baseTiming * 2, { y: 300 }, "sameTime")
+    //   .from(
+    //     "#DienstWebsite #phone #phone-header",
+    //     baseTiming,
+    //     { scale: 0, transformOrigin: "center" },
+    //     "sameTimeTwo",
+    //   )
+    //   .staggerFrom(
+    //     "#DienstWebsite #phone #phone-header-text *",
+    //     baseTiming,
+    //     { drawSVG: "100% 100%" },
+    //     { drawSVG: "100%" },
+    //     0.1,
+    //     `-=${baseTiming * 4}`,
+    //   )
+    //   .from(
+    //     "#DienstWebsite #phone #phone-interactive",
+    //     baseTiming * 4,
+    //     {
+    //       scale: 0,
+    //       transformOrigin: "center",
+    //       ease: Elastic.easeOut.config(1, 0.3),
+    //     },
+    //     "sameTimeThree",
+    //   )
+    //   .staggerFrom(
+    //     "#DienstWebsite #phone #phone-images *",
+    //     baseTiming * 2,
+    //     { y: 40, opacity: 0 },
+    //     0.5,
+    //     "sameTimeFour",
+    //   )
+    //   .from(
+    //     "#DienstWebsite #phone #phone-text",
+    //     baseTiming * 2,
+    //     { y: 50, opacity: 0 },
+    //     "sameTimeFive",
+    //   );
   },
 };
 </script>

@@ -103,7 +103,8 @@ export default {
 
     // Timeline stuff
     // const timelineFaseTwo = new TimelineMax({ onComplete: timelineComplete });
-    this.timelineFaseTwo = new TimelineMax({ onComplete: timelineComplete });
+    // this.timelineFaseTwo = new TimelineMax({ onComplete: timelineComplete });
+    this.timelineFaseTwo = new TimelineMax();
 
     // Stop the timeline and wait for fase one to complete
     this.timelineFaseTwo.pause();
@@ -187,6 +188,8 @@ export default {
       .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 0 }, "threeUp")
       .to("#faseTwo #modules #middle", baseTiming * 2, { y: 0 }, "threeUp")
       .to("#faseTwo #modules #top", baseTiming * 2, { y: 0 }, "threeUp");
+
+    // this.timelineFaseTwo.eventCallback("onComplete", timelineComplete);
   },
   watch: {
     getFasePlayed(values) {

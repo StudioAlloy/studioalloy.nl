@@ -49,14 +49,14 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(this.pinContainerScene);
+    this.$nextTick(this.faseAnimation);
   },
   destroyed() {
     // Destroy ScrollMagic when our component is removed from DOM
     controller = controller.destroy();
   },
   methods: {
-    pinContainerScene() {
+    faseAnimation() {
       // onComplete send to Vuex
       const timelineComplete = () => {
         // 🎬 Start playing the looping part of the animation
@@ -70,13 +70,14 @@ export default {
         });
       };
       //------------------------------------------------------//
-      // Timeline ❇️ 🧦
+      // Timeline ❇️ 🧦 GSAP
       //------------------------------------------------------//
       // Basic values
       const baseTiming = 0.3;
 
       // Timeline stuff
-      const timelineFaseOne = new TimelineMax({ onComplete: timelineComplete });
+      // const timelineFaseOne = new TimelineMax({ onComplete: timelineComplete });
+      const timelineFaseOne = new TimelineMax();
 
       function nestedTimelineFaseOneSlowMove(elm) {
         const tl = new TimelineMax({
@@ -109,7 +110,8 @@ export default {
           ease: Elastic.easeOut.config(0.75, 0.95),
         });
       // .add(nestedTimelineFaseOneSlowMove());
-      // END Timeline ❇️ 🧦  -------------------------------------//
+      // timelineFaseOne.eventCallback("onComplete", timelineComplete);
+      // END Timeline ❇️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//
       // 🎩 ScrollMagic scene
       //------------------------------------------------------//
@@ -117,8 +119,9 @@ export default {
       // {globalSceneOptions: { offset: 600 },}
       const scene = new this.$ScrollMagic.Scene({
         triggerElement: "#faseOne",
-        duration: 300,
-        tweenChanges: true,
+        reverse: false,
+        // duration: 300,
+        // tweenChanges: true,
       })
         .setTween(timelineFaseOne) // Tells what the time line should be
         .addTo(controller);

@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import { TweenMax, TimelineMax } from "gsap";
-
 export default {
   props: ["slug"],
   name: "FasesItemSVG",

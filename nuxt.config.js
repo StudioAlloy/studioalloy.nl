@@ -8,9 +8,8 @@ const routerBase =
     : {};
 
 module.exports = {
-  /*
-  ** Headers of the page
-  */
+  ...routerBase,
+  // Header meta
   head: {
     title: "studioalloy",
     script: [
@@ -45,6 +44,8 @@ module.exports = {
       },
     ],
   },
+  // END Header meta
+  // ⚙️  Nuxt pre generate the following pages as static HTML
   generate: {
     dir: "docs",
     routes: [
@@ -52,31 +53,26 @@ module.exports = {
       'about',
       'contact',
       'privacy',
+      '/dienst/websites',
+      '/dienst/intranet',
+      '/dienst/datavisualisatie',
     ],
-    // router: {
-    //   base: '/wish-list/',
-    // },
   },
+  // END ⚙️ 
+  // Nuxt 📦 modules
   modules: [
     "@nuxtjs/axios",
     "@nuxtjs/apollo",
-    // "@nuxtjs/pwa"
   ],
   apollo: {
     clientConfigs: {
       default: '@/apollo/client-configs/default.js'
     }
-    // clientConfigs: {
-    //   default: {
-    //     httpEndpoint: 'https://api.studioalloy.nl/graphql',
-    //     errorHandler: '~/plugins/apollo-error-handler.js',
-    //   },
-    //   dev: {
-    //     httpEndpoint: 'https://api.studioalloy.nl/graphql',
-    //     errorHandler: '~/plugins/apollo-error-handler.js',
-    //   }
-    // }
   },
+  plugins: [
+    { src: '~/plugins/ScrollMagic.js', ssr: false },
+  ],
+  // END 📦 
   manifest: {
     name: "studioalloy",
     short_name: "studioalloy",
@@ -92,43 +88,9 @@ module.exports = {
     background_color: "#e64lll",
     display: "standalone",
   },
-  // workbox: {
-  //   runtimeCaching: [
-  //     {
-  //       // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
-  //       urlPattern: "https://mvaneijgen.nl/wish-list/.*",
-  //       // Defaults to `networkFirst` if omitted
-  //       handler: "cacheFirst",
-  //       // Defaults to `GET` if omitted
-  //       method: "GET",
-  //     },
-  //     {
-  //       // Should be a regex string. Compiles into new RegExp('https://my-cdn.com/.*')
-  //       urlPattern: "https://i.imgur.com/.*",
-  //       // Defaults to `networkFirst` if omitted
-  //       handler: "cacheFirst",
-  //       // Defaults to `GET` if omitted
-  //       method: "GET",
-  //     },
-  //   ],
-  // },
-  axios: {
-    // proxyHeaders: false
-  },
-
-  ...routerBase,
   css: ["@/assets/css/main.scss"],
-  /*
-  ** Customize the progress bar color
-  */
-  loading: { color: "#0ba" },
-  /*
-  ** Build configuration
-  */
+  loading: { color: "#F53" },
   build: {
-    /*
-    ** Run ESLint on save
-    */
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({

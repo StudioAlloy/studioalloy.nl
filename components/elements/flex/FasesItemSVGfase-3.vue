@@ -99,8 +99,6 @@
 </template>
 
 <script>
-import { TweenMax, TimelineMax } from "gsap";
-
 export default {
   name: "FasesItemSVG",
   data() {

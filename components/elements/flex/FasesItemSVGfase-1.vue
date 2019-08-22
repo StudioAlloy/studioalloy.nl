@@ -110,7 +110,7 @@ export default {
           ease: Elastic.easeOut.config(0.75, 0.95),
         });
       // .add(nestedTimelineFaseOneSlowMove());
-      // timelineFaseOne.eventCallback("onComplete", timelineComplete);
+      timelineFaseOne.eventCallback("onComplete", timelineComplete);
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//
       // 🎩 ScrollMagic scene

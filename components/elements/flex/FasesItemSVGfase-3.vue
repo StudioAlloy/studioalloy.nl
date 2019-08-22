@@ -199,6 +199,7 @@ export default {
         "sameTime",
       );
     // .add(nestedTimelineBubbles())
+    this.timelineFaseThree.eventCallback("onComplete", timelineComplete);
   },
   watch: {
     getFasePlayed(values) {

@@ -189,7 +189,7 @@ export default {
       .to("#faseTwo #modules #middle", baseTiming * 2, { y: 0 }, "threeUp")
       .to("#faseTwo #modules #top", baseTiming * 2, { y: 0 }, "threeUp");
 
-    // this.timelineFaseTwo.eventCallback("onComplete", timelineComplete);
+    this.timelineFaseTwo.eventCallback("onComplete", timelineComplete);
   },
   watch: {
     getFasePlayed(values) {

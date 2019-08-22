@@ -4,7 +4,9 @@
       <h3 class="alloy-title alloy-title--large">Toolbox</h3>
       <div class="inner">
         <template v-for="(item, index) in toolbox">
-          <ToolboxItem :item="item" :key="index" />
+          <div class="item" :key="index">
+            <ToolboxItem :item="item" :key="index" />
+          </div>
         </template>
       </div>
     </div>
@@ -55,13 +57,13 @@ export default {
       const timelineToolbox = new this.$GSAP.TimelineMax();
 
       timelineToolbox
-        .from(".flex-Toolbox .alloy-title--large", baseTiming, {
+        .from(".flex-Toolbox .alloy-title--large", baseTiming * 2, {
           y: 100,
           opacity: 0,
           ease: Power2.easeOut,
         })
         .staggerFrom(
-          ".flex-Toolbox .container-type--toolbox > .inner > *",
+          ".flex-Toolbox .container-type--toolbox > .inner > .item",
           baseTiming * 2,
           { y: 100, opacity: 0 },
           baseTiming,
@@ -73,8 +75,9 @@ export default {
       const controller = new this.$ScrollMagic.Controller();
       const scene = new this.$ScrollMagic.Scene({
         triggerElement: ".flex-Toolbox",
+        duration: 100,
         reverse: false,
-        offset: -200,
+        // offset: -200,
       })
         .setTween(timelineToolbox)
         .addTo(controller);

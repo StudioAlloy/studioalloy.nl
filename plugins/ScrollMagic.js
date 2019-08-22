@@ -19,7 +19,7 @@ const GSAPScrollMagic = {
     }
     // ScrollMagic
     Vue.prototype.$ScrollMagic = {
-      Controller: new ScrollMagic.Controller(),
+      Controller: ScrollMagic.Controller,
       Scene: ScrollMagic.Scene
     }
   }

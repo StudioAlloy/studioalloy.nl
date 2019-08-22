@@ -49,55 +49,83 @@ export default {
     },
   },
   mounted() {
-    const timelineComplete = () => {
-      // 🎬 Start playing the looping part of the animation
-      timelineFaseOne.add(nestedTimelineFaseOneSlowMove());
+    this.$nextTick(this.pinContainerScene);
+  },
+  destroyed() {
+    // Destroy ScrollMagic when our component is removed from DOM
+    controller = controller.destroy();
+  },
+  methods: {
+    pinContainerScene() {
+      // onComplete send to Vuex
+      const timelineComplete = () => {
+        // 🎬 Start playing the looping part of the animation
+        timelineFaseOne.add(nestedTimelineFaseOneSlowMove());
 
-      // Tell the 🛍 store that this fase has finished playing
-      this.$store.commit({
-        type: "items/setFasePlayed",
-        fase: this.fase,
-        bool: true,
-      });
-    };
+        // Tell the 🛍 store that this fase has finished playing
+        this.$store.commit({
+          type: "items/setFasePlayed",
+          fase: this.fase,
+          bool: true,
+        });
+      };
+      //------------------------------------------------------//
+      // Timeline ❇️ 🧦
+      //------------------------------------------------------//
+      // Basic values
+      const baseTiming = 0.3;
 
-    // Basic values
-    const baseTiming = 0.3;
+      // Timeline stuff
+      const timelineFaseOne = new TimelineMax({ onComplete: timelineComplete });
 
-    // Timeline stuff
-    const timelineFaseOne = new TimelineMax({ onComplete: timelineComplete });
+      function nestedTimelineFaseOneSlowMove(elm) {
+        const tl = new TimelineMax({
+          repeat: -1,
+          yoyo: true,
+        });
 
-    function nestedTimelineFaseOneSlowMove(elm) {
-      const tl = new TimelineMax({
-        repeat: -1,
-        yoyo: true,
-      });
+        tl.to("#faseOne #platfrom #box", baseTiming * 4, {
+          y: 3,
+          ease: Power0.easeNone,
+        }).to("#faseOne #platfrom #box", baseTiming * 4, {
+          y: -3,
+          ease: Power0.easeNone,
+        });
 
-      tl.to("#faseOne #platfrom #box", baseTiming * 4, {
-        y: 3,
-        ease: Power0.easeNone,
-      }).to("#faseOne #platfrom #box", baseTiming * 4, {
-        y: -3,
-        ease: Power0.easeNone,
-      });
-
-      return tl;
-    }
-    timelineFaseOne
-      .staggerFrom("#faseOne #grid *", baseTiming * 6, {
-        y: -400,
-        ease: Power2.easeOut,
-        stagger: {
-          each: 0.15,
-        },
+        return tl;
+      }
+      timelineFaseOne
+        .staggerFrom("#faseOne #grid *", baseTiming * 6, {
+          y: -400,
+          ease: Power2.easeOut,
+          stagger: {
+            each: 0.15,
+          },
+        })
+        .from("#faseOne #platfrom #shadow", baseTiming, { opacity: 0 })
+        .from("#faseOne #platfrom #box", baseTiming, { opacity: 0 })
+        .from("#faseOne #platfrom #box", baseTiming * 4, {
+          y: -500,
+          ease: Elastic.easeOut.config(0.75, 0.95),
+        });
+      // .add(nestedTimelineFaseOneSlowMove());
+      // END Timeline ❇️ 🧦  -------------------------------------//
+      //------------------------------------------------------//
+      // 🎩 ScrollMagic scene
+      //------------------------------------------------------//
+      const controller = new this.$ScrollMagic.Controller();
+      // {globalSceneOptions: { offset: 600 },}
+      const scene = new this.$ScrollMagic.Scene({
+        triggerElement: "#faseOne",
+        duration: 300,
+        tweenChanges: true,
       })
-      .from("#faseOne #platfrom #shadow", baseTiming, { opacity: 0 })
-      .from("#faseOne #platfrom #box", baseTiming, { opacity: 0 })
-      .from("#faseOne #platfrom #box", baseTiming * 4, {
-        y: -500,
-        ease: Elastic.easeOut.config(0.75, 0.95),
-      });
-    // .add(nestedTimelineFaseOneSlowMove());
+        .setTween(timelineFaseOne) // Tells what the time line should be
+        .addTo(controller);
+
+      // controllerHolder = controller;
+      // END 🎩 ScrollMagic scene -------------------------------------//
+    },
   },
 };
 </script>

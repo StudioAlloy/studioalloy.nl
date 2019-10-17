@@ -4,10 +4,12 @@
 body {
   background-color: $brand-dark-lighten;
   margin: 0;
+  overflow-x: hidden;
 }
 main {
   min-height: 100vh;
   // overflow-x: hidden;
+  // overflow-y: hidden;
   padding-top: $base-margin * 2;
   padding-bottom: $base-margin * 2;
 

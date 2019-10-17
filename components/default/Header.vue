@@ -66,6 +66,10 @@ export default {
   width: 100%;
 }
 .alloy-illustration {
+  order: -1;
+  @include media-breakpoint-up(lg) {
+    order: 1;
+  }
   padding: $base-margin * 3;
 }
 </style>

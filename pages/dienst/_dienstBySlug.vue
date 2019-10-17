@@ -1,6 +1,6 @@
 <template>
   <main id="single-dienst">
-    <div class="container--small">
+    <div class="content-container--small flex-Content">
       <div class="inner">
         <h1>{{dienstBySlug.title}}</h1>
         <div class="alloy-intro" v-html="dienstBySlug.content"></div>
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="container--small background--light">
+    <div class="container--small background--light flex-Content alloy-intro-light">
       <div class="inner">
         <div v-html="dienstBySlug.acfDiensten.whiteContent"></div>
       </div>

@@ -66,7 +66,7 @@ export default {
     const baseTiming = 0.3;
 
     // Timeline stuf
-    const timelineHeaderDevelopment = new TimelineMax();
+    const timelineHeaderDevelopment = new this.$GSAP.TimelineMax();
     // Base ease full timeline
 
     timelineHeaderDevelopment

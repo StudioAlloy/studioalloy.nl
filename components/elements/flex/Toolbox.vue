@@ -39,50 +39,48 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(this.toolboxAnimation);
+    // this.$nextTick(this.toolboxAnimation);
   },
   destroyed() {
     // Destroy ScrollMagic when our component is removed from DOM
-    controller = controller.destroy();
+    // controller = controller.destroy();
   },
   methods: {
-    toolboxAnimation() {
-      //------------------------------------------------------//
-      // Timeline ❇️ 🧦 GSAP
-      //------------------------------------------------------//
-      // Basic values
-      const baseTiming = 0.3;
-
-      // Timeline stuff
-      const timelineToolbox = new this.$GSAP.TimelineMax();
-
-      timelineToolbox
-        .from(".flex-Toolbox .alloy-title--large", baseTiming * 2, {
-          y: 100,
-          opacity: 0,
-          ease: Power2.easeOut,
-        })
-        .staggerFrom(
-          ".flex-Toolbox .container-type--toolbox > .inner > .item",
-          baseTiming * 2,
-          { y: 100, opacity: 0 },
-          baseTiming,
-        );
-      // END Timeline ❇️ 🧦  GSAP -------------------------------------//
-      //------------------------------------------------------//
-      // 🎩 ScrollMagic scene
-      //------------------------------------------------------//
-      const controller = new this.$ScrollMagic.Controller();
-      const scene = new this.$ScrollMagic.Scene({
-        triggerElement: ".flex-Toolbox",
-        duration: 100,
-        reverse: false,
-        // offset: -200,
-      })
-        .setTween(timelineToolbox)
-        .addTo(controller);
-      // END 🎩 ScrollMagic scene -------------------------------------//
-    },
+    // toolboxAnimation() {
+    //   //------------------------------------------------------//
+    //   // Timeline ❇️ 🧦 GSAP
+    //   //------------------------------------------------------//
+    //   // Basic values
+    //   const baseTiming = 0.3;
+    //   // Timeline stuff
+    //   const timelineToolbox = new this.$GSAP.TimelineMax();
+    //   timelineToolbox
+    //     .from(".flex-Toolbox .alloy-title--large", baseTiming * 2, {
+    //       y: 100,
+    //       opacity: 0,
+    //       ease: Power2.easeOut,
+    //     })
+    //     .staggerFrom(
+    //       ".flex-Toolbox .container-type--toolbox > .inner > .item",
+    //       baseTiming * 2,
+    //       { y: 100, opacity: 0 },
+    //       baseTiming,
+    //     );
+    //   // END Timeline ❇️ 🧦  GSAP -------------------------------------//
+    //   //------------------------------------------------------//
+    //   // 🎩 ScrollMagic scene
+    //   //------------------------------------------------------//
+    //   const controller = new this.$ScrollMagic.Controller();
+    //   const scene = new this.$ScrollMagic.Scene({
+    //     triggerElement: ".flex-Toolbox",
+    //     duration: 100,
+    //     reverse: false,
+    //     // offset: -200,
+    //   })
+    //     .setTween(timelineToolbox)
+    //     .addTo(controller);
+    //   // END 🎩 ScrollMagic scene -------------------------------------//
+    // },
   },
 };
 </script>

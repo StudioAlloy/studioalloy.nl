@@ -58,6 +58,9 @@
     @include media-breakpoint-down(sm) {
       margin-bottom: $base-margin * 4;
     }
+    @include media-breakpoint-down(md) {
+      text-align: center;
+    }
     // margin-right: $base-margin * 4;
     @include media-breakpoint-up(lg) {
       font-size: 44px;
@@ -177,7 +180,10 @@
       max-width: 65vw;
     }
     > .inner {
-      border-radius: $radius 0 0 $radius;
+      border-radius: $radius;
+      @include media-breakpoint-up(lg) {
+        border-radius: $radius 0 0 $radius;
+      }
       display: flex;
       flex-direction: column;
 
@@ -197,14 +203,14 @@
   .alloy-logo {
     display: block;
     position: relative;
-    width: 80%;
+    width: 150px;
     margin-left: auto;
     margin-right: auto;
-    transform: translateY(-100px);
 
     @include media-breakpoint-up(lg) {
       width: auto;
       height: 100%;
+      transform: translateY(-100px);
       transform: translateX(-100px);
     }
   }
@@ -294,13 +300,18 @@
     }
   }
 }
+.flex-Toolbox {
+  .item {
+    margin-bottom: $base-margin;
+    @include media-breakpoint-up(lg) {
+      margin-bottom: $base-margin * 2;
+    }
+  }
+}
 .alloy-item--toolbox {
   position: relative;
-  margin-bottom: $base-margin;
-
-  @include media-breakpoint-up(lg) {
-    margin-bottom: $base-margin * 2;
-  }
+  height: 100%;
+  // margin-bottom: $base-margin;
 
   > .inner {
     @include media-breakpoint-up(lg) {

@@ -7,7 +7,7 @@ body {
 }
 main {
   min-height: 100vh;
-  overflow-x: hidden;
+  // overflow-x: hidden;
   padding-top: $base-margin * 2;
   padding-bottom: $base-margin * 2;
 
@@ -62,6 +62,13 @@ section {
     max-width: 770px;
   }
 }
+// .container--large,
+// .container--medium,
+// .container--small {
+//   @include media-breakpoint-down(md) {
+//     padding: $base-margin;
+//   }
+// }
 // END Container logic -------------------------------------//
 
 //------------------------------------------------------//
@@ -100,6 +107,25 @@ section {
   }
 }
 // END Column logic -------------------------------------//
+//------------------------------------------------------//
+// Content logic
+//------------------------------------------------------//
+.flex-Content {
+  @include media-breakpoint-down(md) {
+    padding-left: $base-margin;
+    padding-right: $base-margin;
+  }
+}
+.alloy-intro-light {
+  padding-top: $base-margin;
+  padding-bottom: $base-margin;
+  @include media-breakpoint-up(lg) {
+    padding-top: $base-margin * 3;
+    padding-bottom: $base-margin * 3;
+  }
+}
+// END Content logic -------------------------------------//
+
 //------------------------------------------------------//
 // Footer
 //------------------------------------------------------//

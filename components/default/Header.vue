@@ -8,7 +8,7 @@
           <h1 class="alloy-title" v-html="item.content"></h1>
         </div>
 
-        <div class="col-40">
+        <div class="col-40 alloy-illustration">
           <component :is="componentSVG"></component>
         </div>
 
@@ -40,24 +40,32 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "~/assets/css/common/_variables.scss";
-
-.intro {
+#default-Header {
   padding-top: $base-margin * 2;
   @include media-breakpoint-up(lg) {
     padding-top: $base-margin * 6;
   }
-  // font-size: 30px;
-  // line-height: 1.4em;
+  .inner {
+  }
+}
+.intro {
   .alloy-title {
-    font-size: 30px;
+    padding: $base-margin;
+    font-size: 20px;
     text-align: left;
+    @include media-breakpoint-up(lg) {
+      font-size: 30px;
+    }
   }
 }
 #default-Header {
-  overflow: hidden;
+  overflow-x: hidden;
   background-color: $brand-dark;
 }
 .ornament {
   width: 100%;
+}
+.alloy-illustration {
+  padding: $base-margin * 3;
 }
 </style>

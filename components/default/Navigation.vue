@@ -33,6 +33,9 @@ export default {
   background-color: $brand-dark;
 }
 #navigationToggle {
+  @include media-breakpoint-down(sm) {
+    scale: 0.7;
+  }
   font-size: 20px;
   line-height: 1em;
   color: $brand-light;
@@ -62,6 +65,9 @@ export default {
     margin-top: 8px;
   }
   &[data-navigation-toggle="true"] {
+    // top: $base-margin;
+    // right: $base-margin;
+    // position: fixed;
     color: transparent;
     &:before {
       transform: rotate(-45deg);

@@ -1,7 +1,7 @@
 <template>
   <section class="flex-Toolbox">
     <div class="container--medium container-type--toolbox">
-      <h3 class="alloy-title alloy-title--large">Toolbox</h3>
+      <h3 class="alloy-title alloy-title--large">onze skills</h3>
       <div class="inner">
         <template v-for="(item, index) in toolbox">
           <div class="item" :key="index">

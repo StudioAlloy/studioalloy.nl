@@ -4,7 +4,7 @@
       <div class="inner">
         <nav>
           <ul>
-            <li v-for="item in menu" :key="item.node.id">
+            <li v-for="item in menu" :key="item.node.id" @click="updateNavigationToggle">
               <nuxt-link :to="item.node.url">{{item.node.label}}</nuxt-link>
             </li>
           </ul>

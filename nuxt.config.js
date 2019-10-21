@@ -49,10 +49,9 @@ module.exports = {
   generate: {
     dir: "docs",
     routes: [
-      'portfolio',
-      'about',
-      'contact',
-      'privacy',
+      '/portfolio',
+      '/about',
+      '/contact',
       '/dienst/websites',
       '/dienst/intranet',
       '/dienst/datavisualisatie',

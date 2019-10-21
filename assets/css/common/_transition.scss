@@ -34,16 +34,16 @@ $base-transition: 300ms;
 @keyframes slideInPop {
   0% {
     opacity: 0;
-    transform: translateX(500px);
+    transform: translateY(500px);
   }
   50% {
     opacity: 1;
     animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
-    transform: translateX(0);
+    transform: translateY(0);
   }
   100% {
     animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -60,11 +60,11 @@ $base-transition: 300ms;
 @keyframes slideOut {
   0% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
   100% {
     opacity: 0;
-    transform: translateX(-500px);
+    transform: translateY(-500px);
   }
 }
 // Page alternative

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="alloy-layout-default">
     <Navigation />
 
     <nuxt />

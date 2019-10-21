@@ -55,22 +55,15 @@ export default {
       // Timeline stuff
       const timelineDiensten = new this.$GSAP.TimelineMax();
 
-      timelineDiensten
-        .staggerFrom(
-          ".elements-Diensten > .inner > *",
-          baseTiming * 2,
-          {
-            y: 100,
-            opacity: 0,
-          },
-          baseTiming,
-        )
-        .staggerFrom(
-          ".flex-Toolbox .container-type--toolbox > .inner > *",
-          baseTiming * 2,
-          { y: 100, opacity: 0 },
-          baseTiming,
-        );
+      timelineDiensten.staggerFrom(
+        ".elements-Diensten > .inner > *",
+        baseTiming * 2,
+        {
+          y: 100,
+          opacity: 0,
+        },
+        baseTiming,
+      );
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//
       // 🎩 ScrollMagic scene

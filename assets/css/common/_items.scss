@@ -329,3 +329,48 @@
   }
 }
 // END 🧰 Toolbox -------------------------------------//
+//------------------------------------------------------//
+// 🗺 Locaties
+//------------------------------------------------------//
+.container-type--locaties {
+  > .inner {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+    }
+  }
+  .alloy-item--locatie {
+    margin-bottom: $base-margin;
+    height: 300px;
+    @include media-breakpoint-up(lg) {
+      height: auto;
+    }
+    @include media-breakpoint-up(lg) {
+      width: 32%;
+    }
+    position: relative;
+    overflow: hidden;
+    > .inner {
+      padding: 0;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .alloy-content {
+      position: absolute;
+      bottom: $base-margin * 2;
+      left: 0;
+      margin-bottom: 0;
+      font-size: 30px;
+      line-height: 1.4em;
+      text-align: center;
+      padding: 0 $base-margin * 3;
+    }
+  }
+}
+// END 🗺 Locaties -------------------------------------//

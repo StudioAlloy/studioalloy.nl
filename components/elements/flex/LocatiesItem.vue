@@ -1,10 +1,11 @@
 <template>
-  <div class="alloy-cards alloy-cards--dark alloy-item alloy-item--toolbox">
+  <div class="alloy-cards alloy-cards--dark alloy-item alloy-item--locatie">
     <div class="inner">
       <div class="alloy-image">
         <!-- <img :src="item.featuredImage.sourceUrl" :alt="`Tool: ${item.title}`" /> -->
+        <img src="@/static/deleteme.jpg" :alt="`Locatie: ${item.title}`" />
       </div>
-      <div>
+      <div class="alloy-content">
         <span v-html="item.acfLocaties.adres"></span>
         <strong>{{ item.title }}</strong>
       </div>

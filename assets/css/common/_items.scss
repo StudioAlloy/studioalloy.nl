@@ -204,14 +204,10 @@
   .alloy-logo {
     display: block;
     position: relative;
-    width: 150px;
     margin-left: auto;
     margin-right: auto;
-
+    width: 250px;
     @include media-breakpoint-up(lg) {
-      width: auto;
-      height: 100%;
-      transform: translateY(-100px);
       transform: translateX(-100px);
     }
   }
@@ -312,7 +308,6 @@
 .alloy-item--toolbox {
   position: relative;
   height: 100%;
-  // margin-bottom: $base-margin;
 
   > .inner {
     @include media-breakpoint-up(lg) {

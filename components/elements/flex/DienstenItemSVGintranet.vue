@@ -6,9 +6,7 @@
         <ellipse cx="80.112" cy="30.861" rx="3.449" ry="3.447" style="fill:#c4c6ca;" />
         <ellipse cx="92.527" cy="30.861" rx="3.449" ry="3.447" style="fill:#c4c6ca;" />
         <ellipse cx="104.942" cy="30.861" rx="3.449" ry="3.447" style="fill:#c4c6ca;" />
-        <path
-          d="M123.953,23.829L615.637,23.829C616.252,23.829 616.475,23.893 616.7,24.014C616.925,24.134 617.101,24.31 617.221,24.535C617.342,24.759 617.406,24.982 617.406,25.597L617.406,35.85C617.406,36.464 617.342,36.687 617.221,36.912C617.101,37.136 616.925,37.313 616.7,37.433C616.475,37.553 616.252,37.617 615.637,37.617L123.953,37.617C123.338,37.617 123.115,37.553 122.891,37.433C122.666,37.313 122.489,37.136 122.369,36.912C122.249,36.687 122.185,36.464 122.185,35.85L122.185,25.597C122.185,24.982 122.249,24.759 122.369,24.535C122.489,24.31 122.666,24.134 122.891,24.014C123.115,23.893 123.338,23.829 123.953,23.829Z"
-          style="fill:#fff;fill-rule:nonzero;" />
+        <path d="M123.953,23.829L615.637,23.829C616.252,23.829 616.475,23.893 616.7,24.014C616.925,24.134 617.101,24.31 617.221,24.535C617.342,24.759 617.406,24.982 617.406,25.597L617.406,35.85C617.406,36.464 617.342,36.687 617.221,36.912C617.101,37.136 616.925,37.313 616.7,37.433C616.475,37.553 616.252,37.617 615.637,37.617L123.953,37.617C123.338,37.617 123.115,37.553 122.891,37.433C122.666,37.313 122.489,37.136 122.369,36.912C122.249,36.687 122.185,36.464 122.185,35.85L122.185,25.597C122.185,24.982 122.249,24.759 122.369,24.535C122.489,24.31 122.666,24.134 122.891,24.014C123.115,23.893 123.338,23.829 123.953,23.829Z" style="fill:#fff;fill-rule:nonzero;" />
       </g>
       <rect id="background" x="64.8" y="45.89" width="566.4" height="354.069" style="fill:#ededed;" />
     </g>
@@ -115,49 +113,70 @@ export default {
     return {};
   }, // End data
   mounted() {
-    // Basic values
-    const baseTiming = 0.3;
+    this.$nextTick(this.timelineDienstIntranet);
+  },
+  methods: {
+    timelineDienstIntranet() {
+      //------------------------------------------------------//
+      // Timeline ❇️ 🧦 GSAP
+      //------------------------------------------------------//
+      // Basic values
+      // Basic values
+      const baseTiming = 0.3;
+      // Timeline stuf
+      const timelineDienstIntranet = new this.$GSAP.TimelineMax();
+      // Base ease full timeline
 
-    // Timeline stuf
-    const timelineHeaderDevelopment = new this.$GSAP.TimelineMax();
-    // Base ease full timeline
-
-    timelineHeaderDevelopment
-      .set("#animate-in", { autoAlpha: 0 })
-      .from("#base", baseTiming * 2, { y: 500 })
-      .from("#sidebar", baseTiming * 2, {
-        scaleX: 0,
-        transformOrigin: "center",
+      timelineDienstIntranet
+        .set("#DienstIntranet #animate-in", { autoAlpha: 0 })
+        .from("#DienstIntranet #base", baseTiming * 2, { y: 500 })
+        .from("#DienstIntranet #sidebar", baseTiming * 2, {
+          scaleX: 0,
+          transformOrigin: "center",
+        })
+        .staggerFrom(
+          "#DienstIntranet #sidebar *",
+          baseTiming * 2,
+          { y: 50, opacity: 0 },
+          baseTiming,
+        )
+        .from("#DienstIntranet #interactive", baseTiming * 4, {
+          scale: 0,
+          transformOrigin: "center",
+          ease: Elastic.easeOut.config(1, 0.3),
+        })
+        .staggerFrom(
+          "#DienstIntranet #design > *",
+          baseTiming * 2,
+          { y: 50, opacity: 0 },
+          baseTiming,
+        )
+        .staggerFrom(
+          "#DienstIntranet #list * *",
+          baseTiming * 2,
+          { y: 50, opacity: 0 },
+          baseTiming,
+        )
+        .staggerFrom(
+          "#DienstIntranet #items > *",
+          baseTiming * 2,
+          { y: 50, opacity: 0 },
+          baseTiming,
+        );
+      // END Timeline ❇️ 🧦  GSAP -------------------------------------//
+      //------------------------------------------------------//
+      // 🎩 ScrollMagic scene
+      //------------------------------------------------------//
+      const controller = new this.$ScrollMagic.Controller();
+      const scene = new this.$ScrollMagic.Scene({
+        triggerElement: "svg#DienstIntranet",
+        offset: -200,
+        reverse: false,
       })
-      .staggerFrom(
-        "#sidebar *",
-        baseTiming * 2,
-        { y: 50, opacity: 0 },
-        baseTiming,
-      )
-      .from("#interactive", baseTiming * 4, {
-        scale: 0,
-        transformOrigin: "center",
-        ease: Elastic.easeOut.config(1, 0.3),
-      })
-      .staggerFrom(
-        "#design > *",
-        baseTiming * 2,
-        { y: 50, opacity: 0 },
-        baseTiming,
-      )
-      .staggerFrom(
-        "#list * *",
-        baseTiming * 2,
-        { y: 50, opacity: 0 },
-        baseTiming,
-      )
-      .staggerFrom(
-        "#items > *",
-        baseTiming * 2,
-        { y: 50, opacity: 0 },
-        baseTiming,
-      );
+        .setTween(timelineDienstIntranet)
+        .addTo(controller);
+      // ENDcontrollerMagic scene -------------------------------------//
+    },
   },
 };
 </script>

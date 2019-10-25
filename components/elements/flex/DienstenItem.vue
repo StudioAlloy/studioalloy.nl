@@ -12,7 +12,7 @@
         <div class="alloy-content col-40">
           <span v-html="item.excerpt"></span>
           <div class="alloy-btn-group">
-            <!-- <nuxt-link :to="`/dienst/${item.slug}`" class="btn">Lees meer</nuxt-link> -->
+            <nuxt-link :to="`/dienst/${item.slug}`" class="btn">Lees meer</nuxt-link>
           </div>
         </div>
 

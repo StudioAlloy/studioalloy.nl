@@ -50,8 +50,7 @@
       <g id="phone-base">
         <path d="M478.133,165L597.708,165C605.514,165 611.841,171.336 611.841,179.152L611.841,460.885C611.841,468.701 605.514,475.037 597.708,475.037L478.133,475.037C470.328,475.037 464,468.701 464,460.885L464,179.152C464,171.336 470.328,165 478.133,165Z" style="fill:#fff;" />
         <rect x="470.481" y="186.692" width="136.319" height="213.308" style="fill:#ededed;" />
-        <path d="M513.097,174.31L567.208,174.31C568.236,174.31 569.07,175.144 569.07,176.172C569.07,177.201 568.236,178.035 567.208,178.035L513.097,178.035C512.069,178.035 511.235,177.201 511.235,176.172C511.235,175.144 512.069,174.31 513.097,174.31ZM512.947,464.801L567.058,464.801C568.087,464.801 568.92,465.635 568.92,466.663C568.92,467.692 568.087,468.525 567.058,468.525L512.947,468.525C511.919,468.525 511.085,467.692 511.085,466.663C511.085,465.635 511.919,464.801 512.947,464.801Z"
-          style="fill:#d8d8d8;fill-rule:nonzero;" />
+        <path d="M513.097,174.31L567.208,174.31C568.236,174.31 569.07,175.144 569.07,176.172C569.07,177.201 568.236,178.035 567.208,178.035L513.097,178.035C512.069,178.035 511.235,177.201 511.235,176.172C511.235,175.144 512.069,174.31 513.097,174.31ZM512.947,464.801L567.058,464.801C568.087,464.801 568.92,465.635 568.92,466.663C568.92,467.692 568.087,468.525 567.058,468.525L512.947,468.525C511.919,468.525 511.085,467.692 511.085,466.663C511.085,465.635 511.919,464.801 512.947,464.801Z" style="fill:#d8d8d8;fill-rule:nonzero;" />
         <g>
           <rect x="611.841" y="281.992" width="1.976" height="38.858" style="fill:#d8d8d8;" />
           <path d="M611.841,238.3L612.829,238.3C613.374,238.3 613.817,238.55 613.817,238.858L613.817,257.264C613.817,257.572 613.374,257.822 612.829,257.822L611.841,257.822L611.841,238.3Z" style="fill:#d8d8d8;" />
@@ -90,102 +89,122 @@ export default {
     return {};
   }, // End data
   mounted() {
-    // Basic values
-    const baseTiming = 0.3;
-
-    // Timeline stuf
-    const timelineHeaderDevelopment = new this.$GSAP.TimelineMax();
-    // Base ease full timeline
-    // timelineHeaderDevelopment
-    //   // 💻 laptop animation
-    //   .from(
-    //     "#DienstWebsite #laptop #laptop-base-screen",
-    //     baseTiming * 2,
-    //     { scaleY: 0, transformOrigin: "center bottom" },
-    //     "sameTime",
-    //   )
-    //   .from(
-    //     "#DienstWebsite #laptop #header",
-    //     baseTiming,
-    //     { scale: 0, transformOrigin: "center" },
-    //     "sameTimeTwo",
-    //   )
-    //   .staggerFrom(
-    //     "#DienstWebsite #laptop #header-text *",
-    //     baseTiming,
-    //     { drawSVG: "100% 100%" },
-    //     { drawSVG: "100%" },
-    //     0.1,
-    //     `-=${baseTiming * 4}`,
-    //   )
-    //   .from(
-    //     "#DienstWebsite #laptop #interactive",
-    //     baseTiming * 4,
-    //     {
-    //       scale: 0,
-    //       transformOrigin: "center",
-    //       ease: Elastic.easeOut.config(1, 0.3),
-    //     },
-    //     "sameTimeThree",
-    //   )
-    //   .staggerFrom(
-    //     "#DienstWebsite #laptop #images *",
-    //     baseTiming * 2,
-    //     { y: 40, opacity: 0 },
-    //     0.5,
-    //     "sameTimeFour",
-    //   )
-    //   .from(
-    //     "#DienstWebsite #laptop #text",
-    //     baseTiming * 2,
-    //     { y: 50, opacity: 0 },
-    //     "sameTimeFive",
-    //   )
-    //   .from(
-    //     "#DienstWebsite #laptop #extra-image",
-    //     baseTiming * 2,
-    //     { scale: 0, transformOrigin: "center" },
-    //     "sameTimeFive",
-    //   )
-    //   // 📱 phone animation
-    //   .from("#DienstWebsite #phone", baseTiming * 2, { y: 300 }, "sameTime")
-    //   .from(
-    //     "#DienstWebsite #phone #phone-header",
-    //     baseTiming,
-    //     { scale: 0, transformOrigin: "center" },
-    //     "sameTimeTwo",
-    //   )
-    //   .staggerFrom(
-    //     "#DienstWebsite #phone #phone-header-text *",
-    //     baseTiming,
-    //     { drawSVG: "100% 100%" },
-    //     { drawSVG: "100%" },
-    //     0.1,
-    //     `-=${baseTiming * 4}`,
-    //   )
-    //   .from(
-    //     "#DienstWebsite #phone #phone-interactive",
-    //     baseTiming * 4,
-    //     {
-    //       scale: 0,
-    //       transformOrigin: "center",
-    //       ease: Elastic.easeOut.config(1, 0.3),
-    //     },
-    //     "sameTimeThree",
-    //   )
-    //   .staggerFrom(
-    //     "#DienstWebsite #phone #phone-images *",
-    //     baseTiming * 2,
-    //     { y: 40, opacity: 0 },
-    //     0.5,
-    //     "sameTimeFour",
-    //   )
-    //   .from(
-    //     "#DienstWebsite #phone #phone-text",
-    //     baseTiming * 2,
-    //     { y: 50, opacity: 0 },
-    //     "sameTimeFive",
-    //   );
+    this.$nextTick(this.timelineDienstenWebsites);
+  },
+  methods: {
+    timelineDienstenWebsites() {
+      //------------------------------------------------------//
+      // Timeline ❇️ 🧦 GSAP
+      //------------------------------------------------------//
+      // Basic values
+      const baseTiming = 0.3;
+      // Timeline stuf
+      const timelineDienstenWebsites = new this.$GSAP.TimelineMax();
+      // Base ease full timeline
+      timelineDienstenWebsites
+        // 💻 laptop animation
+        .from(
+          "#DienstWebsite #laptop #laptop-base-screen",
+          baseTiming * 2,
+          { scaleY: 0, transformOrigin: "center bottom" },
+          "sameTime",
+        )
+        .from(
+          "#DienstWebsite #laptop #header",
+          baseTiming,
+          { scale: 0, transformOrigin: "center" },
+          "sameTimeTwo",
+        )
+        .staggerFrom(
+          "#DienstWebsite #laptop #header-text *",
+          baseTiming,
+          { drawSVG: "100% 100%" },
+          { drawSVG: "100%" },
+          0.1,
+          `-=${baseTiming * 4}`,
+        )
+        .from(
+          "#DienstWebsite #laptop #interactive",
+          baseTiming * 4,
+          {
+            scale: 0,
+            transformOrigin: "center",
+            ease: Elastic.easeOut.config(1, 0.3),
+          },
+          "sameTimeThree",
+        )
+        .staggerFrom(
+          "#DienstWebsite #laptop #images *",
+          baseTiming * 2,
+          { y: 40, opacity: 0 },
+          0.5,
+          "sameTimeFour",
+        )
+        .from(
+          "#DienstWebsite #laptop #text",
+          baseTiming * 2,
+          { y: 50, opacity: 0 },
+          "sameTimeFive",
+        )
+        .from(
+          "#DienstWebsite #laptop #extra-image",
+          baseTiming * 2,
+          { scale: 0, transformOrigin: "center" },
+          "sameTimeFive",
+        )
+        // 📱 phone animation
+        .from("#DienstWebsite #phone", baseTiming * 2, { y: 300 }, "sameTime")
+        .from(
+          "#DienstWebsite #phone #phone-header",
+          baseTiming,
+          { scale: 0, transformOrigin: "center" },
+          "sameTimeTwo",
+        )
+        .staggerFrom(
+          "#DienstWebsite #phone #phone-header-text *",
+          baseTiming,
+          { drawSVG: "100% 100%" },
+          { drawSVG: "100%" },
+          0.1,
+          `-=${baseTiming * 4}`,
+        )
+        .from(
+          "#DienstWebsite #phone #phone-interactive",
+          baseTiming * 4,
+          {
+            scale: 0,
+            transformOrigin: "center",
+            ease: Elastic.easeOut.config(1, 0.3),
+          },
+          "sameTimeThree",
+        )
+        .staggerFrom(
+          "#DienstWebsite #phone #phone-images *",
+          baseTiming * 2,
+          { y: 40, opacity: 0 },
+          0.5,
+          "sameTimeFour",
+        )
+        .from(
+          "#DienstWebsite #phone #phone-text",
+          baseTiming * 2,
+          { y: 50, opacity: 0 },
+          "sameTimeFive",
+        );
+      // END Timeline ❇️ 🧦  GSAP -------------------------------------//
+      //------------------------------------------------------//
+      // 🎩 ScrollMagic scene
+      //------------------------------------------------------//
+      const controller = new this.$ScrollMagic.Controller();
+      const scene = new this.$ScrollMagic.Scene({
+        triggerElement: "svg#DienstWebsite",
+        offset: -200,
+        reverse: false,
+      })
+        .setTween(timelineDienstenWebsites)
+        .addTo(controller);
+      // ENDcontrollerMagic scene -------------------------------------//
+    },
   },
 };
 </script>

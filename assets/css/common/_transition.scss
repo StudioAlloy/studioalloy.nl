@@ -23,7 +23,7 @@ $base-transition: 300ms;
 }
 .page-enter-active {
   animation-name: slideInPop;
-  animation-duration: $base-transition * 6;
+  animation-duration: $base-transition * 4;
   animation-delay: 0s;
   animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
   animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
@@ -49,7 +49,7 @@ $base-transition: 300ms;
 
 .page-leave-to {
   animation-name: slideOut;
-  animation-duration: $base-transition * 6;
+  animation-duration: $base-transition * 3;
   animation-delay: 0s;
   animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
   animation-direction: alternate; // normal, reverse, alternate, alternate-reverse

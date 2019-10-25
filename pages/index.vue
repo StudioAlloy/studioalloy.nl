@@ -1,10 +1,14 @@
 <template>
   <main>
-    <Header :item="pageBySlug" />
+    <!-- First check if there is any 📝 data to load  -->
+    <template v-if="pageBySlug">
 
-    <!-- 💪 Load the flexible blocks one by one with a middle man called the FlexLoader  -->
-    <template v-for="(item, index) in pageBySlug.acfFlex.flex">
-      <FlexLoader :item="item" :key="index" />
+      <Header :item="pageBySlug" />
+
+      <!-- 💪 Load the flexible blocks one by one with a middle man called the FlexLoader  -->
+      <template v-for="(item, index) in pageBySlug.acfFlex.flex">
+        <FlexLoader :item="item" :key="index" />
+      </template>
     </template>
 
   </main>
@@ -18,9 +22,6 @@ import Header from "@/components/default/Header.vue";
 import FlexLoader from "@/components/elements/flex/_FlexLoader.vue";
 
 export default {
-  data() {
-    return {};
-  },
   components: {
     Header,
     FlexLoader,
@@ -28,6 +29,7 @@ export default {
   apollo: {
     pageBySlug: {
       prefetch: true,
+
       query: pageBySlug,
       variables() {
         return {

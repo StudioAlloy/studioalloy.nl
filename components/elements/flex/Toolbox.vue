@@ -43,7 +43,7 @@ export default {
   },
   destroyed() {
     // Destroy ScrollMagic when our component is removed from DOM
-    controller = controller.destroy();
+    // controller = controller.destroy();
   },
   methods: {
     toolboxAnimation() {

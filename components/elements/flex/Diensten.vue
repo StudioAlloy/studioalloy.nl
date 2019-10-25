@@ -40,10 +40,10 @@ export default {
   mounted() {
     this.$nextTick(this.animationDiensten);
   },
-  // destroyed() {
-  //   // Destroy ScrollMagic when our component is removed from DOM
-  //   controller = controller.destroy();
-  // },
+  destroyed() {
+    // Destroy ScrollMagic when our component is removed from DOM
+    // controller = controller.destroy();
+  },
   methods: {
     animationDiensten() {
       //------------------------------------------------------//
@@ -75,7 +75,7 @@ export default {
       })
         .setTween(timelineDiensten)
         .addTo(controller);
-      // END 🎩 ScrollMagic scene -------------------------------------//
+      // ENDcontrollerMagic scene -------------------------------------//
     },
   },
 };

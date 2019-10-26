@@ -17,7 +17,7 @@ body {
   padding-bottom: $base-margin * 2;
 
   @include media-breakpoint-up(lg) {
-    padding-top: $base-margin * 6;
+    padding-top: $base-margin * 12;
     padding-bottom: $base-margin * 6;
   }
 }

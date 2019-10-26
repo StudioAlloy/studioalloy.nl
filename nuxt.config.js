@@ -11,7 +11,7 @@ module.exports = {
   ...routerBase,
   // Header meta
   head: {
-    title: "studioalloy",
+    title: "Studio Alloy",
     script: [
       { src: "/js/DrawSVGPlugin.min.js" },
       { src: "/js/MorphSVGPlugin.min.js" },
@@ -22,13 +22,13 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: "WIJ MAKEN IMPACT MET PIXELS",
+        content: "Wij maken impact met pixels",
       },
-      { property: "og:type", content: "article" },
-      { property: "og:title", content: "studioalloy" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Studio Alloy | Webdesign & development" },
       {
         property: "og:description",
-        content: "WIJ MAKEN IMPACT MET PIXELS",
+        content: "Wij maken impact met pixels",
       },
       { property: "og:url", content: "" },
       {
@@ -70,6 +70,7 @@ module.exports = {
   },
   plugins: [
     { src: '~/plugins/ScrollMagic.js', ssr: false },
+    { src: '~/plugins/ogmeta.js', ssr: true },
   ],
   // END 📦 
   manifest: {

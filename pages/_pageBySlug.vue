@@ -29,6 +29,18 @@ export default {
   components: {
     FlexLoader,
   },
+  head() {
+    return {
+      title: `${this.pageBySlug ? this.pageBySlug.title : ""} | Studio Alloy`,
+      // meta: [
+      //   {
+      //     hid: "og:description",
+      //     property: "og:description",
+      //     content: "Latest tracks released",
+      //   },
+      // ],
+    };
+  },
   apollo: {
     pageBySlug: {
       prefetch: true,

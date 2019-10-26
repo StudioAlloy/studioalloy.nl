@@ -75,27 +75,27 @@
       </g>
     </g>
     <g id="animate-in">
-      <rect x="204.472" y="80.401" width="355.177" height="276.993" style="fill:#d8d8d8;" />
+      <rect x="204.472" y="80.401" width="355.177" height="276.993" style="fill:#0c162d;" />
       <g id="footer">
-        <path d="M242.262,310.205L407.574,310.205" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:8px;stroke-miterlimit:10;" />
-        <path d="M242.262,321.375L384.852,321.375" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:8px;stroke-miterlimit:10;" />
+        <path d="M242.262,310.205L407.574,310.205" style="fill:none;fill-rule:nonzero;stroke:#233b72;stroke-width:8px;stroke-miterlimit:10;" />
+        <path d="M242.262,321.375L384.852,321.375" style="fill:none;fill-rule:nonzero;stroke:#233b72;stroke-width:8px;stroke-miterlimit:10;" />
       </g>
       <g id="form">
-        <rect x="242.447" y="174.78" width="139.614" height="17.871" style="fill:#bfbfbf;" />
-        <rect x="390.437" y="174.78" width="139.614" height="17.871" style="fill:#bfbfbf;" />
-        <rect x="242.447" y="201.028" width="287.604" height="17.871" style="fill:#bfbfbf;" />
-        <rect x="242.447" y="227.275" width="287.604" height="17.871" style="fill:#bfbfbf;" />
-        <rect x="242.447" y="253.522" width="195.459" height="17.871" style="fill:#bfbfbf;" />
-        <rect x="445.724" y="253.522" width="84.327" height="17.871" style="fill:#bfbfbf;" />
+        <rect x="242.447" y="174.78" width="139.614" height="17.871" style="fill:#233b72;" />
+        <rect x="390.437" y="174.78" width="139.614" height="17.871" style="fill:#233b72;" />
+        <rect x="242.447" y="201.028" width="287.604" height="17.871" style="fill:#233b72;" />
+        <rect x="242.447" y="227.275" width="287.604" height="17.871" style="fill:#233b72;" />
+        <rect x="242.447" y="253.522" width="195.459" height="17.871" style="fill:#233b72;" />
+        <rect x="445.724" y="253.522" width="84.327" height="17.871" style="fill:#233b72;" />
       </g>
       <g id="button">
         <rect x="476.997" y="341.758" width="53.053" height="22.338" style="fill:#f53;" />
         <path d="M498.219,352.775L502.867,357.395L509.388,349.018" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" />
       </g>
       <g id="header">
-        <path d="M242.25,125.357L422.517,125.357" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:14px;stroke-miterlimit:10;" />
-        <path d="M242.25,107.487L476.989,107.487" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:14px;stroke-miterlimit:10;" />
-        <path d="M242.262,146.02L494.06,146.02" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:8px;stroke-miterlimit:10;" />
+        <path d="M242.25,125.357L422.517,125.357" style="fill:none;fill-rule:nonzero;stroke:#233b72;stroke-width:14px;stroke-miterlimit:10;" />
+        <path d="M242.25,107.487L476.989,107.487" style="fill:none;fill-rule:nonzero;stroke:#233b72;stroke-width:14px;stroke-miterlimit:10;" />
+        <path d="M242.262,146.02L494.06,146.02" style="fill:none;fill-rule:nonzero;stroke:#233b72;stroke-width:8px;stroke-miterlimit:10;" />
       </g>
       <g id="morph-interactive">
         <circle cx="213.407" cy="83.194" r="16.754" style="fill:#f53;" />
@@ -167,8 +167,33 @@ export default {
           { y: 50, opacity: 0 },
           baseTiming,
           "sameTime",
-        );
+        )
+        .add(alloyLoopingAnimation);
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
+      //------------------------------------------------------//
+      // ➰ Looping timeline ️❇️️ 🧦  GSAP
+      //------------------------------------------------------//
+      const loopInteractive = new this.$GSAP.TimelineMax({
+        repeat: -1,
+        // yoyo: true,
+        repeatDelay: baseTiming * 8,
+      });
+      function alloyLoopingAnimation() {
+        loopInteractive
+          .to("#DienstIntranet #interactive", baseTiming * 2, {
+            scale: 0.8,
+            transformOrigin: "center",
+          })
+          .to("#DienstIntranet #interactive", baseTiming * 4, {
+            // scale: "+=0.2",
+            scale: 1,
+            transformOrigin: "center",
+            ease: Elastic.easeOut.config(1, 0.3),
+          });
+        return loopInteractive;
+      }
+
+      // END ➰ Looping timeline ️❇️️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//
       // 🎩 ScrollMagic scene
       //------------------------------------------------------//

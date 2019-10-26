@@ -64,7 +64,7 @@ export default {
           ".flex-Toolbox .container-type--toolbox > .inner > .item",
           baseTiming * 2,
           { y: 100, opacity: 0 },
-          baseTiming,
+          0.2,
           `-=${baseTiming}`,
         );
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//

@@ -1,14 +1,21 @@
 <template>
-  <div class="elements-CallToAction" :data-navigation-toggle="getNavigationToggle">
-    <div class="alloy-slide-nav">
-      <div class="inner">
-        <nav>
+  <div id="alloy-slide-nav" :data-navigation-toggle="getNavigationToggle">
+    <div class="inner">
+      <nav>
+        <ul>
+          <li v-for="item in menu" :key="item.node.id" @click="updateNavigationToggle">
+            <nuxt-link :to="item.node.url">{{item.node.label}}</nuxt-link>
+          </li>
+        </ul>
+      </nav>
+      <div class="alloy-cards contact-info">
+        <div class="inner">
+          <h4>Studio Alloy</h4>
           <ul>
-            <li v-for="item in menu" :key="item.node.id" @click="updateNavigationToggle">
-              <nuxt-link :to="item.node.url">{{item.node.label}}</nuxt-link>
-            </li>
+            <li><a href="mailto:hello@studioalloy.nl">hello@studioalloy.nl</a></li>
+            <li><a href="tel:+31233020044">023 30 20 044</a></li>
           </ul>
-        </nav>
+        </div>
       </div>
     </div>
   </div>

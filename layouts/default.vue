@@ -2,13 +2,11 @@
   <div class="alloy-layout-default">
     <Navigation />
     <nuxt />
-    <SlideNav />
     <Footer />
   </div>
 </template>
 <script>
 import Navigation from "@/components/default/Navigation.vue";
-import SlideNav from "@/components/default/SlideNav.vue";
 import Footer from "@/components/default/Footer.vue";
 
 export default {
@@ -25,7 +23,6 @@ export default {
   },
   components: {
     Navigation,
-    SlideNav,
     Footer,
   },
 };

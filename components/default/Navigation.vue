@@ -1,19 +1,26 @@
 <template>
-  <div id="default-Navigation" class="container--full">
-    <div class="inner">
-      <nuxt-link to="/">
-        <img src="~/assets/images/logo-studio-alloy.svg" alt="Logo Studio Alloy">
-      </nuxt-link>
-      <button @click="updateNavigationToggle" id="navigationToggle" aria-haspopup="true" :data-navigation-toggle="getNavigationToggle">menu</button>
+  <div id="alloy-main-nav-container">
+    <div id="default-Navigation" class="container--full">
+      <div class="inner">
+        <nuxt-link to="/">
+          <img src="~/assets/images/logo-studio-alloy.svg" alt="Logo Studio Alloy">
+        </nuxt-link>
+        <button @click="updateNavigationToggle" id="navigationToggle" aria-haspopup="true" :data-navigation-toggle="getNavigationToggle">menu</button>
+      </div>
     </div>
+    <SlideNav />
   </div>
 </template>
 
 <script>
 import menu from "~/apollo/queries/menu";
+import SlideNav from "@/components/default/SlideNav.vue";
 
 export default {
   name: "Navigation",
+  components: {
+    SlideNav,
+  },
   computed: {
     getNavigationToggle() {
       return this.$store.getters["ui/getNavigationToggle"];

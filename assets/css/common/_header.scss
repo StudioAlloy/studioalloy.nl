@@ -1,5 +1,10 @@
+#alloy-main-nav-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 #default-Navigation {
-  position: relative;
   z-index: 3500;
   > .inner {
     display: flex;
@@ -7,61 +12,168 @@
     align-items: flex-start;
   }
 }
-.alloy-slide-nav {
-  width: 100%;
-  @include media-breakpoint-up(lg) {
-    max-width: 350px;
-  } // position: fixed;
-  position: absolute;
-  background-color: $brand-dark;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  padding: $base-margin * 2;
-  padding-top: 5px;
-  padding-bottom: $base-margin * 4;
-  z-index: 5000;
-  margin-top: 90px;
 
-  opacity: 0;
-  // transform: translateX(100%);
-  transform: translateX(100%);
+#alloy-slide-nav {
+  margin-left: auto;
+  position: relative;
+  width: 100%;
+  min-height: 70vh;
+  z-index: 5000;
+  background-color: darken($brand-dark, 3%);
+  padding: $base-margin;
+  transform: scale(0);
+  transform-origin: right top;
   transition: transform;
   transition-duration: 300ms;
   transition-timing-function: ease;
-  overflow-y: auto;
+
+  @include media-breakpoint-up(lg) {
+    padding: $base-margin * 2;
+    max-width: 100%;
+    width: 450px;
+  }
+  //------------------------------------------------------//
+  // Animate 🏎 slide navigation
+  //------------------------------------------------------//
+  nav ul li {
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: transform, opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+  }
+  .alloy-cards {
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: transform, opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+  }
+  &[data-navigation-toggle="true"] {
+    transform: scale(1);
+    @for $i from 1 to 10 {
+      nav ul li:nth-child(#{$i}) {
+        transform: translateX(0);
+        opacity: 1;
+        transition-delay: $i * 100ms;
+      }
+    }
+    .alloy-cards {
+      transform: translateX(0);
+      opacity: 1;
+      transition-delay: 6 * 100ms;
+    }
+  }
+  // END Animate 🏎 slide navigation -------------------------------------//
 
   ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  a {
-    display: block;
-    text-decoration: none;
-    padding: $base-margin;
-    font-weight: 700;
-  }
+
   nav {
     margin-bottom: $base-margin * 2;
-    > * {
-      font-family: $font-header;
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1em;
-      display: block;
-      color: $brand-light;
-      // text-transform: uppercase;
+
+    a {
+      position: relative;
+      display: inline-block;
+      padding: 5px $base-margin;
+      font-size: 30px;
+      line-height: 1.6em;
+      font-weight: 700;
       text-decoration: none;
-      padding: 10px 0;
+      &:after {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: $brand-light;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform;
+        transition-duration: 300ms;
+        transition-timing-function: ease;
+      }
+      &:hover {
+        &:after {
+          transform: scaleX(1);
+        }
+      }
     }
   }
-  .alloy-cards.cta {
-    &[data-cta-type="cta--alt"] {
-      background-color: $brand-two;
+  .contact-info {
+    > .inner {
+      background-color: $brand-dark-lighten;
+      * {
+        color: $brand-light;
+        text-decoration: none;
+      }
+      li {
+        a {
+          display: block;
+          margin: 10px 0;
+        }
+      }
     }
   }
 }
+
+// .alloy-slide-nav {
+//   width: 100%;
+//   @include media-breakpoint-up(lg) {
+//     max-width: 350px;
+//   } // position: fixed;
+//   position: absolute;
+//   background-color: $brand-dark;
+//   top: 0;
+//   right: 0;
+//   height: 100vh;
+//   padding: $base-margin * 2;
+//   padding-top: 5px;
+//   padding-bottom: $base-margin * 4;
+//   z-index: 5000;
+//   margin-top: 90px;
+
+//   opacity: 0;
+//   // transform: translateX(100%);
+//   transform: translateX(100%);
+//   transition: transform;
+//   transition-duration: 300ms;
+//   transition-timing-function: ease;
+//   overflow-y: auto;
+
+//   ul {
+//     list-style: none;
+//     padding: 0;
+//     margin: 0;
+//   }
+//   a {
+//     display: block;
+//     text-decoration: none;
+//     padding: $base-margin;
+//     font-weight: 700;
+//   }
+//   nav {
+//     margin-bottom: $base-margin * 2;
+//     > * {
+//       font-family: $font-header;
+//       font-weight: 400;
+//       font-size: 2rem;
+//       line-height: 1em;
+//       display: block;
+//       color: $brand-light;
+//       // text-transform: uppercase;
+//       text-decoration: none;
+//       padding: 10px 0;
+//     }
+//   }
+//   .alloy-cards.cta {
+//     &[data-cta-type="cta--alt"] {
+//       background-color: $brand-two;
+//     }
+//   }
+// }
 #alloy-nav-toggle {
   position: fixed;
   position: absolute;
@@ -121,36 +233,35 @@
   &.show {
   }
 }
+// [data-navigation-toggle="true"] {
+//   .alloy-slide-nav {
+//     transform: translateX(0);
+//     opacity: 1;
+//     transition: transform;
+//     transition-duration: 300ms;
+//     transition-timing-function: ease;
+//   }
+//   #alloy-nav-toggle {
+//     span {
+//       &:nth-child(1) {
+//         top: 10px;
+//         width: 0;
+//         left: 50%;
+//       }
 
-[data-navigation-toggle="true"] {
-  .alloy-slide-nav {
-    transform: translateX(0);
-    opacity: 1;
-    transition: transform;
-    transition-duration: 300ms;
-    transition-timing-function: ease;
-  }
-  #alloy-nav-toggle {
-    span {
-      &:nth-child(1) {
-        top: 10px;
-        width: 0;
-        left: 50%;
-      }
+//       &:nth-child(2) {
+//         transform: rotate(45deg);
+//       }
 
-      &:nth-child(2) {
-        transform: rotate(45deg);
-      }
+//       &:nth-child(3) {
+//         transform: rotate(-45deg);
+//       }
 
-      &:nth-child(3) {
-        transform: rotate(-45deg);
-      }
-
-      &:nth-child(4) {
-        top: 18px;
-        width: 0;
-        left: 50%;
-      }
-    }
-  }
-}
+//       &:nth-child(4) {
+//         top: 18px;
+//         width: 0;
+//         left: 50%;
+//       }
+//     }
+//   }
+// }

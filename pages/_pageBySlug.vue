@@ -1,19 +1,21 @@
 <template>
   <main>
-    <!-- First check if there is any 📝 data to load  -->
-    <template v-if="pageBySlug">
-      <div class="flex-Content container--small">
-        <div class="inner">
-          <h1>{{pageBySlug.title}}</h1>
-          <div class="alloy-intro" v-html="pageBySlug.content"></div>
+    <div class="main-inner">
+      <!-- First check if there is any 📝 data to load  -->
+      <template v-if="pageBySlug">
+        <div class="flex-Content container--small">
+          <div class="inner">
+            <h1>{{pageBySlug.title}}</h1>
+            <div class="alloy-intro" v-html="pageBySlug.content"></div>
+          </div>
         </div>
-      </div>
 
-      <!-- 💪 Load the flexible blocks one by one with a middle man called the FlexLoader  -->
-      <template v-for="(item, index) in pageBySlug.acfFlex.flex">
-        <FlexLoader :item="item" :key="index" />
+        <!-- 💪 Load the flexible blocks one by one with a middle man called the FlexLoader  -->
+        <template v-for="(item, index) in pageBySlug.acfFlex.flex">
+          <FlexLoader :item="item" :key="index" />
+        </template>
       </template>
-    </template>
+    </div>
   </main>
 </template>
 

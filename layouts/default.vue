@@ -1,9 +1,7 @@
 <template>
   <div class="alloy-layout-default">
     <Navigation />
-
     <nuxt />
-
     <SlideNav />
     <Footer />
   </div>

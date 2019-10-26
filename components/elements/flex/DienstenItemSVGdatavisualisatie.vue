@@ -11,37 +11,6 @@
       </g>
       <g id="screen">
         <g id="widgets">
-          <g id="widget-three">
-            <rect x="467.007" y="265.151" width="135.537" height="87.262" style="fill:#d8d8d8;" />
-            <g id="widget-three-content">
-              <rect x="485.609" y="277.766" width="10.63" height="61.504" style="fill:#bfbfbf;" />
-              <rect x="498.367" y="298.794" width="10.63" height="40.476" style="fill:#bfbfbf;" />
-              <rect x="511.123" y="290.383" width="10.63" height="48.888" style="fill:#bfbfbf;" />
-              <rect x="523.879" y="318.77" width="10.63" height="20.502" style="fill:#ededed;" />
-              <rect x="536.635" y="308.782" width="10.63" height="30.49" style="fill:#bfbfbf;" />
-              <rect x="549.392" y="300.897" width="10.63" height="38.375" style="fill:#bfbfbf;" />
-              <rect x="562.148" y="281.972" width="10.63" height="57.299" style="fill:#bfbfbf;" />
-              <rect x="574.904" y="311.409" width="10.63" height="27.861" style="fill:#bfbfbf;" />
-            </g>
-          </g>
-          <g id="widget-two">
-            <rect x="470.195" y="153.707" width="135.537" height="87.262" style="fill:#d8d8d8;" />
-            <g id="widget-two-content">
-              <path d="M488.672,197.601L581.748,197.601" style="fill:none;stroke:#ededed;stroke-width:2.27px;stroke-linecap:round;stroke-linejoin:round;" />
-              <path d="M488.673,219.68L512.709,197.338L534.775,206.275L563.624,176.687L581.748,188.299" style="fill:none;stroke:#bfbfbf;stroke-width:4.54px;stroke-linecap:round;stroke-linejoin:round;" />
-            </g>
-          </g>
-          <g id="widget-one">
-            <rect x="467.007" y="45.418" width="135.537" height="87.262" style="fill:#d8d8d8;" />
-            <path id="widget-one-content" d="M568.325,110.602C568.325,92.312 553.378,77.485 534.94,77.485C516.502,77.485 501.555,92.312 501.555,110.602" style="fill:none;stroke:#bfbfbf;stroke-width:28.37px;" />
-          </g>
-          <g id="widget-large">
-            <rect x="97.602" y="261.996" width="348.143" height="87.262" style="fill:#d8d8d8;" />
-            <g id="widget-large-content">
-              <path d="M108.232,330.296L143.378,314.432L175.601,318.72L222.197,299.244L264.056,318.72L313.101,306.134L347.139,281.972L393.658,330.296L108.232,330.296Z" style="fill:#ededed;" />
-              <path d="M145.389,330.296L180.992,314.432L213.636,318.72L260.84,299.244L303.243,318.72L352.928,306.134L387.411,281.972L434.535,330.296L145.389,330.296Z" style="fill:#bfbfbf;" />
-            </g>
-          </g>
           <g id="widget-main">
             <g id="widget-main-content">
               <rect x="97.602" y="45.418" width="348.143" height="197.128" style="fill:#0c162d;" />
@@ -50,6 +19,37 @@
               <path d="M117.463,67.234L191.681,67.234M117.463,82.479L215.599,83.331M117.463,216.525L215.599,217.378" style="fill:none;stroke:#233b72;stroke-width:5.67px;" />
             </g>
             <ellipse id="interactive" cx="416.247" cy="213.371" rx="13.553" ry="13.405" style="fill:#f53;" />
+          </g>
+          <g id="widget-large">
+            <rect x="97.602" y="261.996" width="348.143" height="87.262" style="fill:#d8d8d8;" />
+            <g id="widget-large-content">
+              <path d="M108.232,330.296L143.378,314.432L175.601,318.72L222.197,299.244L264.056,318.72L313.101,306.134L347.139,281.972L393.658,330.296" style="fill:none;stroke:#ededed;stroke-width:6px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;" />
+              <path d="M145.389,330.296L180.992,314.432L213.636,318.72L260.84,299.244L303.243,318.72L352.928,306.134L387.411,281.972L434.535,330.296" style="fill:none;stroke:#bfbfbf;stroke-width:6px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;" />
+            </g>
+          </g>
+          <g id="widget-one">
+            <rect x="467.007" y="45.418" width="135.537" height="87.262" style="fill:#d8d8d8;" />
+            <path id="widget-one-content" d="M501.555,110.602C501.555,92.312 516.502,77.485 534.94,77.485C553.378,77.485 568.325,92.312 568.325,110.602" style="fill:none;stroke:#bfbfbf;stroke-width:28.37px;" />
+          </g>
+          <g id="widget-two">
+            <rect x="470.195" y="153.707" width="135.537" height="87.262" style="fill:#d8d8d8;" />
+            <g id="widget-two-content">
+              <path d="M488.672,197.601L581.748,197.601" style="fill:none;stroke:#ededed;stroke-width:2.27px;stroke-linecap:round;stroke-linejoin:round;" />
+              <path d="M488.673,219.68L512.709,197.338L534.775,206.275L563.624,176.687L581.748,188.299" style="fill:none;stroke:#bfbfbf;stroke-width:6px;stroke-linecap:round;stroke-linejoin:round;" />
+            </g>
+          </g>
+          <g id="widget-three">
+            <rect x="467.007" y="265.151" width="135.537" height="87.262" style="fill:#d8d8d8;" />
+            <g id="widget-three-content">
+              <path d="M490.925,339.27L490.925,277.766" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linejoin:round;stroke-miterlimit:1.5;" />
+              <path d="M503.716,339.27L503.716,298.733" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linejoin:round;stroke-miterlimit:1.5;" />
+              <path d="M516.507,339.27L516.507,291.045" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linejoin:round;stroke-miterlimit:1.5;" />
+              <path d="M529.298,339.27L529.298,319.001" style="fill:none;stroke:#fff;stroke-width:10px;stroke-linejoin:round;stroke-miterlimit:1.5;" />
+              <path d="M542.089,339.27L542.089,308.782" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linejoin:round;stroke-miterlimit:1.5;" />
+              <path d="M554.88,339.27L554.88,300.944" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linejoin:round;stroke-miterlimit:1.5;" />
+              <path d="M567.671,339.27L567.671,281.972" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linejoin:round;stroke-miterlimit:1.5;" />
+              <path d="M580.462,339.27L580.462,311.409" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linejoin:round;stroke-miterlimit:1.5;" />
+            </g>
           </g>
         </g>
       </g>
@@ -80,11 +80,25 @@ export default {
       // Base ease full timeline
       timelineDienstDatavis
         // 💻 laptop animation
-        .from(
-          "#DienstDatavis #laptop #laptop-base-screen",
+        .from("#DienstDatavis #laptop #laptop-base-screen", baseTiming * 2, {
+          scaleY: 0,
+          transformOrigin: "center bottom",
+        })
+        .staggerFrom(
+          "#DienstDatavis #widgets > *",
           baseTiming * 2,
-          { scaleY: 0, transformOrigin: "center bottom" },
-          "sameTime",
+          {
+            y: 50,
+            opacity: 0,
+          },
+          baseTiming,
+        )
+        .staggerFromTo(
+          "#DienstDatavis #widgets > * * ",
+          baseTiming * 3,
+          { drawSVG: "0%" },
+          { drawSVG: "100%" },
+          0.1,
         );
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//

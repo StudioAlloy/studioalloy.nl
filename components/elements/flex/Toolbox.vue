@@ -65,6 +65,7 @@ export default {
           baseTiming * 2,
           { y: 100, opacity: 0 },
           baseTiming,
+          `-=${baseTiming}`,
         );
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//

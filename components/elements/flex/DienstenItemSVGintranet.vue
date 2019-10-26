@@ -139,6 +139,7 @@ export default {
           baseTiming * 2,
           { y: 50, opacity: 0 },
           baseTiming,
+          "sameTime",
         )
         .from("#DienstIntranet #interactive", baseTiming * 4, {
           scale: 0,
@@ -150,18 +151,21 @@ export default {
           baseTiming * 2,
           { y: 50, opacity: 0 },
           baseTiming,
+          "sameTime",
         )
         .staggerFrom(
           "#DienstIntranet #list * *",
           baseTiming * 2,
           { y: 50, opacity: 0 },
           baseTiming,
+          "sameTime",
         )
         .staggerFrom(
           "#DienstIntranet #items > *",
           baseTiming * 2,
           { y: 50, opacity: 0 },
           baseTiming,
+          "sameTime",
         );
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//

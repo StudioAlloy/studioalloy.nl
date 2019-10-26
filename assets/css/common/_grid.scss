@@ -6,7 +6,7 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
-main {
+.main-inner {
   // overflow-x: hidden;
   // overflow-y: hidden;
   padding-top: $base-margin * 2;
@@ -18,16 +18,16 @@ main {
   }
 }
 .alloy-layout-default {
-  min-height: 110vh;
+  min-height: 120vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-#page- {
-  main {
-    padding-top: 0;
-  }
-}
+// #page- {
+//   main {
+//     padding-top: 0;
+//   }
+// }
 //------------------------------------------------------//
 // Container logic
 //------------------------------------------------------//

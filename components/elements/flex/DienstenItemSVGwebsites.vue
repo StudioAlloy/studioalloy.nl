@@ -1,15 +1,15 @@
 <template>
-  <svg id="DienstWebsite" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;">
+  <svg id="DienstWebsite" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;" @click="interactiveMorph">
     <defs>
-      <g id="morph-phone">
-        <rect id="morph-header-background" x="470.481" y="186.692" width="136.288" height="213.308" style="fill:#ef162d;" />
-        <ellipse id="morph-interaction" cx="538.625" cy="293.187" rx="34.86" ry="33.979" style="fill:#ff3;" />
-        <path id="morph-interaction-two" d="M538.625,258.486L563.275,268.696L573.485,293.346L563.275,317.995L538.625,328.206L513.976,317.995L503.765,293.346L513.976,268.696L538.625,258.486Z" style="fill:#ff58bc;" />
+      <g id=" morph-phone">
+        <rect id="morph-phone-header-background" x="470.481" y="186.692" width="136.288" height="213.308" style="fill:#ef162d;" />
+        <ellipse id="morph-phone-interactive" cx="538.625" cy="293.187" rx="34.86" ry="33.979" style="fill:#ff3;" />
+        <path id="morph-phone-interactive-two" d="M538.625,258.486L563.275,268.696L573.485,293.346L563.275,317.995L538.625,328.206L513.976,317.995L503.765,293.346L513.976,268.696L538.625,258.486Z" style="fill:#ff58bc;" />
       </g>
       <g id="morph-laptop">
-        <rect id="morph-header-background1" serif:id="morph-header-background" x="79.53" y="33.361" width="541.92" height="332.483" style="fill:#ef162d;" />
-        <ellipse id="morph-interaction1" serif:id="morph-interaction" cx="352.358" cy="199.602" rx="87.407" ry="85.197" style="fill:#ff3;" />
-        <path id="morph-interaction-two1" serif:id="morph-interaction-two" d="M352.358,112.593L414.164,138.194L439.765,200L414.164,261.806L352.358,287.407L290.552,261.806L264.952,200L290.552,138.194L352.358,112.593Z" style="fill:#ff58bc;" />
+        <rect id="morph-header-background" x="79.53" y="33.361" width="541.92" height="332.483" style="fill:#ef162d;" />
+        <ellipse id="morph-interactive" cx="352.358" cy="199.602" rx="87.407" ry="85.197" style="fill:#ff3;" />
+        <path id="morph-interactive-two" d="M352.358,112.593L414.164,138.194L439.765,200L414.164,261.806L352.358,287.407L290.552,261.806L264.952,200L290.552,138.194L352.358,112.593Z" style="fill:#ff58bc;" />
       </g>
     </defs>
     <g id="laptop">
@@ -22,15 +22,6 @@
         <path d="M306.496,378.19L400.075,378.19L398.218,381.932C396.781,384.826 393.779,386.663 390.488,386.663L316.083,386.663C312.792,386.663 309.79,384.826 308.353,381.932L306.496,378.19Z" style="fill:#9fa2a5;" />
       </g>
       <g id="screen">
-        <g id="header">
-          <rect id="header-background" x="79.53" y="33.361" width="541.92" height="107.202" style="fill:#0c162d;" />
-          <g id="header-text">
-            <path d="M169.593,104.051L327.664,104.051" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
-            <path d="M169.593,86.961L345.71,86.961" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
-            <path d="M169.593,70.389L372.364,70.389" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
-          </g>
-          <ellipse id="interactive" cx="527.956" cy="141.597" rx="15.94" ry="15.537" style="fill:#f53;" />
-        </g>
         <g id="text">
           <path id="text-header" d="M169.565,182.77L290.783,182.77M169.565,199.342L327.646,199.342" style="fill:none;stroke:#bfbfbf;stroke-width:8.01px;" />
           <g id="text-content">
@@ -44,6 +35,15 @@
           <rect x="360.062" y="241.032" width="86.603" height="65.772" style="fill:#d8d8d8;" />
         </g>
         <rect id="extra-image" x="169.321" y="335.287" width="374.573" height="30.555" style="fill:#d8d8d8;" />
+        <g id="header">
+          <rect id="header-background" x="79.53" y="33.361" width="541.92" height="107.202" style="fill:#0c162d;" />
+          <g id="header-text">
+            <path d="M169.593,104.051L327.664,104.051" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
+            <path d="M169.593,86.961L345.71,86.961" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
+            <path d="M169.593,70.389L372.364,70.389" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
+          </g>
+          <ellipse id="interactive" cx="527.956" cy="141.597" rx="15.94" ry="15.537" style="fill:#f53;" />
+        </g>
       </g>
     </g>
     <g id="phone">
@@ -58,15 +58,6 @@
         <ellipse cx="484.744" cy="176.556" rx="3.293" ry="3.302" style="fill:#d8d8d8;" />
       </g>
       <g id="phone-screen">
-        <g id="phone-header">
-          <rect x="470.585" y="186.792" width="136.184" height="68.666" style="fill:#0c162d;" />
-          <g id="phone-header-text">
-            <path d="M489.559,212.479L568.174,212.479" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
-            <path d="M489.559,220.719L551.736,220.719" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
-            <path d="M489.559,228.959L561.074,228.959" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
-          </g>
-          <ellipse id="phone-interactive" cx="576.444" cy="255.458" rx="10.476" ry="10.437" style="fill:#f53;" />
-        </g>
         <g id="phone-text">
           <path id="phone-text-header" d="M489.483,371.067L565.041,371.067M489.483,381.582L588.02,381.582" style="fill:none;stroke:#bfbfbf;stroke-width:3.6px;" />
           <path id="phone-text-content" d="M489.553,396.04L587.588,396.04M489.553,402.612L574.113,402.612M489.552,409.184L580.406,409.184M489.554,415.756L570.265,415.756M489.553,422.328L583.383,422.328M489.553,435.8L587.588,435.8M489.553,442.372L574.113,442.372" style="fill:none;stroke:#bfbfbf;stroke-width:2.4px;" />
@@ -75,6 +66,15 @@
           <rect x="489.331" y="274.135" width="46.314" height="30.762" style="fill:#d8d8d8;" />
           <rect x="541.158" y="274.135" width="46.314" height="79.652" style="fill:#d8d8d8;" />
           <rect x="489.331" y="311.489" width="46.314" height="41.749" style="fill:#d8d8d8;" />
+        </g>
+        <g id="phone-header">
+          <rect id="phone-header-background" x="470.585" y="186.792" width="136.184" height="68.666" style="fill:#0c162d;" />
+          <g id="phone-header-text">
+            <path d="M489.559,212.479L568.174,212.479" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
+            <path d="M489.559,220.719L551.736,220.719" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
+            <path d="M489.559,228.959L561.074,228.959" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
+          </g>
+          <ellipse id="phone-interactive" cx="576.444" cy="255.458" rx="10.476" ry="10.437" style="fill:#f53;" />
         </g>
       </g>
     </g>
@@ -86,11 +86,22 @@ export default {
   props: ["slug"],
   name: "DienstenItemSVGwebsite",
   data() {
-    return {};
+    return {
+      // tlMorph: new Vue.$nuxt.$GSAP.TimelineMax({ paused: true }),
+      // tlMorph: new $GSAP.TimelineMax(),
+      // tlMorph: null,
+      played: false,
+    };
   }, // End data
   mounted() {
-    this.$nextTick(this.timelineDienstenWebsites);
+    // this.$nextTick(this.timelineDienstenWebsites);
+    // this.$nextTick((this.tlMorph = new this.$GSAP.TimelineMax()));
+    this.$nextTick(() => {
+      this.timelineDienstenWebsites();
+      // this.tlMorph = new this.$GSAP.TimelineMax();
+    });
   },
+  created() {},
   methods: {
     timelineDienstenWebsites() {
       //------------------------------------------------------//
@@ -98,7 +109,7 @@ export default {
       //------------------------------------------------------//
       // Basic values
       const baseTiming = 0.3;
-      // Timeline stuf
+      // Timeline stuff
       const timelineDienstenWebsites = new this.$GSAP.TimelineMax();
       // Base ease full timeline
       timelineDienstenWebsites
@@ -190,8 +201,63 @@ export default {
           baseTiming * 2,
           { y: 50, opacity: 0 },
           "sameTimeFive",
-        );
+        )
+        .add(alloyLoopingAnimation);
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
+      //------------------------------------------------------//
+      // ➰ Looping timeline ️❇️️ 🧦  GSAP
+      //------------------------------------------------------//
+      const loopInteractive = new this.$GSAP.TimelineMax({
+        repeat: -1,
+        // yoyo: true,
+        repeatDelay: baseTiming * 8,
+      });
+      function alloyLoopingAnimation() {
+        loopInteractive
+          .to(
+            "#DienstWebsite #laptop #interactive",
+            baseTiming * 2,
+            {
+              scale: 0.8,
+              transformOrigin: "center",
+            },
+            "sameTime",
+          )
+          .to(
+            "#DienstWebsite #laptop #interactive",
+            baseTiming * 4,
+            {
+              // scale: "+=0.2",
+              scale: 1,
+              transformOrigin: "center",
+              ease: Elastic.easeOut.config(1, 0.3),
+            },
+            "sameTimeTwo",
+          )
+          .to(
+            "#DienstWebsite #phone #phone-interactive",
+            baseTiming * 2,
+            {
+              scale: 0.8,
+              transformOrigin: "center",
+            },
+            "sameTime",
+          )
+          .to(
+            "#DienstWebsite #phone #phone-interactive",
+            baseTiming * 4,
+            {
+              // scale: "+=0.2",
+              scale: 1,
+              transformOrigin: "center",
+              ease: Elastic.easeOut.config(1, 0.3),
+            },
+            "sameTimeTwo",
+          );
+        return loopInteractive;
+      }
+
+      // END ➰ Looping timeline ️❇️️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//
       // 🎩 ScrollMagic scene
       //------------------------------------------------------//
@@ -205,6 +271,102 @@ export default {
         .addTo(controller);
       // ENDcontrollerMagic scene -------------------------------------//
     },
+    interactiveMorph() {
+      const baseTiming = 0.3;
+      /* Convert un-morphable shapes to path ----------------------------------------- */
+      MorphSVGPlugin.convertToPath(
+        "circle, rect, ellipse, line, polygon, polyline",
+      );
+      const tlMorph = new this.$GSAP.TimelineMax();
+      tlMorph
+        .to(
+          "#DienstWebsite #interactive",
+          baseTiming * 2,
+          {
+            morphSVG: "#DienstWebsite #morph-interactive",
+          },
+          "sameTime",
+        )
+        .to(
+          "#DienstWebsite #phone-interactive",
+          baseTiming * 2,
+          {
+            morphSVG: "#DienstWebsite #morph-phone-interactive",
+          },
+          "sameTime",
+        )
+        .to(
+          "#DienstWebsite #header-background",
+          baseTiming * 2,
+          {
+            morphSVG: "#DienstWebsite #morph-header-background",
+          },
+          "sameTime",
+        )
+        .to(
+          "#DienstWebsite #phone-header-background",
+          baseTiming * 2,
+          {
+            morphSVG: "#DienstWebsite #morph-phone-header-background",
+          },
+          "sameTime",
+        )
+        .staggerTo(
+          "#DienstWebsite #header-text > *",
+          baseTiming * 2,
+          { drawSVG: "0%" },
+          baseTiming,
+          "sameTime",
+        )
+        .staggerTo(
+          "#DienstWebsite #phone-header-text > *",
+          baseTiming * 2,
+          { drawSVG: "0%" },
+          baseTiming,
+          "sameTime",
+        )
+        .to(
+          "#DienstWebsite #interactive",
+          baseTiming * 4,
+          {
+            rotation: 360,
+            transformOrigin: "center",
+            morphSVG: "#DienstWebsite #morph-interactive-two",
+            // ease: Elastic.easeOut.config(1, 0.3),
+          },
+          "sameTimeTwo",
+          `+=${baseTiming * 2}`,
+        )
+        .to(
+          "#DienstWebsite #phone-interactive",
+          baseTiming * 4,
+          {
+            rotation: 360,
+            transformOrigin: "center",
+            morphSVG: "#DienstWebsite #morph-phone-interactive-two",
+            // ease: Elastic.easeOut.config(1, 0.3),
+          },
+          "sameTimeTwo",
+          `+=${baseTiming * 2}`,
+        );
+      // What 🔁 direction should the animation play ----------------------------------------- /
+      // this.tlMorph.eventCallback("onComplete", tlDirection);
+      // const tlDirection = () => {
+      //   this.played = !this.played;
+      // };
+      // // this.played ? this.tlMorph.reverse() : this.tlMorph.play();
+      // if (this.played) {
+      //   this.tlMorph.reverse();
+      // } else {
+      //
+      // }
+    },
   },
 };
 </script>
+<style>
+#phone-interactive,
+#interactive {
+  cursor: pointer;
+}
+</style>

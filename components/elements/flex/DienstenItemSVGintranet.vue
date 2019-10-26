@@ -1,5 +1,5 @@
 <template>
-  <svg id="DienstIntranet" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;">
+  <svg id="DienstIntranet" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;" @click="interactiveMorph">
     <g id="base">
       <g id="bar">
         <path d="M68.337,15.557L627.663,15.557C628.893,15.557 629.339,15.685 629.789,15.925C630.238,16.165 630.591,16.518 630.832,16.967C631.072,17.417 631.2,17.863 631.2,19.092L631.2,45.89L64.8,45.89L64.8,19.092C64.8,17.863 64.928,17.417 65.168,16.967C65.409,16.518 65.762,16.165 66.211,15.925C66.661,15.685 67.107,15.557 68.337,15.557Z" style="fill:#e2e3e5;fill-rule:nonzero;" />
@@ -54,49 +54,50 @@
       </g>
       <g id="items">
         <g>
-          <rect x="325.664" y="310.614" width="288.439" height="36.4" style="fill:#d8d8d8;" />
-          <rect x="333.937" y="317.784" width="22.06" height="22.06" style="fill:#bfbfbf;" />
-          <rect x="588.734" y="324.953" width="7.721" height="7.721" style="fill:#bfbfbf;" />
-          <path d="M372.272,322.472L543.615,322.472" style="fill:none;stroke:#bfbfbf;stroke-width:5.52px;" />
-          <path d="M372.272,333.502L512.288,333.502" style="fill:none;stroke:#bfbfbf;stroke-width:4.41px;" />
+          <rect x="325.664" y="304.614" width="288.439" height="36.4" style="fill:#d8d8d8;" />
+          <rect x="333.937" y="311.784" width="22.06" height="22.06" style="fill:#bfbfbf;" />
+          <rect x="588.734" y="318.953" width="7.721" height="7.721" style="fill:#bfbfbf;" />
+          <path d="M372.272,316.472L543.615,316.472" style="fill:none;stroke:#bfbfbf;stroke-width:5.52px;" />
+          <path d="M372.272,327.502L512.288,327.502" style="fill:none;stroke:#bfbfbf;stroke-width:4.41px;" />
         </g>
         <g>
-          <rect x="325.664" y="352.529" width="288.439" height="36.4" style="fill:#d8d8d8;" />
-          <rect x="333.937" y="359.699" width="22.06" height="22.06" style="fill:#bfbfbf;" />
-          <rect x="588.734" y="366.868" width="7.721" height="7.721" style="fill:#bfbfbf;" />
-          <path d="M372.272,364.386L543.615,364.386" style="fill:none;stroke:#bfbfbf;stroke-width:5.52px;" />
-          <path d="M372.272,375.417L512.288,375.417" style="fill:none;stroke:#bfbfbf;stroke-width:4.41px;" />
+          <rect x="325.664" y="346.529" width="288.439" height="36.4" style="fill:#d8d8d8;" />
+          <rect x="333.937" y="353.699" width="22.06" height="22.06" style="fill:#bfbfbf;" />
+          <rect x="588.734" y="360.868" width="7.721" height="7.721" style="fill:#bfbfbf;" />
+          <path d="M372.272,358.386L543.615,358.386" style="fill:none;stroke:#bfbfbf;stroke-width:5.52px;" />
+          <path d="M372.272,369.417L512.288,369.417" style="fill:none;stroke:#bfbfbf;stroke-width:4.41px;" />
         </g>
         <g>
-          <rect x="325.664" y="394.444" width="288.439" height="36.4" style="fill:#d8d8d8;" />
-          <path d="M372.272,406.301L543.615,406.301" style="fill:none;stroke:#bfbfbf;stroke-width:5.52px;" />
+          <rect x="325.664" y="388.444" width="288.439" height="36.4" style="fill:#d8d8d8;" />
+          <rect x="333.937" y="395.613" width="22.06" height="22.06" style="fill:#bfbfbf;" />
+          <path d="M372.272,400.301L543.615,400.301" style="fill:none;stroke:#bfbfbf;stroke-width:5.52px;" />
         </g>
       </g>
     </g>
     <g id="animate-in">
       <rect x="204.472" y="80.401" width="355.177" height="276.993" style="fill:#d8d8d8;" />
-      <g>
+      <g id="footer">
         <path d="M242.262,310.205L407.574,310.205" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:8px;stroke-miterlimit:10;" />
         <path d="M242.262,321.375L384.852,321.375" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:8px;stroke-miterlimit:10;" />
       </g>
-      <g>
+      <g id="form">
         <rect x="242.447" y="174.78" width="139.614" height="17.871" style="fill:#bfbfbf;" />
-        <rect x="242.447" y="253.522" width="195.459" height="17.871" style="fill:#bfbfbf;" />
-        <rect x="445.724" y="253.522" width="84.327" height="17.871" style="fill:#bfbfbf;" />
+        <rect x="390.437" y="174.78" width="139.614" height="17.871" style="fill:#bfbfbf;" />
         <rect x="242.447" y="201.028" width="287.604" height="17.871" style="fill:#bfbfbf;" />
         <rect x="242.447" y="227.275" width="287.604" height="17.871" style="fill:#bfbfbf;" />
-        <rect x="390.437" y="174.78" width="139.614" height="17.871" style="fill:#bfbfbf;" />
+        <rect x="242.447" y="253.522" width="195.459" height="17.871" style="fill:#bfbfbf;" />
+        <rect x="445.724" y="253.522" width="84.327" height="17.871" style="fill:#bfbfbf;" />
       </g>
-      <g>
+      <g id="button">
         <rect x="476.997" y="341.758" width="53.053" height="22.338" style="fill:#f53;" />
         <path d="M498.219,352.775L502.867,357.395L509.388,349.018" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" />
       </g>
-      <g>
+      <g id="header">
         <path d="M242.25,125.357L422.517,125.357" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:14px;stroke-miterlimit:10;" />
         <path d="M242.25,107.487L476.989,107.487" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:14px;stroke-miterlimit:10;" />
         <path d="M242.262,146.02L494.06,146.02" style="fill:none;fill-rule:nonzero;stroke:#bfbfbf;stroke-width:8px;stroke-miterlimit:10;" />
       </g>
-      <g>
+      <g id="morph-interactive">
         <circle cx="213.407" cy="83.194" r="16.754" style="fill:#f53;" />
         <path d="M205.369,88.198C205.579,87.706 205.834,87.238 206.128,86.799C206.985,85.516 208.174,84.474 209.573,83.797C208.641,82.844 208.067,81.54 208.067,80.102C208.067,77.183 210.433,74.817 213.352,74.817C216.271,74.817 218.638,77.183 218.638,80.102C218.638,81.54 218.063,82.844 217.132,83.797C219.017,84.71 220.523,86.285 221.346,88.22" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" />
       </g>
@@ -157,7 +158,7 @@ export default {
           "#DienstIntranet #list * *",
           baseTiming * 2,
           { y: 50, opacity: 0 },
-          baseTiming,
+          0.2,
           "sameTime",
         )
         .staggerFrom(
@@ -181,6 +182,80 @@ export default {
         .addTo(controller);
       // ENDcontrollerMagic scene -------------------------------------//
     },
+    interactiveMorph() {
+      const baseTiming = 0.3;
+      /* Convert un-morphable shapes to path ----------------------------------------- */
+      // MorphSVGPlugin.convertToPath(
+      //   "circle, rect, ellipse, line, polygon, polyline",
+      // );
+      const tlMorph = new this.$GSAP.TimelineMax();
+      tlMorph
+        .set("#DienstIntranet #animate-in", { autoAlpha: 1 })
+        .from("#DienstIntranet #animate-in", baseTiming * 6, {
+          scale: 0,
+          transformOrigin: "center",
+          ease: Elastic.easeOut.config(1, 0.3),
+        })
+        .staggerFrom(
+          "#DienstIntranet #animate-in #header *",
+          baseTiming * 2,
+          {
+            scaleX: 0,
+          },
+          0.1,
+          `-=${baseTiming}`,
+        )
+        .staggerFrom(
+          "#DienstIntranet #animate-in #form *",
+          baseTiming * 2,
+          {
+            scaleX: 0,
+          },
+          0.2,
+          `-=${baseTiming}`,
+        )
+        .staggerFrom(
+          "#DienstIntranet #animate-in #footer *",
+          baseTiming * 2,
+          {
+            scaleX: 0,
+          },
+          0.1,
+          `-=${baseTiming}`,
+        )
+        .from("#DienstIntranet #animate-in #button", baseTiming * 2, {
+          scale: 0,
+          transformOrigin: "center",
+          ease: Elastic.easeOut.config(1, 0.3),
+        })
+
+        .to(
+          "#DienstIntranet #interactive ellipses",
+          baseTiming * 2,
+          {
+            morphSVG: "#DienstIntranet #morph-interactive ellipses",
+          },
+          "sameTime",
+        );
+      // What 🔁 direction should the animation play ----------------------------------------- /
+      // this.tlMorph.eventCallback("onComplete", tlDirection);
+      // const tlDirection = () => {
+      //   this.played = !this.played;
+      // };
+      // // this.played ? this.tlMorph.reverse() : this.tlMorph.play();
+      // if (this.played) {
+      //   this.tlMorph.reverse();
+      // } else {
+      //
+      // }
+    },
   },
 };
 </script>
+<style lang="scss" scoped>
+#DienstIntranet {
+  #animate-in {
+    // opacity: 0;
+  }
+}
+</style>

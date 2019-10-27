@@ -1,11 +1,13 @@
 <template>
-  <div class="container-type--DienstenOther container--medium">
-    <div class="inner">
-      <template v-for="(item, index) in diensten">
-        <DienstenOtherItem :item="item" :key="index" />
-      </template>
+  <section>
+    <div class="container-type--DienstenOther container--medium">
+      <div class="inner">
+        <template v-for="(item, index) in diensten">
+          <DienstenOtherItem :item="item" :key="index" />
+        </template>
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -13,12 +15,7 @@ import diensten from "~/apollo/queries/diensten";
 import DienstenOtherItem from "@/components/elements/flex/DienstenOtherItem.vue";
 
 export default {
-  name: "Diensten",
-  data() {
-    return {
-      title: "Diensten",
-    };
-  }, // End data
+  name: "DienstenOther",
   components: {
     DienstenOtherItem,
   },
@@ -28,11 +25,9 @@ export default {
       query: diensten,
       update(data) {
         const items = data.diensten.nodes;
-
         const itemsFeatured = items.filter(function(item) {
           return !item.acfDiensten.featured;
         });
-
         return itemsFeatured;
       },
     },

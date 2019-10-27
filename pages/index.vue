@@ -17,11 +17,12 @@
 <script>
 import pageBySlug from "~/apollo/queries/pageBySlug";
 
-// Compontents
+// Components
 import Header from "@/components/default/Header.vue";
 import FlexLoader from "@/components/elements/flex/_FlexLoader.vue";
 
 export default {
+  transition: "page-alt",
   components: {
     Header,
     FlexLoader,

@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-// #__layout,
+// // #__layout,
 // html,
 // body {
 //   overflow-x: hidden;
@@ -78,6 +78,12 @@ section {
 // .container--small {
 //   @include media-breakpoint-down(md) {
 //     padding: $base-margin;
+//   }
+// }
+// .container-type--Diensten {
+//   padding-bottom: $base-margin * 4;
+//   @include media-breakpoint-up(lg) {
+//     padding-bottom: $base-margin * 8;
 //   }
 // }
 // END Container logic -------------------------------------//

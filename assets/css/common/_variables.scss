@@ -1,11 +1,11 @@
 // Colors
-$brand-one: #F53;
-$brand-two: #9FF;
+$brand-one: #f53;
+$brand-two: #9ff;
 $brand-three: #637192;
 $brand-four: #fff;
 
-$brand-dark: #0C162D;
-$brand-dark-lighten: #19233B;
+$brand-dark: #0c162d;
+$brand-dark-lighten: #19233b;
 $brand-light: #fff;
 $brand-lightgrey: #eee;
 $brand-midgrey: #ddd;
@@ -15,9 +15,10 @@ $dbrand-darkgrey: #444;
 $base-margin: 15px;
 $radius: 4px;
 $base-alpha: 0.6;
+$base-transition: 300ms;
 
-$font-base: 'Source Sans Pro', sans-serif;
-$font-header: 'Source Sans Pro', sans-serif;
+$font-base: "Source Sans Pro", sans-serif;
+$font-header: "Source Sans Pro", sans-serif;
 ///
 /// Viewport sized typography with minimum and maximum values
 ///
@@ -70,7 +71,7 @@ $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px,
+  xl: 1200px
 ) !default;
 // Breakpoint viewport sizes and media queries.
 //
@@ -88,17 +89,9 @@ $grid-breakpoints: (
 //    md
 //    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
 //    md
-@function breakpoint-next(
-  $name,
-  $breakpoints: $grid-breakpoints,
-  $breakpoint-names: map-keys($breakpoints)
-) {
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
   $n: index($breakpoint-names, $name);
-  @return if(
-    $n < length($breakpoint-names),
-    nth($breakpoint-names, $n + 1),
-    null
-  );
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
@@ -159,11 +152,7 @@ $grid-breakpoints: (
 
 // Media that spans multiple breakpoint widths.
 // Makes the @content apply between the min and max breakpoints
-@mixin media-breakpoint-between(
-  $lower,
-  $upper,
-  $breakpoints: $grid-breakpoints
-) {
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($lower, $breakpoints);
   $max: breakpoint-max($upper, $breakpoints);
 

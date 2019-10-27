@@ -77,7 +77,7 @@ export default {
   transform: scale(0);
   transform-origin: right top;
   transition: transform;
-  transition-duration: 300ms;
+  transition-duration: $base-transition;
   transition-timing-function: ease;
   pointer-events: none;
   // z-index: -1;
@@ -98,14 +98,14 @@ export default {
     transform: translateX(-20px);
     opacity: 0;
     transition: transform, opacity;
-    transition-duration: 300ms;
+    transition-duration: $base-transition;
     transition-timing-function: ease;
   }
   .alloy-cards {
     transform: translateX(-20px);
     opacity: 0;
     transition: transform, opacity;
-    transition-duration: 300ms;
+    transition-duration: $base-transition;
     transition-timing-function: ease;
   }
   &[data-navigation-toggle="true"] {
@@ -160,7 +160,7 @@ export default {
         transform: scaleX(0);
         transform-origin: left center;
         transition: transform;
-        transition-duration: 300ms;
+        transition-duration: $base-transition;
         transition-timing-function: ease;
       }
       &:before {

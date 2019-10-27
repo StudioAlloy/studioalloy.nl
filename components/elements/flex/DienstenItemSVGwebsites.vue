@@ -91,11 +91,9 @@ export default {
     };
   }, // End data
   mounted() {
-    // this.$nextTick(this.timelineDienstenWebsites);
-    // this.$nextTick((this.tlMorph = new this.$GSAP.TimelineMax()));
     this.$nextTick(() => {
       this.timelineDienstenWebsites();
-      // this.tlMorph = new this.$GSAP.TimelineMax();
+      this.tlMorph = new this.$GSAP.TimelineMax();
     });
   },
   created() {},
@@ -147,11 +145,12 @@ export default {
           0.5,
           "sameTimeFour",
         )
-        .from(
-          "#DienstWebsite #laptop #text",
+        .staggerFrom(
+          "#DienstWebsite #laptop #text path",
           baseTiming * 2,
-          { y: 50, opacity: 0 },
-          "sameTimeFive",
+          { drawSVG: "0%" },
+          0.1,
+          "sameTimeFour",
         )
         .from(
           "#DienstWebsite #laptop #extra-image",
@@ -160,7 +159,12 @@ export default {
           "sameTimeFive",
         )
         // 📱 phone animation
-        .from("#DienstWebsite #phone", baseTiming * 2, { y: 300 }, "sameTime")
+        .from(
+          "#DienstWebsite #phone",
+          baseTiming * 2,
+          { y: 300 },
+          `sameTime+=${baseTiming * 2}`,
+        )
         .from(
           "#DienstWebsite #phone #phone-header",
           baseTiming,
@@ -192,10 +196,11 @@ export default {
           "sameTimeFour",
         )
         .from(
-          "#DienstWebsite #phone #phone-text",
+          "#DienstWebsite #phone #phone-text path",
           baseTiming * 2,
-          { y: 50, opacity: 0 },
-          "sameTimeFive",
+          { drawSVG: "0%" },
+          0.1,
+          "sameTimeFour",
         )
         .add(alloyLoopingAnimation);
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
@@ -204,7 +209,7 @@ export default {
       //------------------------------------------------------//
       const loopInteractive = new this.$GSAP.TimelineMax({
         repeat: -1,
-        // yoyo: true,
+        // yoyo: true,p
         repeatDelay: baseTiming * 8,
       });
       function alloyLoopingAnimation() {
@@ -264,105 +269,101 @@ export default {
       })
         .setTween(timelineDienstenWebsites)
         .addTo(controller);
-      // ENDcontrollerMagic scene -------------------------------------//
+      // END controllerMagic scene -------------------------------------//
     },
     interactiveMorph() {
       const baseTiming = 0.3;
       /* Convert un-morphable shapes to path ----------------------------------------- */
       MorphSVGPlugin.convertToPath(
-        "circle, rect, ellipse, line, polygon, polyline",
+        // "circle, rect, ellipse, line, polygon, polyline",
         "ellipse, rect",
       );
-      const tlMorph = new this.$GSAP.TimelineMax();
-      tlMorph
-        .to(
-          "#DienstWebsite #interactive",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstWebsite #morph-interactive",
-          },
-          "sameTime",
-        )
-        .to(
-          "#DienstWebsite #phone-interactive",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstWebsite #morph-phone-interactive",
-          },
-          "sameTime",
-        )
-        .to(
-          "#DienstWebsite #header-background",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstWebsite #morph-header-background",
-          },
-          "sameTime",
-        )
-        .to(
-          "#DienstWebsite #phone-header-background",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstWebsite #morph-phone-header-background",
-          },
-          "sameTime",
-        )
-        .staggerTo(
-          "#DienstWebsite #header-text > *",
-          baseTiming * 2,
-          { drawSVG: "0%" },
-          baseTiming,
-          "sameTime",
-        )
-        .staggerTo(
-          "#DienstWebsite #phone-header-text > *",
-          baseTiming * 2,
-          { drawSVG: "0%" },
-          baseTiming,
-          "sameTime",
-        )
-        .to(
-          "#DienstWebsite #interactive",
-          baseTiming * 4,
-          {
-            rotation: 360,
-            transformOrigin: "center",
-            morphSVG: "#DienstWebsite #morph-interactive-two",
-            // ease: Elastic.easeOut.config(1, 0.3),
-          },
-          "sameTimeTwo",
-          `+=${baseTiming * 2}`,
-        )
-        .to(
-          "#DienstWebsite #phone-interactive",
-          baseTiming * 4,
-          {
-            rotation: 360,
-            transformOrigin: "center",
-            morphSVG: "#DienstWebsite #morph-phone-interactive-two",
-            // ease: Elastic.easeOut.config(1, 0.3),
-          },
-          "sameTimeTwo",
-          `+=${baseTiming * 2}`,
-        );
       // What 🔁 direction should the animation play ----------------------------------------- /
-      // this.tlMorph.eventCallback("onComplete", tlDirection);
-      // const tlDirection = () => {
-      //   this.played = !this.played;
-      // };
+      const tlDirection = () => {
+        this.played = !this.played;
+      };
       // // this.played ? this.tlMorph.reverse() : this.tlMorph.play();
-      // if (this.played) {
-      //   this.tlMorph.reverse();
-      // } else {
-      //
-      // }
+      if (this.played) {
+        this.tlMorph.reverse();
+        tlDirection();
+      } else {
+        this.tlMorph.play();
+        this.tlMorph
+          .to(
+            "#DienstWebsite #interactive",
+            baseTiming,
+            {
+              morphSVG: "#DienstWebsite #morph-interactive",
+            },
+            "sameTime",
+          )
+          .to(
+            "#DienstWebsite #phone-interactive",
+            baseTiming,
+            {
+              morphSVG: "#DienstWebsite #morph-phone-interactive",
+            },
+            "sameTime",
+          )
+          .to(
+            "#DienstWebsite #header-background",
+            baseTiming,
+            {
+              morphSVG: "#DienstWebsite #morph-header-background",
+            },
+            "sameTime",
+          )
+          .to(
+            "#DienstWebsite #phone-header-background",
+            baseTiming,
+            {
+              morphSVG: "#DienstWebsite #morph-phone-header-background",
+            },
+            "sameTime",
+          )
+          .staggerTo(
+            "#DienstWebsite #header-text > *",
+            baseTiming * 2,
+            { drawSVG: "0%" },
+            baseTiming,
+            "sameTime",
+          )
+          .staggerTo(
+            "#DienstWebsite #phone-header-text > *",
+            baseTiming * 2,
+            { drawSVG: "0%" },
+            baseTiming,
+            "sameTime",
+          )
+          .to(
+            "#DienstWebsite #interactive",
+            baseTiming * 4,
+            {
+              rotation: 360,
+              transformOrigin: "center",
+              morphSVG: "#DienstWebsite #morph-interactive-two",
+              // ease: Elastic.easeOut.config(1, 0.3),
+            },
+            "sameTimeTwo",
+            `+=${baseTiming * 2}`,
+          )
+          .add(function() {
+            tlDirection();
+          })
+          .to(
+            "#DienstWebsite #phone-interactive",
+            baseTiming * 4,
+            {
+              rotation: 360,
+              transformOrigin: "center",
+              morphSVG: "#DienstWebsite #morph-phone-interactive-two",
+              // ease: Elastic.easeOut.config(1, 0.3),
+            },
+            "sameTimeTwo",
+            `+=${baseTiming * 2}`,
+          );
+      }
     },
   },
 };
 </script>
-<style>
-#phone-interactive,
-#interactive {
-  cursor: pointer;
-}
-</style>

@@ -4,6 +4,7 @@
       <div class="inner">
         <h4 class="alloy-title col-40" v-html="item.title"></h4>
         <span v-html="item.excerpt"></span>
+        <nuxt-link :to="`/dienst/${item.slug}`" class="btn">Lees meer</nuxt-link>
       </div>
     </div>
   </div>
@@ -12,15 +13,6 @@
 <script>
 export default {
   props: ["item"],
-  name: "DienstenItem",
-  data() {
-    return {};
-  },
-  computed: {
-    // componentSVG() {
-    //   const name = this.item.acfDiensten.illustrationName;
-    //   return () => import(`@/components/elements/flex/DienstenItemSVG${name}`);
-    // },
-  },
+  name: "DienstenOtherItem",
 };
 </script>

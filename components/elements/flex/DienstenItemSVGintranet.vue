@@ -114,7 +114,11 @@ export default {
     return {};
   }, // End data
   mounted() {
-    this.$nextTick(this.timelineDienstIntranet);
+    // this.$nextTick(this.timelineDienstIntranet);
+    this.$nextTick(() => {
+      this.timelineDienstIntranet();
+      this.tlMorph = new this.$GSAP.TimelineMax();
+    });
   },
   methods: {
     timelineDienstIntranet() {
@@ -213,74 +217,71 @@ export default {
       // MorphSVGPlugin.convertToPath(
       //   "circle, rect, ellipse, line, polygon, polyline",
       // );
-      const tlMorph = new this.$GSAP.TimelineMax();
-      tlMorph
-        .set("#DienstIntranet #animate-in", { autoAlpha: 1 })
-        .from("#DienstIntranet #animate-in", baseTiming * 6, {
-          scale: 0,
-          transformOrigin: "center",
-          ease: Elastic.easeOut.config(1, 0.3),
-        })
-        .staggerFrom(
-          "#DienstIntranet #animate-in #header *",
-          baseTiming * 2,
-          {
-            scaleX: 0,
-          },
-          0.1,
-          `-=${baseTiming}`,
-        )
-        .staggerFrom(
-          "#DienstIntranet #animate-in #form *",
-          baseTiming * 2,
-          {
-            scaleX: 0,
-          },
-          0.2,
-          `-=${baseTiming}`,
-        )
-        .staggerFrom(
-          "#DienstIntranet #animate-in #footer *",
-          baseTiming * 2,
-          {
-            scaleX: 0,
-          },
-          0.1,
-          `-=${baseTiming}`,
-        )
-        .from("#DienstIntranet #animate-in #button", baseTiming * 2, {
-          scale: 0,
-          transformOrigin: "center",
-          ease: Elastic.easeOut.config(1, 0.3),
-        })
+      // const tlMorph = new this.$GSAP.TimelineMax();
 
-        .to(
-          "#DienstIntranet #interactive ellipses",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstIntranet #morph-interactive ellipses",
-          },
-          "sameTime",
-        );
       // What 🔁 direction should the animation play ----------------------------------------- /
       // this.tlMorph.eventCallback("onComplete", tlDirection);
-      // const tlDirection = () => {
-      //   this.played = !this.played;
-      // };
-      // // this.played ? this.tlMorph.reverse() : this.tlMorph.play();
-      // if (this.played) {
-      //   this.tlMorph.reverse();
-      // } else {
-      //
-      // }
+      const tlDirection = () => {
+        this.played = !this.played;
+      };
+      // this.played ? this.tlMorph.reverse() : this.tlMorph.play();
+      if (this.played) {
+        this.tlMorph.reverse();
+        tlDirection();
+      } else {
+        this.tlMorph.play();
+        this.tlMorph
+          .set("#DienstIntranet #animate-in", { autoAlpha: 1 })
+          .from("#DienstIntranet #animate-in", baseTiming * 2, {
+            scale: 0,
+            transformOrigin: "center",
+            // ease: Elastic.easeOut.config(1, 0.3),
+          })
+          .staggerFrom(
+            "#DienstIntranet #animate-in #header *",
+            baseTiming * 2,
+            {
+              scaleX: 0,
+            },
+            0.1,
+            `-=${baseTiming}`,
+          )
+          .staggerFrom(
+            "#DienstIntranet #animate-in #form *",
+            baseTiming * 2,
+            {
+              scaleX: 0,
+            },
+            0.2,
+            `-=${baseTiming}`,
+          )
+          .staggerFrom(
+            "#DienstIntranet #animate-in #footer *",
+            baseTiming * 2,
+            {
+              scaleX: 0,
+            },
+            0.1,
+            `-=${baseTiming}`,
+          )
+          .from("#DienstIntranet #animate-in #button", baseTiming * 2, {
+            scale: 0,
+            transformOrigin: "center",
+            ease: Elastic.easeOut.config(1, 0.3),
+          })
+          .add(function() {
+            tlDirection();
+          })
+          .to(
+            "#DienstIntranet #interactive ellipses",
+            baseTiming * 2,
+            {
+              morphSVG: "#DienstIntranet #morph-interactive ellipses",
+            },
+            "sameTime",
+          );
+      }
     },
   },
 };
 </script>
-<style lang="scss" scoped>
-#DienstIntranet {
-  #animate-in {
-    // opacity: 0;
-  }
-}
-</style>

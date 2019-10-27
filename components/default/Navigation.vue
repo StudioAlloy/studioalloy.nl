@@ -66,6 +66,7 @@ export default {
   background-color: $brand-dark;
 }
 #navigationToggle {
+  font-weight: 700;
   @include media-breakpoint-down(sm) {
     transform-origin: right center;
     transform: scale(0.7);
@@ -78,7 +79,7 @@ export default {
   background-color: transparent;
   appearance: none;
   transition: color;
-  transition-duration: 300ms;
+  transition-duration: $base-transition;
   transition-timing-function: ease;
 
   &:before,
@@ -90,7 +91,7 @@ export default {
     display: block;
     transform-origin: right center;
     transition: transform;
-    transition-duration: 300ms;
+    transition-duration: $base-transition;
     transition-timing-function: ease;
   }
   &:before {

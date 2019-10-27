@@ -1,45 +1,20 @@
 //------------------------------------------------------//
 // Page transtions
 //------------------------------------------------------//
-$base-transition: 300ms;
-// hide scrollbars when transtioning
-// .page-enter-active,
-// .page-leave-active,
-// .page-enter,
-// .page-leave-to {
-//   // overflow: hidden;
-// }
-
-// // Set the transtions on all states
-// .page-enter-active,
-// .page-leave-active {
-//   // transition: transform, opacity;
-//   // transition-duration: 300ms * 4;
-//   // transition-timing-function: ease;
-// }
-// .page-enter,
-// .page-leave-to {
-//   // opacity: 0;
-// }
 .page-enter-active {
-  animation-name: slideInPop;
-  animation-duration: $base-transition * 4;
+  animation-name: slideIn;
+  animation-duration: $base-transition * 5;
   animation-delay: 0s;
-  animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
-  animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
-  animation-iteration-count: 1; // infinite or number
-  animation-fill-mode: forwards; // none, forwards, backwards, both
-  animation-play-state: running; // running, paused
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
-@keyframes slideInPop {
+@keyframes slideIn {
   0% {
     opacity: 0;
     transform: translateY(500px);
-  }
-  50% {
-    opacity: 1;
-    animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
-    transform: translateY(0);
   }
   100% {
     animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
@@ -51,11 +26,11 @@ $base-transition: 300ms;
   animation-name: slideOut;
   animation-duration: $base-transition * 3;
   animation-delay: 0s;
-  animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
-  animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
-  animation-iteration-count: 1; // infinite or number
-  animation-fill-mode: forwards; // none, forwards, backwards, both
-  animation-play-state: running; // running, paused
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
 @keyframes slideOut {
   0% {
@@ -69,49 +44,44 @@ $base-transition: 300ms;
 }
 // Page alternative
 .page-alt-enter-active {
-  animation-name: slideInPopReverse;
+  animation-name: slideInPopAlt;
   animation-duration: $base-transition * 2;
   animation-delay: 0s;
-  animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
-  animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
-  animation-iteration-count: 1; // infinite or number
-  animation-fill-mode: forwards; // none, forwards, backwards, both
-  animation-play-state: running; // running, paused
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
-@keyframes slideInPopReverse {
+@keyframes slideInPopAlt {
   0% {
     opacity: 0;
-    transform: translateX(-500px);
-  }
-  50% {
-    opacity: 1;
-    animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
-    transform: translateX(0);
+    transform: translateY(-500px);
   }
   100% {
     animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
 .page-alt-leave-to {
-  animation-name: slideOutReverse;
+  animation-name: slideOutAlt;
   animation-duration: $base-transition * 2;
   animation-delay: 0s;
-  animation-timing-function: ease-out; // find more fancy onece over at https://matthewlein.com/tools/ceaser ease, ease-in, ease-out, ease-in-out, linear, step-start, step-end;
-  animation-direction: alternate; // normal, reverse, alternate, alternate-reverse
-  animation-iteration-count: 1; // infinite or number
-  animation-fill-mode: forwards; // none, forwards, backwards, both
-  animation-play-state: running; // running, paused
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
-@keyframes slideOutReverse {
+@keyframes slideOutAlt {
   0% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
   100% {
     opacity: 0;
-    transform: translateX(500px);
+    transform: translateY(-500px);
   }
 }
 //-----------------------------------------------------//
@@ -200,7 +170,7 @@ $base-transition: 300ms;
 .slide-up-active {
   transition: transform;
   transition-delay: 1200ms;
-  transition-duration: 300ms;
+  transition-duration: $base-transition;
   transition-timing-function: ease;
 }
 .slide-up-enter, .slide-up-leave-to /* .fade-leave-active below version 2.1.8 */ {

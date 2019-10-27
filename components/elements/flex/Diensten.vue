@@ -1,5 +1,5 @@
 <template>
-  <div class="elements-Diensten container--medium">
+  <div class="container-type--Diensten container--medium">
     <div class="inner">
       <template v-for="(item, index) in diensten">
         <DienstenItem :item="item" :key="index" />
@@ -14,11 +14,6 @@ import DienstenItem from "@/components/elements/flex/DienstenItem.vue";
 
 export default {
   name: "Diensten",
-  data() {
-    return {
-      title: "Diensten",
-    };
-  }, // End data
   components: {
     DienstenItem,
   },
@@ -56,7 +51,7 @@ export default {
       const timelineDiensten = new this.$GSAP.TimelineMax();
 
       timelineDiensten.staggerFrom(
-        ".elements-Diensten > .inner > *",
+        ".container-type--Diensten > .inner > *",
         baseTiming * 2,
         {
           y: 100,
@@ -70,7 +65,7 @@ export default {
       //------------------------------------------------------//
       const controller = new this.$ScrollMagic.Controller();
       const scene = new this.$ScrollMagic.Scene({
-        triggerElement: ".elements-Diensten",
+        triggerElement: ".container-type--Diensten",
         reverse: false,
       })
         .setTween(timelineDiensten)

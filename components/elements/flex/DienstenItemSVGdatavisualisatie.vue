@@ -78,7 +78,11 @@ export default {
     return {};
   }, // End data
   mounted() {
-    this.$nextTick(this.timelineDienstDatavis);
+    // this.$nextTick(this.timelineDienstDatavis);
+    this.$nextTick(() => {
+      this.timelineDienstDatavis();
+      this.tlMorph = new this.$GSAP.TimelineMax();
+    });
   },
   methods: {
     timelineDienstDatavis() {
@@ -198,62 +202,67 @@ export default {
       const baseTiming = 0.3;
       /* Convert un-morphable shapes to path ----------------------------------------- */
       MorphSVGPlugin.convertToPath(
-        "circle, rect, ellipse, line, polygon, polyline",
+        // "circle, rect, ellipse, line, polygon, polyline",
+        "rect, ellipse",
       );
-      const tlMorph = new this.$GSAP.TimelineMax();
-      tlMorph
-        .to(
-          "#DienstDatavis #interactive",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstDatavis #morph-interactive",
-          },
-          "sameTime",
-        )
-        .to(
-          "#DienstDatavis #widget-main #widget-main-background",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstDatavis #morph-background",
-          },
-          "sameTime",
-        )
-        .to(
-          "#DienstDatavis #widget-main #graph-bottom",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstDatavis #morph-graph-bottom-two",
-            fill: "#F53",
-          },
-          "sameTime",
-        )
-        .to(
-          "#DienstDatavis #widget-main #graph-top",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstDatavis #morph-graph-top-two",
-          },
-          "sameTime",
-        )
-        .to(
-          "#DienstDatavis #widget-main #graph-outline",
-          baseTiming * 2,
-          {
-            morphSVG: "#DienstDatavis #morph-graph-outline",
-          },
-          "sameTime",
-        );
+      // const tlMorph = new this.$GSAP.TimelineMax();
       // What 🔁 direction should the animation play ----------------------------------------- /
       // this.tlMorph.eventCallback("onComplete", tlDirection);
-      // const tlDirection = () => {
-      //   this.played = !this.played;
-      // };
+      const tlDirection = () => {
+        this.played = !this.played;
+      };
       // // this.played ? this.tlMorph.reverse() : this.tlMorph.play();
-      // if (this.played) {
-      //   this.tlMorph.reverse();
-      // } else {
-      //
-      // }
+      if (this.played) {
+        this.tlMorph.reverse();
+        tlDirection();
+      } else {
+        this.tlMorph.play();
+        this.tlMorph
+          .to(
+            "#DienstDatavis #interactive",
+            baseTiming * 2,
+            {
+              morphSVG: "#DienstDatavis #morph-interactive",
+            },
+            "sameTime",
+          )
+          .to(
+            "#DienstDatavis #widget-main #widget-main-background",
+            baseTiming * 2,
+            {
+              morphSVG: "#DienstDatavis #morph-background",
+            },
+            "sameTime",
+          )
+          .to(
+            "#DienstDatavis #widget-main #graph-bottom",
+            baseTiming * 2,
+            {
+              morphSVG: "#DienstDatavis #morph-graph-bottom-two",
+              fill: "#F53",
+            },
+            "sameTime",
+          )
+          .to(
+            "#DienstDatavis #widget-main #graph-top",
+            baseTiming * 2,
+            {
+              morphSVG: "#DienstDatavis #morph-graph-top-two",
+            },
+            "sameTime",
+          )
+          .add(function() {
+            tlDirection();
+          })
+          .to(
+            "#DienstDatavis #widget-main #graph-outline",
+            baseTiming * 2,
+            {
+              morphSVG: "#DienstDatavis #morph-graph-outline",
+            },
+            "sameTime",
+          );
+      }
     },
   },
 };

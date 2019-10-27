@@ -8,7 +8,7 @@
             <span>Studio Alloy</span>
           </nuxt-link>
         </li>
-        <li><a href="mailto:contact@studioalloy.nl">contact@studioalloy.nl</a></li>
+        <li><a href="mailto:hello@studioalloy.nl">contact@studioalloy.nl</a></li>
         <li><a href="tel:+31233020044">023 30 20 044</a></li>
       </ul>
     </nav>

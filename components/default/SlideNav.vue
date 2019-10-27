@@ -70,8 +70,8 @@ export default {
 #alloy-slide-nav {
   margin-left: auto;
   position: relative;
+  right: 0;
   width: 100%;
-  z-index: 5000;
   background-color: darken($brand-dark, 3%);
   padding: $base-margin;
   transform: scale(0);
@@ -79,6 +79,9 @@ export default {
   transition: transform;
   transition-duration: 300ms;
   transition-timing-function: ease;
+  pointer-events: none;
+  // z-index: -1;
+  height: 0;
 
   @include media-breakpoint-up(lg) {
     padding: $base-margin * 2;
@@ -106,6 +109,10 @@ export default {
     transition-timing-function: ease;
   }
   &[data-navigation-toggle="true"] {
+    height: auto;
+    z-index: 5000;
+
+    pointer-events: auto;
     transform: scale(1);
     @for $i from 1 to 10 {
       nav ul li:nth-child(#{$i}) {

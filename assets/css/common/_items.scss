@@ -178,20 +178,26 @@
   }
   .alloy-cards {
     width: 100%;
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
       max-width: 85vw;
+    }
+    @include media-breakpoint-up(lg) {
       max-width: 65vw;
     }
     > .inner {
       border-radius: $radius;
-      @include media-breakpoint-up(lg) {
+      overflow: hidden;
+      @include media-breakpoint-up(md) {
+        overflow: visible;
         border-radius: $radius 0 0 $radius;
       }
       display: flex;
-      flex-direction: column;
-
-      @include media-breakpoint-up(lg) {
-        flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      // flex-direction: column;
+      @include media-breakpoint-up(md) {
+        // flex-direction: row;
+        justify-content: flex-start;
       }
       // justify-content: center;
       // align-items: center;
@@ -203,16 +209,30 @@
       }
     }
   }
+  .alloy-image {
+    order: 2;
+    @include media-breakpoint-up(md) {
+      order: 0;
+    }
+  }
   .alloy-logo {
     display: block;
     position: relative;
     margin-left: auto;
     margin-right: auto;
     width: 150px;
-    @include media-breakpoint-up(lg) {
-      width: 250px;
+    padding-right: $base-margin * 2;
+
+    @include media-breakpoint-down(xs) {
+      transform: translateX(55px);
+    }
+    @include media-breakpoint-up(md) {
+      width: 200px;
 
       transform: translateX(-100px);
+    }
+    @include media-breakpoint-up(lg) {
+      width: 250px;
     }
   }
   .alloy-text {
@@ -242,6 +262,9 @@
     text-decoration: none;
   }
   h2 {
+    @include media-breakpoint-up(sm) {
+      font-size: 34px;
+    }
     @include media-breakpoint-down(sm) {
       font-size: 24px;
     }
@@ -286,8 +309,9 @@
 }
 // END 👨‍💻 Team -------------------------------------//
 //------------------------------------------------------//
-// 🧰 Toolbox
+// 🧰 Toolbox & ⭐️ Diensten Other
 //------------------------------------------------------//
+.container-type--DienstenOther,
 .container-type--toolbox {
   > .inner {
     display: grid;
@@ -300,38 +324,39 @@
       // grid-row-gap: $base-margin * 2;
     }
   }
-}
-.flex-Toolbox {
   .item {
     margin-bottom: $base-margin;
     @include media-breakpoint-up(lg) {
       margin-bottom: $base-margin * 2;
     }
   }
-}
-.alloy-item--toolbox {
-  position: relative;
-  height: 100%;
-
-  > .inner {
-    @include media-breakpoint-up(lg) {
-      padding: $base-margin * 2;
-    }
-    // padding-bottom: $base-margin * 4;
-    height: 100%;
+  .alloy-item {
     position: relative;
-    overflow: hidden;
-    img {
-      position: absolute;
-      object-fit: contain;
-      top: 0;
-      right: -50px;
-      max-width: 150px;
-      filter: grayscale(1);
-      opacity: 0.2;
+    height: 100%;
+
+    > .inner {
+      @include media-breakpoint-up(lg) {
+        padding: $base-margin * 2;
+      }
+      // padding-bottom: $base-margin * 4;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      img {
+        position: absolute;
+        object-fit: contain;
+        top: 0;
+        right: -50px;
+        max-width: 150px;
+        filter: grayscale(1);
+        opacity: 0.2;
+      }
     }
   }
 }
+.flex-Toolbox {
+}
+
 // END 🧰 Toolbox -------------------------------------//
 //------------------------------------------------------//
 // 🗺 Locaties

@@ -1,31 +1,35 @@
 <template>
   <main id="single-dienst">
-    <!-- First check if there is any 📝 data to load  -->
-    <template v-if="pageBySlug">
-      <div class="content-container--small flex-Content">
-        <div class="inner">
-          <h1>{{dienstBySlug.title}}</h1>
-          <div class="alloy-intro" v-html="dienstBySlug.content"></div>
-        </div>
-      </div>
-      <div class="container--small">
-        <div class="background-clipped"></div>
-        <div class="inner">
-          <div class="alloy-illustration">
-            <component :is="componentSVG"></component>
+    <div class="main-inner">
+
+      <!-- First check if there is any 📝 data to load  -->
+      <template v-if="dienstBySlug">
+        <!-- <div class="content-container--small flex-Content"> -->
+        <div class="container--small flex-Content">
+          <div class="inner">
+            <h1 v-html="dienstBySlug.title"></h1>
+            <div class="alloy-intro" v-html="dienstBySlug.content"></div>
           </div>
         </div>
-      </div>
-      <div class="container--small background--light flex-Content alloy-intro-light">
-        <div class="inner">
-          <div v-html="dienstBySlug.acfDiensten.whiteContent"></div>
+        <div class="container--small">
+          <div class="background-clipped"></div>
+          <div class="inner">
+            <div class="alloy-illustration">
+              <component :is="componentSVG"></component>
+            </div>
+          </div>
         </div>
-      </div>
+        <div class="container--small background--light flex-Content alloy-intro-light">
+          <div class="inner">
+            <div v-html="dienstBySlug.acfDiensten.whiteContent"></div>
+          </div>
+        </div>
 
-      <template v-for="(item, index) in dienstBySlug.acfFlex.flex">
-        <FlexLoader :item="item" :key="index" />
+        <template v-for="(item, index) in dienstBySlug.acfFlex.flex">
+          <FlexLoader :item="item" :key="index" />
+        </template>
       </template>
-    </template>
+    </div>
 
   </main>
 </template>

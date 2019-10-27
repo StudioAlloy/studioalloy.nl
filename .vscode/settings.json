@@ -9,5 +9,8 @@
     "latex",
     "vue",
     "javascript"
-  ]
+  ],
+  "files.exclude": {
+    "docs/": true,
+  },
 }

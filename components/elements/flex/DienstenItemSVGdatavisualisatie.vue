@@ -41,16 +41,16 @@
             </g>
           </g>
           <g id="widget-three">
-            <rect x="467.007" y="265.151" width="135.537" height="87.262" style="fill:#d8d8d8;" />
+            <rect x="470.212" y="261.719" width="135.537" height="87.262" style="fill:#d8d8d8;" />
             <g id="widget-three-content">
-              <path d="M490.925,339.27L490.925,277.766" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
-              <path d="M503.716,339.27L503.716,298.733" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
-              <path d="M516.507,339.27L516.507,291.045" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
-              <path d="M529.298,339.27L529.298,319.001" style="fill:none;stroke:#fff;stroke-width:10px;stroke-linecap:butt;" />
-              <path d="M542.089,339.27L542.089,308.782" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
-              <path d="M554.88,339.27L554.88,300.944" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
-              <path d="M567.671,339.27L567.671,281.972" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
-              <path d="M580.462,339.27L580.462,311.409" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
+              <path d="M494.13,335.838L494.13,274.335" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
+              <path d="M506.921,335.838L506.921,295.301" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
+              <path d="M519.712,335.838L519.712,287.613" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
+              <path d="M532.503,335.838L532.503,315.57" style="fill:none;stroke:#fff;stroke-width:10px;stroke-linecap:butt;" />
+              <path d="M545.294,335.838L545.294,305.35" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
+              <path d="M558.085,335.838L558.085,297.513" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
+              <path d="M570.876,335.838L570.876,278.541" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
+              <path d="M583.667,335.838L583.667,307.978" style="fill:none;stroke:#bfbfbf;stroke-width:10px;stroke-linecap:butt;" />
             </g>
           </g>
         </g>
@@ -102,7 +102,7 @@ export default {
           ease: Elastic.easeOut.config(1, 0.5),
         })
         .staggerFromTo(
-          "#DienstDatavis #widget-main * ",
+          "#DienstDatavis #widget-main path",
           baseTiming * 3,
           { drawSVG: "0%" },
           { drawSVG: "100%" },
@@ -138,14 +138,6 @@ export default {
           },
           baseTiming,
         )
-        .staggerFromTo(
-          "#DienstDatavis #widgets > * * ",
-          baseTiming * 3,
-          { drawSVG: "0%" },
-          { drawSVG: "100%" },
-          0.1,
-          "sameTimeTwo",
-        )
         .from(
           "#DienstDatavis #interactive",
           baseTiming * 4,
@@ -154,6 +146,14 @@ export default {
             transformOrigin: "center",
             ease: Elastic.easeOut.config(1, 0.3),
           },
+          "sameTimeTwo",
+        )
+        .staggerFromTo(
+          "#DienstDatavis #widgets > * path ",
+          baseTiming * 3,
+          { drawSVG: "0%" },
+          { drawSVG: "100%" },
+          0.1,
           "sameTimeTwo",
         )
         .add(alloyLoopingAnimation);

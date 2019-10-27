@@ -64,3 +64,114 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+@import "~/assets/css/common/_variables.scss";
+
+#alloy-slide-nav {
+  margin-left: auto;
+  position: relative;
+  width: 100%;
+  z-index: 5000;
+  background-color: darken($brand-dark, 3%);
+  padding: $base-margin;
+  transform: scale(0);
+  transform-origin: right top;
+  transition: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+
+  @include media-breakpoint-up(lg) {
+    padding: $base-margin * 2;
+    max-width: 100%;
+    width: 450px;
+  }
+  > .inner {
+    margin-bottom: $base-margin * 3;
+  }
+  //------------------------------------------------------//
+  // Animate 🏎 slide navigation
+  //------------------------------------------------------//
+  nav ul li {
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: transform, opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+  }
+  .alloy-cards {
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: transform, opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+  }
+  &[data-navigation-toggle="true"] {
+    transform: scale(1);
+    @for $i from 1 to 10 {
+      nav ul li:nth-child(#{$i}) {
+        transform: translateX(0);
+        opacity: 1;
+        transition-delay: $i * 100ms;
+      }
+    }
+    .alloy-cards {
+      transform: translateX(0);
+      opacity: 1;
+      transition-delay: 6 * 100ms;
+    }
+  }
+  // END Animate 🏎 slide navigation -------------------------------------//
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  nav {
+    margin-bottom: $base-margin * 2;
+
+    a {
+      position: relative;
+      display: inline-block;
+      padding: 5px $base-margin;
+      font-size: 30px;
+      line-height: 1.6em;
+      font-weight: 700;
+      text-decoration: none;
+      &:after {
+        content: "";
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: $brand-light;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform;
+        transition-duration: 300ms;
+        transition-timing-function: ease;
+      }
+      &:hover {
+        &:after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+  .contact-info {
+    > .inner {
+      background-color: $brand-dark-lighten;
+      * {
+        color: $brand-light;
+        text-decoration: none;
+      }
+      li {
+        a {
+          display: block;
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}
+</style>

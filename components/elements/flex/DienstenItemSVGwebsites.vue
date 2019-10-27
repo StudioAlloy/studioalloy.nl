@@ -31,16 +31,16 @@
         </g>
         <g id="images">
           <rect x="360.062" y="181.993" width="86.603" height="48.681" style="fill:#d8d8d8;" />
-          <rect x="457.291" y="181.993" width="86.603" height="124.81" style="fill:#d8d8d8;" />
           <rect x="360.062" y="241.032" width="86.603" height="65.772" style="fill:#d8d8d8;" />
+          <rect x="457.291" y="181.993" width="86.603" height="124.81" style="fill:#d8d8d8;" />
         </g>
         <rect id="extra-image" x="169.321" y="335.287" width="374.573" height="30.555" style="fill:#d8d8d8;" />
         <g id="header">
           <rect id="header-background" x="79.53" y="33.361" width="541.92" height="107.202" style="fill:#0c162d;" />
           <g id="header-text">
-            <path d="M169.593,104.051L327.664,104.051" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
-            <path d="M169.593,86.961L345.71,86.961" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
             <path d="M169.593,70.389L372.364,70.389" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
+            <path d="M169.593,86.961L345.71,86.961" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
+            <path d="M169.593,104.051L327.664,104.051" style="fill:none;stroke:#233b72;stroke-width:8.01px;" />
           </g>
           <ellipse id="interactive" cx="527.956" cy="141.597" rx="15.94" ry="15.537" style="fill:#f53;" />
         </g>
@@ -70,8 +70,8 @@
         <g id="phone-header">
           <rect id="phone-header-background" x="470.585" y="186.792" width="136.184" height="68.666" style="fill:#0c162d;" />
           <g id="phone-header-text">
-            <path d="M489.559,212.479L568.174,212.479" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
             <path d="M489.559,220.719L551.736,220.719" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
+            <path d="M489.559,212.479L568.174,212.479" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
             <path d="M489.559,228.959L561.074,228.959" style="fill:none;stroke:#233b72;stroke-width:3.6px;" />
           </g>
           <ellipse id="phone-interactive" cx="576.444" cy="255.458" rx="10.476" ry="10.437" style="fill:#f53;" />
@@ -87,9 +87,6 @@ export default {
   name: "DienstenItemSVGwebsite",
   data() {
     return {
-      // tlMorph: new Vue.$nuxt.$GSAP.TimelineMax({ paused: true }),
-      // tlMorph: new $GSAP.TimelineMax(),
-      // tlMorph: null,
       played: false,
     };
   }, // End data
@@ -127,12 +124,11 @@ export default {
           "sameTimeTwo",
         )
         .staggerFrom(
-          "#DienstWebsite #laptop #header-text *",
+          "#DienstWebsite #laptop #header-text path",
           baseTiming,
-          { drawSVG: "100% 100%" },
-          { drawSVG: "100%" },
+          { drawSVG: "0%" },
           0.1,
-          `-=${baseTiming * 4}`,
+          "sameTimeThree",
         )
         .from(
           "#DienstWebsite #laptop #interactive",
@@ -172,12 +168,11 @@ export default {
           "sameTimeTwo",
         )
         .staggerFrom(
-          "#DienstWebsite #phone #phone-header-text *",
+          "#DienstWebsite #phone #phone-header-text path",
           baseTiming,
-          { drawSVG: "100% 100%" },
-          { drawSVG: "100%" },
+          { drawSVG: "0%" },
           0.1,
-          `-=${baseTiming * 4}`,
+          "sameTimeThree",
         )
         .from(
           "#DienstWebsite #phone #phone-interactive",
@@ -276,6 +271,7 @@ export default {
       /* Convert un-morphable shapes to path ----------------------------------------- */
       MorphSVGPlugin.convertToPath(
         "circle, rect, ellipse, line, polygon, polyline",
+        "ellipse, rect",
       );
       const tlMorph = new this.$GSAP.TimelineMax();
       tlMorph

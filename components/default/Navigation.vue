@@ -3,7 +3,7 @@
     <div id="default-Navigation" class="container--full">
       <div class="inner">
         <nuxt-link to="/">
-          <img src="~/assets/images/logo-studio-alloy.svg" alt="Logo Studio Alloy">
+          <img class="alloy-logo" src="~/assets/images/logo-studio-alloy.svg" alt="Logo Studio Alloy">
         </nuxt-link>
         <button @click="updateNavigationToggle" id="navigationToggle" aria-haspopup="true" :data-navigation-toggle="getNavigationToggle">menu</button>
       </div>
@@ -35,15 +35,43 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import "~/assets/css/common/_variables.scss";
+#alloy-main-nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3500;
+  width: 100%;
+}
 #default-Navigation {
-  padding: $base-margin;
+  z-index: 3500;
+  > .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    > * {
+      display: block;
+    }
+  }
+  .alloy-logo {
+    display: block;
+    padding: $base-margin;
+    @include media-breakpoint-down(sm) {
+      width: 66px;
+    }
+  }
+}
+#default-Navigation {
+  // padding: $base-margin;
   background-color: $brand-dark;
 }
 #navigationToggle {
   @include media-breakpoint-down(sm) {
-    scale: 0.7;
+    transform-origin: right center;
+    transform: scale(0.7);
   }
   font-size: 20px;
+  padding: 0 25px;
   line-height: 1em;
   color: $brand-light;
   border: none;

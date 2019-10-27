@@ -208,8 +208,10 @@
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 250px;
+    width: 150px;
     @include media-breakpoint-up(lg) {
+      width: 250px;
+
       transform: translateX(-100px);
     }
   }

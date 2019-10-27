@@ -122,6 +122,7 @@ section {
 // Content logic
 //------------------------------------------------------//
 .flex-Content {
+  margin-bottom: $base-margin * 4;
   @include media-breakpoint-down(md) {
     padding-left: $base-margin;
     padding-right: $base-margin;

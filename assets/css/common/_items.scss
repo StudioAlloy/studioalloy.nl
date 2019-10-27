@@ -63,7 +63,6 @@
     @include media-breakpoint-down(md) {
       text-align: center;
     }
-    // margin-right: $base-margin * 4;
     @include media-breakpoint-up(lg) {
       font-size: 44px;
     }
@@ -354,9 +353,6 @@
     }
   }
 }
-.flex-Toolbox {
-}
-
 // END 🧰 Toolbox -------------------------------------//
 //------------------------------------------------------//
 // 🗺 Locaties

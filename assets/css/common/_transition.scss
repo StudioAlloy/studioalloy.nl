@@ -3,24 +3,24 @@
 //------------------------------------------------------//
 $base-transition: 300ms;
 // hide scrollbars when transtioning
-.page-enter-active,
-.page-leave-active,
-.page-enter,
-.page-leave-to {
-  // overflow: hidden;
-}
+// .page-enter-active,
+// .page-leave-active,
+// .page-enter,
+// .page-leave-to {
+//   // overflow: hidden;
+// }
 
-// Set the transtions on all states
-.page-enter-active,
-.page-leave-active {
-  // transition: transform, opacity;
-  // transition-duration: 300ms * 4;
-  // transition-timing-function: ease;
-}
-.page-enter,
-.page-leave-to {
-  // opacity: 0;
-}
+// // Set the transtions on all states
+// .page-enter-active,
+// .page-leave-active {
+//   // transition: transform, opacity;
+//   // transition-duration: 300ms * 4;
+//   // transition-timing-function: ease;
+// }
+// .page-enter,
+// .page-leave-to {
+//   // opacity: 0;
+// }
 .page-enter-active {
   animation-name: slideInPop;
   animation-duration: $base-transition * 4;
@@ -135,12 +135,6 @@ $base-transition: 300ms;
 .ui-slide-leave {
   opacity: 1;
   transform: translateY(0);
-}
-
-.alloy-intro {
-  > .inner {
-    max-width: 650px;
-  }
 }
 //------------------------------------------------------//
 // END UI transtions /starr

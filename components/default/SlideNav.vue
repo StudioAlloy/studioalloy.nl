@@ -141,13 +141,18 @@ export default {
     a {
       position: relative;
       display: inline-block;
-      padding: 5px $base-margin;
+      margin: 5px $base-margin;
       font-size: 30px;
       line-height: 1.6em;
       font-weight: 700;
       text-decoration: none;
+      &:before,
       &:after {
         content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
         display: block;
         height: 2px;
         width: 100%;
@@ -157,6 +162,14 @@ export default {
         transition: transform;
         transition-duration: 300ms;
         transition-timing-function: ease;
+      }
+      &:before {
+        background-color: $brand-one;
+      }
+      &.nuxt-link-exact-active {
+        &:before {
+          transform: scaleX(1);
+        }
       }
       &:hover {
         &:after {

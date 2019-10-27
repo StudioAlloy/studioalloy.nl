@@ -45,8 +45,6 @@ export default {
   @include media-breakpoint-up(lg) {
     padding-top: $base-margin * 6;
   }
-  .inner {
-  }
 }
 .intro {
   .alloy-title {
@@ -70,6 +68,6 @@ export default {
   @include media-breakpoint-up(lg) {
     order: 1;
   }
-  padding: $base-margin * 3;
+  // padding: $base-margin * 3;
 }
 </style>

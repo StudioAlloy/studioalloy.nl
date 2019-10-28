@@ -1,5 +1,5 @@
 <template>
-  <svg id="faseThree" width="100%" height="100%" viewBox="0 0 650 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+  <svg id="faseThree" @click="interactiveTimeline" :class="{ notPlayed: notPlayed }" width="100%" height="100%" viewBox="0 0 650 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g id="fasePrev">
       <g id="base">
         <path d="M325.626,388L103.923,516L325.626,644L547.328,516L325.626,388Z" style="fill:#1d2e55;" />
@@ -105,6 +105,7 @@ export default {
     return {
       fase: "faseThree",
       faseWatching: "faseTwo",
+      notPlayed: true,
     };
   }, // End data
   computed: {
@@ -114,97 +115,180 @@ export default {
     },
   },
   mounted() {
-    const timelineComplete = () => {
-      // 🎬 Start playing the looping part of the animation
-      this.timelineFaseThree.add(nestedTimelineFaseThreeSlowMove());
-      this.timelineFaseThree.add(nestedTimelineBubbles());
-
-      // Tell the 🛍 store that this fase has finished playing
-      this.$store.commit({
-        type: "items/setFasePlayed",
-        fase: this.fase,
-        bool: true,
-      });
-    };
-    // Basic values
-    const baseTiming = 0.3;
-
-    // Timeline stuff
-    // this.timelineFaseThree = new TimelineMax({ onComplete: timelineComplete });
     this.timelineFaseThree = new TimelineMax();
-
-    this.timelineFaseThree.pause();
-
-    function nestedTimelineFaseThreeSlowMove(elm) {
-      const tl = new TimelineMax({
-        repeat: -1,
-      });
-      tl.to(
-        "#faseThree #oven #fade",
-        baseTiming * 8,
-        { autoAlpha: 1, repeat: 1, yoyo: true, ease: Linear.easeNone },
-        0,
-      );
-      return tl;
-    }
-
-    function nestedTimelineBubbles(elm) {
-      const tl = new TimelineMax({
-        repeat: -1,
-      });
-      tl.staggerTo("#faseThree #oven #bubbles *", baseTiming * 16, {
-        y: -150,
-        opacity: 0,
-        ease: Power2.easeOut,
-        stagger: {
-          grid: [15, 9],
-          each: baseTiming * 3,
-        },
-      });
-      return tl;
-    }
-    this.timelineFaseThree
-      .from("#faseThree", baseTiming, { opacity: 0 })
-      .set("#faseThree #oven #fade", { autoAlpha: 0 })
-      .to("#faseThree #modules #bottom", baseTiming * 4, { y: -16.5 })
-      .to(
-        "#faseThree #modules #top",
-        baseTiming * 5,
-        { y: 16 },
-        `-=${baseTiming * 2}`,
-      )
-      .to(
-        "#faseThree #combined",
-        baseTiming * 8,
-        { y: 51 },
-        `+=${baseTiming * 3}`,
-      )
-      .from(
-        "#faseThree #fase",
-        baseTiming,
-        { opacity: 0 },
-        `+=${baseTiming * 3}`,
-      )
-      .to(
-        "#faseThree #oven #lid",
-        baseTiming * 3,
-        { y: -200, opacity: 0 },
-        `-=${baseTiming}`,
-      )
-      // .add(nestedTimelineFaseThreeSlowMove(), "sameTime")
-      .from(
-        "#faseThree #oven #side #slide",
-        baseTiming * 2,
-        { x: -4, y: -3 },
-        "sameTime",
-      );
-    // .add(nestedTimelineBubbles())
-    this.timelineFaseThree.eventCallback("onComplete", timelineComplete);
   },
   watch: {
     getFasePlayed(values) {
-      this.timelineFaseThree.play();
+      this.notPlayed = false;
+      this.timelineStart();
+    },
+  },
+  methods: {
+    timelineStart() {
+      // Basic values
+      const baseTiming = 0.3;
+      const timelineComplete = () => {
+        // 🎬 Start playing the looping part of the animation
+        this.timelineFaseThree.add(nestedTimelineFaseThreeSlowMove());
+        this.timelineFaseThree.add(nestedTimelineBubbles());
+
+        // Tell the 🛍 store that this fase has finished playing
+        this.$store.commit({
+          type: "items/setFasePlayed",
+          fase: this.fase,
+          bool: true,
+        });
+      };
+      this.timelineFaseThree.play().timeScale(1.5);
+      this.timelineFaseThree
+        // .from("#faseThree", baseTiming, { opacity: 0 })
+        // .set("#faseThree #oven #fade", { autoAlpha: 0 })
+        .to("#faseThree #modules #bottom", baseTiming * 4, { y: -16.5 })
+        .to(
+          "#faseThree #modules #top",
+          baseTiming * 5,
+          { y: 16 },
+          `-=${baseTiming * 2}`,
+        )
+        .to(
+          "#faseThree #combined",
+          baseTiming * 8,
+          { y: 51 },
+          `+=${baseTiming * 3}`,
+        )
+        .to(
+          "#faseThree #combined",
+          baseTiming * 8,
+          { y: 51 },
+          `+=${baseTiming * 3}`,
+        )
+        .to(
+          "#faseThree #combined",
+          baseTiming * 8,
+          { y: 51 },
+          `+=${baseTiming * 3}`,
+        )
+        .from("#faseThree #oven", baseTiming, { opacity: 0 })
+        .to("#faseThree #modules", baseTiming, { opacity: 0 }, "sameTime")
+        .to(
+          "#faseThree #oven #lid",
+          baseTiming * 3,
+          { y: -200, opacity: 0 },
+          `sameTime-=${baseTiming}`,
+        )
+        .staggerTo(
+          "#faseThree #oven #bubbles *",
+          baseTiming * 4,
+          {
+            y: -150,
+            opacity: 0,
+            ease: Power2.easeOut,
+            stagger: {
+              grid: [15, 9],
+              each: baseTiming,
+            },
+          },
+          "sameTime",
+        )
+        .set("#faseThree #oven #bubbles *", { clearProps: "y, opacity" })
+        .from(
+          "#faseThree #oven #side #slide",
+          baseTiming * 2,
+          { x: -4, y: -3 },
+          "sameTime",
+        )
+        .add(timelineComplete);
+      //------------------------------------------------------//
+      // ➰ Looping timeline ️❇️️ 🧦  GSAP
+      //------------------------------------------------------//
+      function nestedTimelineFaseThreeSlowMove(elm) {
+        const tl = new TimelineMax({
+          repeat: -1,
+        });
+        tl.to(
+          "#faseThree #oven #fade",
+          baseTiming * 8,
+          { autoAlpha: 1, repeat: 1, yoyo: true, ease: Linear.easeNone },
+          0,
+        );
+        return tl;
+      }
+      function nestedTimelineBubbles(elm) {
+        const tl = new TimelineMax({
+          repeat: -1,
+        });
+        tl.staggerTo("#faseThree #oven #bubbles *", baseTiming * 16, {
+          y: -150,
+          opacity: 0,
+          ease: Power2.easeOut,
+          stagger: {
+            grid: [15, 9],
+            each: baseTiming * 3,
+          },
+        });
+        return tl;
+      }
+      // END ➰ Looping timeline ️❇️️ 🧦  GSAP -------------------------------------//
+    },
+    interactiveTimeline() {
+      const baseTiming = 0.3;
+      this.timelineFaseThree.pause();
+      const resume = () => {
+        this.timelineFaseThree.resume();
+      };
+      const interactivetl = new TimelineMax();
+      interactivetl
+        .to("#faseThree #oven #bubbles *", baseTiming, { opacity: 0 })
+        .fromTo(
+          "#faseThree #oven",
+          baseTiming * 6,
+          {
+            x: -3,
+          },
+          { x: 0, ease: Elastic.easeOut.config(1, 0.1) },
+        )
+        .set("#faseThree #oven #bubbles *", { clearProps: "y, opacity" })
+        .staggerTo(
+          "#faseThree #oven #bubbles *",
+          baseTiming,
+          {
+            y: -150,
+            opacity: 0,
+            ease: Power2.easeOut,
+            stagger: {
+              grid: [15, 9],
+              each: 0.1,
+            },
+          },
+          `-=${baseTiming * 4}`,
+        )
+        .add(resume);
     },
   },
 };
 </script>
+<style lang="scss" scoped>
+@import "~/assets/css/common/_variables.scss";
+svg {
+  #fase {
+    #base1,
+    #platfrom {
+      opacity: 0;
+    }
+  }
+}
+svg.notPlayed {
+  #fase {
+    opacity: 0;
+  }
+  #fasePrev {
+    opacity: 1;
+    * {
+      opacity: 1;
+      stroke: $brand-three;
+      stroke-width: 1px;
+      fill: $brand-dark-lighten !important;
+    }
+  }
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <svg id="faseTwo" width="100%" height="100%" viewBox="0 0 650 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+  <svg id="faseTwo" @click="interactiveTimeline" :class="{ notPlayed: notPlayed }" width="100%" height="100%" viewBox="0 0 650 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g id="prev">
       <g id="basePrev">
         <path d="M330.004,396.139L108.542,524L325.241,649.111L546.703,521.25L330.004,396.139Z" style="fill:#1d2e55;" />
@@ -75,6 +75,7 @@ export default {
     return {
       fase: "faseTwo",
       faseWatching: "faseOne",
+      notPlayed: true,
     };
   }, // End data
   computed: {
@@ -84,117 +85,190 @@ export default {
     },
   },
   mounted() {
-    const timelineComplete = () => {
-      // 🎬 Start playing the looping part of the animation
-      this.timelineFaseTwo.add(
-        nestedTimelineFaseTwoSlowMove(),
-        `-=${baseTiming}`,
-      );
-
-      // Tell the 🛍 store that this fase has finished playing
-      this.$store.commit({
-        type: "items/setFasePlayed",
-        fase: this.fase,
-        bool: true,
-      });
-    };
-    // Basic values
-    const baseTiming = 0.3;
-
-    // Timeline stuff
-    // const timelineFaseTwo = new TimelineMax({ onComplete: timelineComplete });
-    // this.timelineFaseTwo = new TimelineMax({ onComplete: timelineComplete });
     this.timelineFaseTwo = new TimelineMax();
-
-    // Stop the timeline and wait for fase one to complete
-    this.timelineFaseTwo.pause();
-
-    function nestedTimelineFaseTwoSlowMove(elm) {
-      const tl = new TimelineMax({
-        repeat: -1,
-        yoyo: true,
-      });
-
-      tl.to("#faseTwo #modules #bottom", baseTiming * 4, {
-        y: 3,
-        ease: Power0.easeNone,
-      })
-        .to(
-          "#faseTwo #modules #middle",
-          baseTiming * 4,
-          { y: 3, ease: Power0.easeNone },
-          `-=${baseTiming * 3}`,
-        )
-        .to(
-          "#faseTwo #modules #top",
-          baseTiming * 4,
-          { y: 3, ease: Power0.easeNone },
-          `-=${baseTiming * 2}`,
-        )
-        .to(
-          "#faseTwo #modules #bottom",
-          baseTiming * 4,
-          { y: -3, ease: Power0.easeNone },
-          `-=${baseTiming * 1}`,
-        )
-        .to(
-          "#faseTwo #modules #middle",
-          baseTiming * 4,
-          { y: -3, ease: Power0.easeNone },
-          `-=${baseTiming * 2}`,
-        )
-        .to(
-          "#faseTwo #modules #top",
-          baseTiming * 4,
-          { y: -3, ease: Power0.easeNone },
-          `-=${baseTiming * 3}`,
-        );
-
-      return tl;
-    }
-
-    this.timelineFaseTwo
-      .from("#faseTwo", baseTiming, { opacity: 0 })
-      .to("#faseTwo #prev #boxPrev", baseTiming * 3, {
-        y: 18,
-        ease: Power4.easeIn,
-      })
-      .from("#FaseTwo #platfrom #boxPrev", baseTiming, { opacity: 0 })
-      .from("#faseTwo #fase", baseTiming * 7, { opacity: 0 })
-      .from("#faseTwo #modules #shadow", baseTiming, { opacity: 0 }, "same")
-      .from("#faseTwo #modules #bottom", baseTiming, { opacity: 0 }, "same")
-      .from(
-        "#faseTwo #modules #bottom",
-        baseTiming * 4,
-        { y: -400, ease: Elastic.easeOut.config(0.75, 0.95) },
-        `-=${baseTiming}`,
-      )
-      .from("#faseTwo #modules #middle", baseTiming, { opacity: 0 })
-      .from(
-        "#faseTwo #modules #middle",
-        baseTiming * 2,
-        { y: -400 },
-        `-=${baseTiming}`,
-      )
-      .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 6 }, "twoDown")
-      .to("#faseTwo #modules #middle", baseTiming * 2, { y: 6 }, "twoDown")
-      .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 0 }, "twoUp")
-      .to("#faseTwo #modules #middle", baseTiming * 2, { y: 0 }, "twoUp")
-      .from("#faseTwo #modules #top", baseTiming, { opacity: 0 })
-      .from("#faseTwo #modules #top", baseTiming * 2, { y: -400 }, "-=0.3")
-      .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 6 }, "threeDown")
-      .to("#faseTwo #modules #middle", baseTiming * 2, { y: 6 }, "threeDown")
-      .to("#faseTwo #modules #top", baseTiming * 2, { y: 6 }, "threeDown")
-      .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 0 }, "threeUp")
-      .to("#faseTwo #modules #middle", baseTiming * 2, { y: 0 }, "threeUp")
-      .to("#faseTwo #modules #top", baseTiming * 2, { y: 0 }, "threeUp");
-
-    this.timelineFaseTwo.eventCallback("onComplete", timelineComplete);
   },
   watch: {
     getFasePlayed(values) {
-      this.timelineFaseTwo.play();
+      this.notPlayed = false;
+      this.timelineStart();
+    },
+  },
+  methods: {
+    timelineStart() {
+      // Basic values
+      const baseTiming = 0.3;
+      // Timeline stuff
+      const timelineComplete = () => {
+        // 🎬 Start playing the looping part of the animation
+        this.timelineFaseTwo.add(
+          nestedTimelineFaseTwoSlowMove(),
+          `-=${baseTiming}`,
+        );
+        // Tell the 🛍 store that this fase has finished playing
+        this.$store.commit({
+          type: "items/setFasePlayed",
+          fase: this.fase,
+          bool: true,
+        });
+      };
+
+      this.timelineFaseTwo.play().timeScale(5);
+      this.timelineFaseTwo
+        .to("#faseTwo #prev #boxPrev", baseTiming * 3, {
+          y: 18,
+          ease: Power4.easeIn,
+        })
+        .from(
+          "#faseTwo #fase #basePrev",
+          baseTiming * 2,
+          { opacity: 0 },
+          "sameTime",
+        )
+        .from("#faseTwo #fase #box", baseTiming * 7, { opacity: 0 }, "sameTime")
+        .from(
+          "#faseTwo #fase #base",
+          baseTiming * 7,
+          { opacity: 0 },
+          "sameTime",
+        )
+        .from("#faseTwo #modules #shadow", baseTiming, { opacity: 0 }, "same")
+        .from("#faseTwo #modules #bottom", baseTiming, { opacity: 0 }, "same")
+        .from(
+          "#faseTwo #modules #bottom",
+          baseTiming * 4,
+          { y: -400, ease: Elastic.easeOut.config(0.75, 0.95) },
+          `-=${baseTiming}`,
+        )
+        .from("#faseTwo #modules #middle", baseTiming, { opacity: 0 })
+        .from(
+          "#faseTwo #modules #middle",
+          baseTiming * 2,
+          { y: -400 },
+          `-=${baseTiming}`,
+        )
+        .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 6 }, "twoDown")
+        .to("#faseTwo #modules #middle", baseTiming * 2, { y: 6 }, "twoDown")
+        .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 0 }, "twoUp")
+        .to("#faseTwo #modules #middle", baseTiming * 2, { y: 0 }, "twoUp")
+        .from("#faseTwo #modules #top", baseTiming, { opacity: 0 })
+        .from("#faseTwo #modules #top", baseTiming * 2, { y: -400 }, "-=0.3")
+        .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 6 }, "threeDown")
+        .to("#faseTwo #modules #middle", baseTiming * 2, { y: 6 }, "threeDown")
+        .to("#faseTwo #modules #top", baseTiming * 2, { y: 6 }, "threeDown")
+        .to("#faseTwo #modules #bottom", baseTiming * 2, { y: 0 }, "threeUp")
+        .to("#faseTwo #modules #middle", baseTiming * 2, { y: 0 }, "threeUp")
+        .to("#faseTwo #modules #top", baseTiming * 2, { y: 0 }, "threeUp")
+        .add(timelineComplete);
+      //------------------------------------------------------//
+      // ➰ Looping timeline ️❇️️ 🧦  GSAP
+      //------------------------------------------------------//
+      function nestedTimelineFaseTwoSlowMove(elm) {
+        const tl = new TimelineMax({
+          repeat: -1,
+          yoyo: true,
+        });
+        tl.to("#faseTwo #modules #bottom", baseTiming * 4, {
+          y: 3,
+          ease: Power0.easeNone,
+        })
+          .to(
+            "#faseTwo #modules #middle",
+            baseTiming * 4,
+            { y: 3, ease: Power0.easeNone },
+            `-=${baseTiming * 3}`,
+          )
+          .to(
+            "#faseTwo #modules #top",
+            baseTiming * 4,
+            { y: 3, ease: Power0.easeNone },
+            `-=${baseTiming * 2}`,
+          )
+          .to(
+            "#faseTwo #modules #bottom",
+            baseTiming * 4,
+            { y: -3, ease: Power0.easeNone },
+            `-=${baseTiming * 1}`,
+          )
+          .to(
+            "#faseTwo #modules #middle",
+            baseTiming * 4,
+            { y: -3, ease: Power0.easeNone },
+            `-=${baseTiming * 2}`,
+          )
+          .to(
+            "#faseTwo #modules #top",
+            baseTiming * 4,
+            { y: -3, ease: Power0.easeNone },
+            `-=${baseTiming * 3}`,
+          );
+        return tl;
+      }
+      // END ➰ Looping timeline ️❇️️ 🧦  GSAP -------------------------------------//
+    },
+    interactiveTimeline() {
+      const baseTiming = 0.3;
+      this.timelineFaseTwo.pause();
+      const resume = () => {
+        this.timelineFaseTwo.resume();
+      };
+      const interactivetl = new TimelineMax();
+      interactivetl
+        .to(
+          "#faseTwo #fase #modules #top",
+          baseTiming,
+          { y: -40, ease: Power0.easeNone },
+          "sameTime",
+        )
+        .to(
+          "#faseTwo #fase #modules #bottom",
+          baseTiming,
+          { y: 40, ease: Power0.easeNone },
+          "sameTime",
+        )
+        .to(
+          "#faseTwo #fase #modules #top",
+          0.1,
+          { y: 0, ease: Power0.easeNone },
+          "sameTimeTwo",
+        )
+        .to(
+          "#faseTwo #fase #modules #bottom",
+          0.1,
+          { y: 0, ease: Power0.easeNone },
+          "sameTimeTwo",
+        )
+        .fromTo(
+          "#faseTwo #fase #modules",
+          baseTiming * 8,
+          {
+            y: -20,
+            ease: Elastic.easeOut.config(1, 0.1),
+          },
+          {
+            y: 0,
+            ease: Elastic.easeOut.config(1, 0.1),
+          },
+        )
+        .add(resume);
     },
   },
 };
 </script>
+<style lang="scss" scoped>
+@import "~/assets/css/common/_variables.scss";
+
+svg.notPlayed {
+  #fase {
+    opacity: 0;
+  }
+  #prev {
+    opacity: 1;
+    * {
+      opacity: 1;
+      stroke: $brand-three;
+      stroke-width: 1px;
+      fill: $brand-dark-lighten !important;
+    }
+  }
+}
+</style>

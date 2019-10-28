@@ -96,6 +96,8 @@ export default {
         return tl;
       }
       timelineFaseOne
+        .timeScale(1.5)
+        // .timeScale(1.5)
         .staggerFrom("#faseOne #grid *", baseTiming * 6, {
           y: -400,
           ease: Power2.easeOut,

@@ -220,7 +220,6 @@ export default {
         { drawSVG: "0%" },
         { drawSVG: "100%" },
         0.2,
-        // `sameTimeThree+=${baseTiming}`,
       )
       .staggerFromTo(
         "#header-animation #design #text-body path",
@@ -251,6 +250,7 @@ export default {
         `-=${baseTiming}`,
       )
       .to("#header-animation #design", baseTiming * 4, {
+        delay: 2,
         y: -400,
         opacity: 0,
         ease: Power4.easeOut,
@@ -304,6 +304,7 @@ export default {
         "sameTimeDevTwo",
       )
       .to("#header-animation #dev", baseTiming * 4, {
+        delay: 2,
         y: -400,
         opacity: 0,
         ease: Power4.easeOut,
@@ -319,6 +320,7 @@ export default {
         ease: Power4.easeOut,
       })
       .to("#header-animation #data", baseTiming * 4, {
+        delay: 2,
         y: -400,
         opacity: 0,
         ease: Power4.easeOut,

@@ -112,7 +112,7 @@ export default {
         });
       };
 
-      this.timelineFaseTwo.play().timeScale(5);
+      this.timelineFaseTwo.play().timeScale(1.5);
       this.timelineFaseTwo
         .to("#faseTwo #prev #boxPrev", baseTiming * 3, {
           y: 18,

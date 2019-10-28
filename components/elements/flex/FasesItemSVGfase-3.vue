@@ -168,7 +168,7 @@ export default {
           { y: 51 },
           `+=${baseTiming * 3}`,
         )
-        .from("#faseThree #oven", baseTiming, { opacity: 0 })
+        .from("#faseThree #oven", baseTiming, { opacity: 0 }, "sameTime")
         .to("#faseThree #modules", baseTiming, { opacity: 0 }, "sameTime")
         .to(
           "#faseThree #oven #lid",

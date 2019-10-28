@@ -28,9 +28,9 @@ button,
     content: "";
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: 140%;
     bottom: 100%;
-    // left: -10%;
+    left: 0;
     z-index: -1;
     pointer-events: none;
     transform: rotate3d(0, 0, 1, 45deg) translate3d(0, -3em, 0);
@@ -46,7 +46,8 @@ button,
   &:hover {
     &:before,
     &:after {
-      transform: translate3d(0, 100%, 0);
+      // transform: translate3d(0, 100%, 0);
+      transform: rotate3d(0, 0, 1, 0) translate3d(0, 100%, 0);
     }
     &:after {
       transition-delay: 0.175s;

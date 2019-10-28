@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 @import "~/assets/css/common/_variables.scss";
 #default-Header {
-  padding-top: $base-margin * 2;
+  padding-top: $base-margin * 4;
   @include media-breakpoint-up(lg) {
     padding-top: $base-margin * 6;
   }

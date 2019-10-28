@@ -65,9 +65,10 @@ export default {
 }
 .alloy-illustration {
   order: -1;
+  padding: $base-margin * 3;
   @include media-breakpoint-up(lg) {
     order: 1;
+    padding: 0;
   }
-  // padding: $base-margin * 3;
 }
 </style>

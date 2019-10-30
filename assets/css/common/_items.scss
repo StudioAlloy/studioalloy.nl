@@ -285,7 +285,9 @@
   position: relative;
   color: $brand-dark;
   padding-bottom: $base-margin * 4;
-
+  > .inner {
+    align-items: flex-start;
+  }
   .background-clipped {
     background-color: $brand-light;
     position: absolute;
@@ -299,11 +301,15 @@
   }
 }
 .alloy-item--team {
+  @include media-breakpoint-down(md) {
+    max-width: 300px;
+  }
   text-align: center;
   > .inner {
-    padding: $base-margin * 2;
+    padding: $base-margin;
   }
   .alloy-image {
+    margin-bottom: $base-margin;
     @include media-breakpoint-up(xl) {
       padding: $base-margin * 4;
     }

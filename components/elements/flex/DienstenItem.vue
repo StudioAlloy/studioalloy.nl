@@ -3,7 +3,11 @@
 
     <div class="container-col">
       <span class="spacer col-60"></span>
-      <h2 class="alloy-title col-40" v-html="item.title"></h2>
+
+      <h2 class="alloy-title col-40">
+        <nuxt-link :to="`/dienst/${item.slug}`"><span v-html="item.title"></span></nuxt-link>
+      </h2>
+
     </div>
 
     <div class="inner">

@@ -14,7 +14,7 @@ button,
   display: inline-block;
   font-weight: 700;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 12px 25px;
   line-height: 1em;
   border-radius: $radius;
   z-index: 1;
@@ -57,13 +57,13 @@ button,
 .btn--alt {
   background-color: $brand-one;
   &:before {
-    background-color: lighten($brand-two, 10%);
+    background-color: lighten($brand-three, 10%);
   }
   &:after {
-    background-color: lighten($brand-two, 0%);
+    background-color: lighten($brand-three, 0%);
   }
   &:hover {
-    color: $brand-dark !important;
+    color: $brand-light !important;
   }
 }
 pre {

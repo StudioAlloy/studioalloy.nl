@@ -25,6 +25,7 @@ h4,
 h5,
 h6 {
   font-family: $font-header;
+  line-height: 1.4em;
 }
 h1,
 h2,
@@ -33,10 +34,11 @@ h4,
 h5,
 h6,
 p {
-  line-height: 1.6em;
-
   margin-top: 0;
   margin-bottom: $base-margin;
+}
+p {
+  line-height: 1.7em;
 }
 h1 {
   font-size: 34px;

@@ -108,7 +108,7 @@ export default {
         this.$store.commit({
           type: "items/setFasePlayed",
           fase: this.fase,
-          bool: true,
+          bool: new Date(),
         });
       };
 

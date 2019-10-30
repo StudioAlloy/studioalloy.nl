@@ -7,7 +7,7 @@
       </div>
     </div>
 
-    <div class="container-type--team container--medium">
+    <div class="container-type--team container--large">
       <div class="background-clipped"></div>
       <div class="inner container-col">
         <template v-for="(item, index) in team">

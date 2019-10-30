@@ -8,7 +8,7 @@
        100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" />
       </div>
       <h4>{{ item.title }}</h4>
-      <small>{{ item.excerpt }}</small>
+      <small v-html="item.excerpt"></small>
     </div>
   </div>
 </template>

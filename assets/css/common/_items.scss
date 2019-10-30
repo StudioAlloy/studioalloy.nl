@@ -304,6 +304,9 @@
     padding: $base-margin * 2;
   }
   .alloy-image {
+    @include media-breakpoint-up(xl) {
+      padding: $base-margin * 4;
+    }
     img {
       position: relative;
       object-fit: cover;

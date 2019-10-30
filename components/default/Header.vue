@@ -5,7 +5,15 @@
       <div class="inner container-col">
 
         <div class="intro col-60">
-          <h1 class="alloy-title" v-html="item.content"></h1>
+          <!-- <h1 class="alloy-title" v-html="item.content"></h1> -->
+          <h1 class="alloy-title">
+            <p>
+              <nuxt-link to="/"><strong>Studio Alloy</strong></nuxt-link> is een full-service bureau dat elke type organisatie of ondernemer ontzorgt op het gebied van digitale en online producten. Zoals een website, applicatie, online game, intranet, webshop, E-learning platform of web-based bestelsysteem.
+            </p>
+            <p>
+              Wij zijn gespecialiseerd in <nuxt-link to="/dienst/websites"><strong data-type="web-design">web design</strong></nuxt-link>, <nuxt-link to="/dienst/intranet"><strong data-type="development">development</strong></nuxt-link> en <nuxt-link to="/dienst/datavisualisatie/"><strong data-type="datavisualisatie">datavisualisatie</strong></nuxt-link>. Onze kracht is het visualiseren en realiseren van digitale producten van concept tot en met feilloze uitvoering.
+            </p>
+          </h1>
         </div>
 
         <div class="col-40 alloy-illustration">

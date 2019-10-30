@@ -188,10 +188,15 @@ export default {
         { scaleY: 0, transformOrigin: "bottom" },
         "sameTime",
       )
-      .from("#header-animation #design #design-base #bar", 0, { opacity: 0 })
-      .from("#header-animation #design #design-base #bar", baseTiming * 2, {
-        y: 40,
-      })
+      .from(
+        "#header-animation #design #design-base #bar",
+        baseTiming * 2,
+        {
+          opacity: 0,
+          y: 40,
+        },
+        `-=${baseTiming}`,
+      )
       .from("#header-animation #design #design-header", baseTiming, {
         scale: 0,
         transformOrigin: "center",
@@ -271,18 +276,18 @@ export default {
         { scaleY: 0, transformOrigin: "bottom" },
         "sameTimeDev",
       )
-      .from("#header-animation #dev #dev-base #dev-sidebar", baseTiming * 2, {
+      .from("#header-animation #dev #dev-base #dev-sidebar", baseTiming, {
         scaleX: 0,
       })
       .from(
         "#header-animation #dev #dev-base #dev-bar",
-        0,
-        { opacity: 0 },
-        `-=${baseTiming * 2}`,
+        baseTiming,
+        {
+          opacity: 0,
+          y: 40,
+        },
+        `-=${baseTiming}`,
       )
-      .from("#header-animation #dev #dev-base #dev-bar", baseTiming * 2, {
-        y: 40,
-      })
       .from("#header-animation #dev #dev-minimap", baseTiming * 2, {
         y: 40,
         opacity: 0,

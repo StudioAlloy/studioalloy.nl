@@ -166,7 +166,7 @@ export default {
           "#faseThree #combined",
           baseTiming * 8,
           { y: 51 },
-          `+=${baseTiming * 3}`,
+          `+=${baseTiming}`,
         )
         .from("#faseThree #oven", baseTiming, { opacity: 0 }, "sameTime")
         .to("#faseThree #modules", baseTiming, { opacity: 0 }, "sameTime")

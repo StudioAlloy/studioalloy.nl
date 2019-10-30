@@ -140,7 +140,8 @@ export default {
             y: 50,
             opacity: 0,
           },
-          baseTiming,
+          0.1,
+          "sameTime",
         )
         .from(
           "#DienstDatavis #interactive",

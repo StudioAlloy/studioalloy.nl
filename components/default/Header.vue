@@ -62,6 +62,9 @@ export default {
     @include media-breakpoint-up(lg) {
       font-size: 30px;
     }
+    p {
+      line-height: 1.5em;
+    }
   }
 }
 #default-Header {

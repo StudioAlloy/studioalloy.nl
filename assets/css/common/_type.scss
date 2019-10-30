@@ -10,12 +10,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-up(md) {
     font-size: 18px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: 22px;
   }
 }
 @include media-breakpoint-up(md) {
   body {
+  }
+}
+.alloy-cards {
+  font-size: 16px;
+  @include media-breakpoint-up(lg) {
+    font-size: 18px;
   }
 }
 h1,

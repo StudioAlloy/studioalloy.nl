@@ -168,13 +168,13 @@ export default {
           { y: 51 },
           `+=${baseTiming}`,
         )
-        .from("#faseThree #oven", baseTiming, { opacity: 0 }, "sameTime")
         .to("#faseThree #modules", baseTiming, { opacity: 0 }, "sameTime")
+        .from("#faseThree #oven", baseTiming, { opacity: 0 }, "sameTime")
         .to(
           "#faseThree #oven #lid",
-          baseTiming * 3,
+          baseTiming * 2,
           { y: -200, opacity: 0 },
-          `sameTime-=${baseTiming}`,
+          `-=${baseTiming}`,
         )
         .staggerTo(
           "#faseThree #oven #bubbles *",
@@ -246,6 +246,7 @@ export default {
             x: -3,
           },
           { x: 0, ease: Elastic.easeOut.config(1, 0.1) },
+          "sameTime",
         )
         .set("#faseThree #oven #bubbles *", { clearProps: "y, opacity" })
         .staggerTo(
@@ -260,8 +261,9 @@ export default {
               each: 0.1,
             },
           },
-          `-=${baseTiming * 4}`,
+          "sameTime",
         )
+        // .set("#faseThree #oven #bubbles *", { clearProps: "y, opacity" })
         .add(resume);
     },
   },

@@ -136,7 +136,7 @@ export default {
         this.$store.commit({
           type: "items/setFasePlayed",
           fase: this.fase,
-          bool: true,
+          date: new Date(),
         });
       };
       this.timelineFaseThree.play().timeScale(1.5);

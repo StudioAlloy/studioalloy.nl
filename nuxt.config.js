@@ -30,10 +30,10 @@ module.exports = {
         property: "og:description",
         content: "Wij maken impact met pixels",
       },
-      { property: "og:url", content: "" },
+      { property: "og:url", content: "https://studioalloy.nl" },
       {
         property: "og:image",
-        content: "",
+        content: "https://studioalloy.nl/share.jpg",
       },
     ],
     link: [

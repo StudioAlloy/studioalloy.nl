@@ -5,6 +5,16 @@ query GetLocaties {
       acfLocaties {
         adres
       }
+      featuredImage {
+        sourceUrl
+        altText
+        mediaDetails {
+          sizes {
+            sourceUrl
+            width
+          }
+        }
+      }
     }
   }
 }

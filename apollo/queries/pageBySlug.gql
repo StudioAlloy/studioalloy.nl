@@ -10,7 +10,7 @@ query GET_PAGE_BY_URI($uri: String) {
         ... on Page_Acfflex_Flex_Content {
           content
         }
-        ... on Dienst_Acfflex_Flex_Case {
+        ... on Page_Acfflex_Flex_Case {
           order
           content
           image {

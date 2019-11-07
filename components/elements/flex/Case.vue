@@ -62,7 +62,11 @@ export default {
       const timeline = new this.$GSAP.TimelineMax();
       const trigger = this.$refs.trigger;
       const overlay = this.$refs.trigger.querySelector(".overlay");
-      timeline.to(overlay, 1, { scaleX: 0 });
+      const content = this.$refs.trigger.querySelector(".alloy-cards");
+      timeline
+        .to(overlay, 1, { scaleX: 0 }, "sameTime")
+        .from(content, 2, { y: 500 }, "sameTime");
+      // .fromTo(content, 2, { y: 200 }, { y: -200 }, "sameTime");
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
       //------------------------------------------------------//
       // 🎩 ScrollMagic scene
@@ -71,7 +75,7 @@ export default {
       const scene = new this.$ScrollMagic.Scene({
         triggerElement: trigger,
         tweenChanges: true,
-        duration: 300,
+        duration: 500,
         // offset: 400,
         // reverse: false,
       })

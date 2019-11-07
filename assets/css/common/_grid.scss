@@ -42,6 +42,12 @@ section {
     padding-top: $base-margin * 6;
     padding-bottom: $base-margin * 6;
   }
+  &.section-large {
+    @include media-breakpoint-up(lg) {
+      padding-top: $base-margin * 9;
+      padding-bottom: $base-margin * 9;
+    }
+  }
 }
 [class*="container--"] {
   position: relative;
@@ -232,3 +238,20 @@ footer {
   }
 }
 // END backgrounds -------------------------------------//
+//------------------------------------------------------//
+// Ornaments
+//------------------------------------------------------//
+#Ornaments {
+  .alloy-left,
+  .alloy-right {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+  }
+  .alloy-right {
+    left: auto;
+    right: 0;
+  }
+}
+// END Ornaments -------------------------------------//

@@ -2,11 +2,13 @@
   <div class="alloy-layout-default">
     <Navigation />
     <nuxt />
+    <!-- <Ornaments /> -->
     <Footer />
   </div>
 </template>
 <script>
 import Navigation from "@/components/default/Navigation.vue";
+import Ornaments from "@/components/default/Ornaments.vue";
 import Footer from "@/components/default/Footer.vue";
 
 export default {
@@ -23,6 +25,7 @@ export default {
   },
   components: {
     Navigation,
+    Ornaments,
     Footer,
   },
 };

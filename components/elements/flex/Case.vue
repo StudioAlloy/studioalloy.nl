@@ -1,5 +1,5 @@
 <template>
-  <section class="flex-Case" ref="trigger">
+  <section class="flex-Case section-large" ref="trigger">
     <div class="container--large">
       <div class="inner">
 

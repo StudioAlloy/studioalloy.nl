@@ -167,12 +167,12 @@ export default {
     const baseTiming = 0.3;
 
     // Timeline stuf
-    const timelineHeaderDevelopment = new this.$GSAP.TimelineMax({
+    const timelineMain = new this.$GSAP.TimelineMax({
       repeat: -1,
     });
     // Base ease full timeline
 
-    timelineHeaderDevelopment
+    timelineMain
       //------------------------------------------------------//
       // 🖌 Design animation
       //------------------------------------------------------//

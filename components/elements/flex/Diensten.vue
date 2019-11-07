@@ -33,7 +33,7 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(this.animationDiensten);
+    // this.$nextTick(this.animationDiensten);
   },
   destroyed() {
     // Destroy ScrollMagic when our component is removed from DOM
@@ -41,36 +41,34 @@ export default {
   },
   methods: {
     animationDiensten() {
-      //------------------------------------------------------//
-      // Timeline ❇️ 🧦 GSAP
-      //------------------------------------------------------//
-      // Basic values
-      const baseTiming = 0.3;
-
-      // Timeline stuff
-      const timelineDiensten = new this.$GSAP.TimelineMax();
-
-      timelineDiensten.staggerFrom(
-        ".container-type--Diensten > .inner > *",
-        baseTiming * 2,
-        {
-          y: 100,
-          opacity: 0,
-        },
-        baseTiming,
-      );
-      // END Timeline ❇️ 🧦  GSAP -------------------------------------//
-      //------------------------------------------------------//
-      // 🎩 ScrollMagic scene
-      //------------------------------------------------------//
-      const controller = new this.$ScrollMagic.Controller();
-      const scene = new this.$ScrollMagic.Scene({
-        triggerElement: ".container-type--Diensten",
-        reverse: false,
-      })
-        .setTween(timelineDiensten)
-        .addTo(controller);
-      // ENDcontrollerMagic scene -------------------------------------//
+      // //------------------------------------------------------//
+      // // Timeline ❇️ 🧦 GSAP
+      // //------------------------------------------------------//
+      // // Basic values
+      // const baseTiming = 0.3;
+      // // Timeline stuff
+      // const timelineDiensten = new this.$GSAP.TimelineMax();
+      // timelineDiensten.staggerFrom(
+      //   ".container-type--Diensten > .inner > *",
+      //   baseTiming * 2,
+      //   {
+      //     y: 100,
+      //     opacity: 0,
+      //   },
+      //   baseTiming,
+      // );
+      // // END Timeline ❇️ 🧦  GSAP -------------------------------------//
+      // //------------------------------------------------------//
+      // // 🎩 ScrollMagic scene
+      // //------------------------------------------------------//
+      // const controller = new this.$ScrollMagic.Controller();
+      // const scene = new this.$ScrollMagic.Scene({
+      //   triggerElement: ".container-type--Diensten",
+      //   reverse: false,
+      // })
+      //   .setTween(timelineDiensten)
+      //   .addTo(controller);
+      // // END controllerMagic scene -------------------------------------//
     },
   },
 };

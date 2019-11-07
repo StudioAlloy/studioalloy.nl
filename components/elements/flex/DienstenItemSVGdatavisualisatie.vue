@@ -78,23 +78,23 @@ export default {
     return {};
   }, // End data
   mounted() {
-    // this.$nextTick(this.timelineDienstDatavis);
+    // this.$nextTick(this.timelineMain);
     this.$nextTick(() => {
-      this.timelineDienstDatavis();
+      this.timelineMain();
       this.tlMorph = new this.$GSAP.TimelineMax();
     });
   },
   methods: {
-    timelineDienstDatavis() {
+    timelineMain() {
       //------------------------------------------------------//
       // Timeline ❇️ 🧦 GSAP
       //------------------------------------------------------//
       // Basic values
       const baseTiming = 0.3;
       // Timeline stuf
-      const timelineDienstDatavis = new this.$GSAP.TimelineMax();
+      const timelineMain = new this.$GSAP.TimelineMax();
       // Base ease full timeline
-      timelineDienstDatavis
+      timelineMain
         // 💻 laptop animation
         .from("#DienstDatavis #laptop #laptop-base-screen", baseTiming * 2, {
           scaleY: 0,
@@ -195,7 +195,7 @@ export default {
         offset: -200,
         reverse: false,
       })
-        .setTween(timelineDienstDatavis)
+        .setTween(timelineMain)
         .addTo(controller);
       // ENDcontrollerMagic scene -------------------------------------//
     },

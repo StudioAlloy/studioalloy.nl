@@ -114,26 +114,22 @@ export default {
     return {};
   }, // End data
   mounted() {
-    // this.$nextTick(this.timelineDienstIntranet);
     this.$nextTick(() => {
-      this.timelineDienstIntranet();
+      this.timelineMain();
       this.tlMorph = new this.$GSAP.TimelineMax();
     });
   },
   methods: {
-    timelineDienstIntranet() {
+    timelineMain() {
       //------------------------------------------------------//
       // Timeline ❇️ 🧦 GSAP
       //------------------------------------------------------//
       // Basic values
-      // Basic values
       const baseTiming = 0.3;
       // Timeline stuf
-      const timelineDienstIntranet = new this.$GSAP.TimelineMax();
+      const timelineMain = new this.$GSAP.TimelineMax();
       // Base ease full timeline
-
-      timelineDienstIntranet
-        .set("#DienstIntranet #animate-in", { autoAlpha: 0 })
+      timelineMain
         .from("#DienstIntranet #base", baseTiming * 2, { y: 500 })
         .from("#DienstIntranet #sidebar", baseTiming * 2, {
           scaleX: 0,
@@ -207,24 +203,16 @@ export default {
         offset: -200,
         reverse: false,
       })
-        .setTween(timelineDienstIntranet)
+        .setTween(timelineMain)
         .addTo(controller);
       // ENDcontrollerMagic scene -------------------------------------//
     },
     interactiveMorph() {
       const baseTiming = 0.3;
-      /* Convert un-morphable shapes to path ----------------------------------------- */
-      // MorphSVGPlugin.convertToPath(
-      //   "circle, rect, ellipse, line, polygon, polyline",
-      // );
-      // const tlMorph = new this.$GSAP.TimelineMax();
-
       // What 🔁 direction should the animation play ----------------------------------------- /
-      // this.tlMorph.eventCallback("onComplete", tlDirection);
       const tlDirection = () => {
         this.played = !this.played;
       };
-      // this.played ? this.tlMorph.reverse() : this.tlMorph.play();
       if (this.played) {
         this.tlMorph.reverse();
         tlDirection();
@@ -235,7 +223,6 @@ export default {
           .from("#DienstIntranet #animate-in", baseTiming * 2, {
             scale: 0,
             transformOrigin: "center",
-            // ease: Elastic.easeOut.config(1, 0.3),
           })
           .staggerFrom(
             "#DienstIntranet #animate-in #header *",
@@ -285,3 +272,8 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+#DienstIntranet #animate-in {
+  opacity: 0;
+}
+</style>

@@ -10,6 +10,20 @@ query GET_PAGE_BY_URI($uri: String) {
         ... on Page_Acfflex_Flex_Content {
           content
         }
+        ... on Dienst_Acfflex_Flex_Case {
+          order
+          content
+          image {
+            sourceUrl
+            altText
+            mediaDetails {
+              sizes {
+                sourceUrl
+                width
+              }
+            }
+          }
+        }
         ... on Page_Acfflex_Flex_CallToAction {
           content
           button {

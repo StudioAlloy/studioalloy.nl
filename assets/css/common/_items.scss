@@ -425,3 +425,80 @@
   }
 }
 // END 🗺 Locaties -------------------------------------//
+//------------------------------------------------------//
+// 🧳 Cases
+//------------------------------------------------------//
+.container-type--Case {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  > * {
+    flex-grow: 1;
+  }
+
+  .alloy-cards {
+    // width: 600px;
+    max-width: 600px;
+    position: relative;
+    z-index: 100;
+    @include media-breakpoint-down(sm) {
+      transform: translateY(-40px);
+    }
+
+    > .inner {
+      @include media-breakpoint-up(lg) {
+        padding: $base-margin * 2;
+      }
+    }
+    p {
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .image-container {
+    position: relative;
+    // overflow: hidden;
+    order: -1;
+
+    .alloy-image {
+      img {
+        width: 100%;
+      }
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120%;
+      height: 100%;
+      pointer-events: none;
+      background-color: $brand-dark-lighten;
+      transform: skew(15deg) translateX(-10%);
+      transform-origin: right center;
+    }
+  }
+  // 🖥 Large screens
+  @include media-breakpoint-up(xl) {
+    .alloy-cards {
+      transform: translateX(100px);
+    }
+    .image-container {
+      order: 1;
+    }
+    &[data-order="left"] {
+      .image-container {
+        order: -1;
+        .overlay {
+          transform-origin: left center;
+        }
+      }
+      .alloy-cards {
+        transform: translateX(-100px);
+      }
+    }
+  }
+}
+// END 🧳 Cases -------------------------------------//

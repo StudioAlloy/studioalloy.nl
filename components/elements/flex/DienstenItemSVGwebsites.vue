@@ -92,22 +92,22 @@ export default {
   }, // End data
   mounted() {
     this.$nextTick(() => {
-      this.timelineDienstenWebsites();
+      this.timelineMain();
       this.tlMorph = new this.$GSAP.TimelineMax();
     });
   },
   created() {},
   methods: {
-    timelineDienstenWebsites() {
+    timelineMain() {
       //------------------------------------------------------//
       // Timeline ❇️ 🧦 GSAP
       //------------------------------------------------------//
       // Basic values
       const baseTiming = 0.3;
       // Timeline stuff
-      const timelineDienstenWebsites = new this.$GSAP.TimelineMax();
+      const timelineMain = new this.$GSAP.TimelineMax();
       // Base ease full timeline
-      timelineDienstenWebsites
+      timelineMain
         // 💻 laptop animation
         .from(
           "#DienstWebsite #laptop #laptop-base-screen",
@@ -267,7 +267,7 @@ export default {
         offset: -200,
         reverse: false,
       })
-        .setTween(timelineDienstenWebsites)
+        .setTween(timelineMain)
         .addTo(controller);
       // END controllerMagic scene -------------------------------------//
     },

@@ -22,13 +22,13 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: "Wij maken impact met pixels",
+        content: "Wij zijn makers. De technisch handige jongens. De doeners. En wij maken impact met pixels.",
       },
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Studio Alloy | Webdesign & development" },
       {
         property: "og:description",
-        content: "Wij maken impact met pixels",
+        content: "Wij zijn makers. De technisch handige jongens. De doeners. En wij maken impact met pixels.",
       },
       { property: "og:url", content: "https://studioalloy.nl" },
       {

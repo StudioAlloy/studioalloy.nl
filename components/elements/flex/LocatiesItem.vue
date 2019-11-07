@@ -3,12 +3,20 @@
     <div class="inner">
       <div class="alloy-image">
         <!-- <img :src="item.featuredImage.sourceUrl" :alt="`Tool: ${item.title}`" /> -->
-        <img src="@/static/deleteme.jpg" :alt="`Locatie: ${item.title}`" />
+        <img :src="item.featuredImage.sourceUrl" sizes="(min-width: 1200px) 33vw,
+       (min-width: 768px) 300px,
+       (min-width: 576px) 200px,
+       100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" />
       </div>
       <div class="alloy-content">
+        <h3 class="alloy-title">{{ item.title }}</h3>
+        <span v-html="item.acfLocaties.adres"></span>
+
+      </div>
+      <!-- <div class="alloy-content">
         <span v-html="item.acfLocaties.adres"></span>
         <strong>{{ item.title }}</strong>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

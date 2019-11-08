@@ -15,12 +15,12 @@
 
     <nav class="alloy-nav--privacy">
       <ul>
-        <li>
+        <!-- <li>
           <a href="https://wp-studio-alloy-api.s3.eu-central-1.amazonaws.com/2019/10/Algemene-Voorwaarden-Studio-Alloy.pdf" target="_blank">Algemene voorwaarden</a>
-        </li>
-        <!-- <li v-for="(item, index) in menuByLocation" :key="index">
-          <nuxt-link :to="item.node.url">{{item.node.label}}</nuxt-link>
         </li> -->
+        <li v-for="(item, index) in menuByLocation" :key="index">
+          <nuxt-link :to="item.node.url">{{item.node.label}}</nuxt-link>
+        </li>
       </ul>
     </nav>
   </footer>
@@ -50,7 +50,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.alloy-logo {
+  span {
+    font-size: 18px;
+  }
+}
 * {
-  font-size: 18px;
+  font-size: 16px;
 }
 </style>

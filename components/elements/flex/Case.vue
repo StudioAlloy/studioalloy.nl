@@ -76,7 +76,7 @@ export default {
         triggerElement: trigger,
         tweenChanges: true,
         duration: 500,
-        // offset: 400,
+        offset: -300,
         // reverse: false,
       })
         .setTween(timeline)

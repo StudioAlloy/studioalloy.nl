@@ -35,7 +35,7 @@ export default {
 .component-NotificationsContainer {
   position: fixed;
   right: $base-margin;
-  top: $base-margin * 7;
+  bottom: $base-margin;
   width: 100%;
   z-index: 9000;
   max-width: 300px;

@@ -189,7 +189,9 @@ footer {
   .alloy-nav--privacy {
     background-color: $brand-three;
     padding: $base-margin;
-    width: 500px;
+    @include media-breakpoint-up(lg) {
+      width: 500px;
+    }
     max-width: 100%;
 
     a {

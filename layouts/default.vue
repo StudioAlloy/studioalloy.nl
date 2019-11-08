@@ -34,7 +34,8 @@ export default {
   mounted() {
     const notification = {
       title: "Wij gebruiken cookies!",
-      content: "Deze site gebruikt alleen voor analytische doeleinden.",
+      content:
+        "Alleen om de werking van deze website te verbeteren. Deze data wordt niet gedeeld met derden en binnen 2 jaar verwijderd.",
       image: "",
       type: "",
       timer: 10000,

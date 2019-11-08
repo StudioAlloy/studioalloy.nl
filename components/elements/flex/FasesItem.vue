@@ -1,7 +1,9 @@
 <template>
   <div class="flex-FasesItem">
     <component :is="componentSVG"></component>
-    <h3>{{item.title}}</h3>
+    <nuxt-link to="/workflow">
+      <h3>{{item.title}}</h3>
+    </nuxt-link>
   </div>
 </template>
 

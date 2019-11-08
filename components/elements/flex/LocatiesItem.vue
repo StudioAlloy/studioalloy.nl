@@ -11,12 +11,8 @@
       <div class="alloy-content">
         <h3 class="alloy-title">{{ item.title }}</h3>
         <span v-html="item.acfLocaties.adres"></span>
-
-      </div>
-      <!-- <div class="alloy-content">
-        <span v-html="item.acfLocaties.adres"></span>
         <strong>{{ item.title }}</strong>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

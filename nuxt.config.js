@@ -51,7 +51,9 @@ module.exports = {
     routes: [
       '/portfolio',
       '/about',
+      '/workflow',
       '/contact',
+      '/hangout',
       '/dienst/websites',
       '/dienst/intranet',
       '/dienst/datavisualisatie',

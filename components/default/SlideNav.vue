@@ -89,7 +89,7 @@ export default {
     width: 450px;
   }
   > .inner {
-    margin-bottom: $base-margin * 3;
+    margin-bottom: $base-margin * 2;
   }
   //------------------------------------------------------//
   // Animate 🏎 slide navigation

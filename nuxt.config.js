@@ -53,6 +53,7 @@ module.exports = {
       '/over',
       '/workflow',
       '/contact',
+      '/privacy',
       '/project/websites',
       '/project/intranet',
       '/project/datavisualisatie',
@@ -65,6 +66,11 @@ module.exports = {
     "@nuxtjs/apollo",
     '@nuxtjs/redirect-module',
   ],
+  render: {
+    static: {
+      maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+  },
   redirect: [
     { from: '^/team', to: '/over' }, // Many urls to one
     { from: '^/team/(.*)$', to: '/over' }, // Many urls to one

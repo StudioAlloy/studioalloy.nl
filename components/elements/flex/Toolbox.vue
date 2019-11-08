@@ -41,10 +41,6 @@ export default {
   mounted() {
     this.$nextTick(this.toolboxAnimation);
   },
-  destroyed() {
-    // Destroy ScrollMagic when our component is removed from DOM
-    // controller = controller.destroy();
-  },
   methods: {
     toolboxAnimation() {
       //------------------------------------------------------//

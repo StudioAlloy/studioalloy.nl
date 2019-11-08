@@ -6,6 +6,12 @@ query GetToolbox {
       featuredImage {
         sourceUrl
         altText
+        mediaDetails {
+          sizes {
+            sourceUrl
+            width
+          }
+        }
       }
     }
   }

@@ -2,10 +2,7 @@
   <div class="alloy-item alloy-item--team">
     <div class="inner">
       <div class="alloy-image">
-        <img :src="item.featuredImage.sourceUrl" sizes="(min-width: 1200px) 33vw,
-       (min-width: 768px) 300px,
-       (min-width: 576px) 200px,
-       100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" />
+        <img :src="item.featuredImage.sourceUrl" sizes="(min-width: 768px) 270px, 100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" />
       </div>
       <h4>{{ item.title }}</h4>
       <small v-html="item.excerpt"></small>

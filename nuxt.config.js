@@ -49,11 +49,10 @@ module.exports = {
   generate: {
     dir: "docs",
     routes: [
-      '/portfolio',
-      '/about',
+      '/projecten',
+      '/over',
       '/workflow',
       '/contact',
-      '/hangout',
       '/dienst/websites',
       '/dienst/intranet',
       '/dienst/datavisualisatie',

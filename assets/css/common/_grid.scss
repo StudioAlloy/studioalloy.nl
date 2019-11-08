@@ -85,19 +85,6 @@ section {
     max-width: 770px;
   }
 }
-// .container--large,
-// .container--medium,
-// .container--small {
-//   @include media-breakpoint-down(md) {
-//     padding: $base-margin;
-//   }
-// }
-// .container-type--Diensten {
-//   padding-bottom: $base-margin * 4;
-//   @include media-breakpoint-up(lg) {
-//     padding-bottom: $base-margin * 8;
-//   }
-// }
 .container-type--Diensten {
   z-index: 500;
 }
@@ -112,13 +99,6 @@ section {
   align-items: center;
   flex-flow: row wrap;
 
-  // // Saidly this is not supported
-  // > [data-column] {
-  //   flex-grow: 1;
-  //   max-width: attr(data-column);
-  // }
-
-  // > [class*="col-"] {
   > * {
     flex-grow: 1;
     @include media-breakpoint-up(lg) {

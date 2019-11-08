@@ -1,0 +1,2 @@
+/_nuxt/*.js
+  Cache-Control: public, s-max-age=604800

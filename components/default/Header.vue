@@ -11,7 +11,7 @@
               <nuxt-link to="/"><strong>Studio Alloy</strong></nuxt-link> is een full-service web bureau dat elke type organisatie of ondernemer ontzorgt op het gebied van digitale en online producten. Zoals een website, applicatie, online game, intranet, webshop, E-learning platform of web-based bestelsysteem.
             </p>
             <p>
-              Wij zijn gespecialiseerd in <nuxt-link to="/dienst/websites"><strong data-type="web-design">webdesign</strong></nuxt-link>, <nuxt-link to="/dienst/intranet"><strong data-type="development">development</strong></nuxt-link> en <nuxt-link to="/dienst/datavisualisatie/"><strong data-type="datavisualisatie">datavisualisatie</strong></nuxt-link>. Onze kracht is het visualiseren en realiseren van digitale producten van concept tot en met feilloze uitvoering.
+              Wij zijn gespecialiseerd in <nuxt-link to="/project/websites"><strong data-type="web-design">webdesign</strong></nuxt-link>, <nuxt-link to="/project/intranet"><strong data-type="development">development</strong></nuxt-link> en <nuxt-link to="/project/datavisualisatie/"><strong data-type="datavisualisatie">datavisualisatie</strong></nuxt-link>. Onze kracht is het visualiseren en realiseren van digitale producten van concept tot en met feilloze uitvoering.
             </p>
           </h1>
         </div>

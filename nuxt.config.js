@@ -71,6 +71,7 @@ module.exports = {
   plugins: [
     { src: '~/plugins/ScrollMagic.js', ssr: false },
     { src: '~/plugins/ogmeta.js', ssr: true },
+    { src: '~plugins/ga.js', mode: 'client' },
   ],
   // END 📦 
   manifest: {

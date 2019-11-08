@@ -1,35 +1,31 @@
 <template>
   <div class="component-NotificationsContainer">
     <transition-group name="slide-in" mode="out-in">
-      <Notification
-        v-for="(notification) in getNotifications"
-        :key="notification.id"
-        :notification="notification"
-      />
+      <Notification v-for="(notification) in getNotifications" :key="notification.id" :notification="notification" />
     </transition-group>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import Notification from "@/components/default/Notification.vue";
+import Notification from "@/components/elements/Notification.vue";
 
 export default {
   // props: ['item'],
   name: "NotificationsContainer",
   components: {
-    Notification
+    Notification,
   },
   data() {
     return {
-      title: "NotificationsContainer"
+      title: "NotificationsContainer",
     };
   }, // End data
   computed: {
     ...mapGetters({
-      getNotifications: "notifications/getNotifications"
-    })
-  }
+      getNotifications: "notifications/getNotifications",
+    }),
+  },
 };
 </script>
 
@@ -39,7 +35,7 @@ export default {
 .component-NotificationsContainer {
   position: fixed;
   right: $base-margin;
-  top: $base-margin;
+  top: $base-margin * 7;
   width: 100%;
   z-index: 9000;
   max-width: 300px;

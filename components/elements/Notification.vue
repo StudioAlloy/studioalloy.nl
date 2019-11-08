@@ -1,12 +1,8 @@
 <template>
-  <div
-    class="alloy-cards alloy-items alloy-items--tools"
-    :data-type="notification.type"
-    @click="notificationRemove(notification.id)"
-  >
+  <div class="alloy-cards alloy-items alloy-items--tools" :data-type="notification.type" @click="notificationRemove(notification.id)">
     <div class="close" @click="notificationRemove(notification.id)">
       <icon-base width="20" height="20" icon-name="close">
-        <icon-close/>
+        <icon-close />
       </icon-base>
     </div>
 
@@ -20,7 +16,7 @@
 </template>
 
 <script>
-import IconBase from "@/components/IconBase.vue";
+import IconBase from "@/components/icons/IconBase.vue";
 import IconClose from "@/components/icons/IconClose.vue";
 export default {
   props: ["notification"],
@@ -28,11 +24,11 @@ export default {
   components: {
     // Icon logic
     IconBase,
-    IconClose
+    IconClose,
   },
   data() {
     return {
-      title: "Notification"
+      title: "Notification",
     };
   }, // End data
   methods: {
@@ -43,11 +39,11 @@ export default {
       setTimeout(() => {
         this.notificationRemove(id);
       }, timer);
-    }
+    },
   },
   mounted() {
     this.notificationTimer(this.notification.index, this.notification.timer);
-  }
+  },
 };
 </script>
 
@@ -61,9 +57,12 @@ export default {
   line-height: 1.4em;
   color: $brand-light;
   margin-bottom: $base-margin;
+  border-radius: $radius;
+
   .alloy-title {
     font-family: $font-base;
     font-size: 1rem;
+    margin-bottom: 5px;
   }
   &:hover {
     transform: scale(1);
@@ -71,11 +70,14 @@ export default {
   > * {
     margin: 0;
   }
+  p {
+    line-height: 1.4em;
+  }
   .close {
     background-color: transparent;
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 8px;
     width: 10px;
     height: 10px;
 

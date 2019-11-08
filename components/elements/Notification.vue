@@ -51,6 +51,7 @@ export default {
 @import "~/assets/css/common/_variables.scss";
 
 .alloy-cards {
+  position: relative;
   cursor: pointer;
   padding: $base-margin;
   font-size: 0.8rem;

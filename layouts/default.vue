@@ -31,7 +31,7 @@ export default {
     NotificationsContainer,
     Footer,
   },
-  created() {
+  mounted() {
     const notification = {
       title: "Wij gebruiken cookies!",
       content: "Deze site gebruikt alleen voor analytische doeleinden.",

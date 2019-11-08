@@ -53,16 +53,24 @@ module.exports = {
       '/over',
       '/workflow',
       '/contact',
-      '/dienst/websites',
-      '/dienst/intranet',
-      '/dienst/datavisualisatie',
+      '/project/websites',
+      '/project/intranet',
+      '/project/datavisualisatie',
     ],
   },
   // END ⚙️ 
   // Nuxt 📦 modules
   modules: [
-    "@nuxtjs/axios",
+    // "@nuxtjs/axios",
     "@nuxtjs/apollo",
+    '@nuxtjs/redirect-module',
+  ],
+  redirect: [
+    { from: '^/team', to: '/over' }, // Many urls to one
+    { from: '^/team/(.*)$', to: '/over' }, // Many urls to one
+    { from: '^/werkruimte', to: '/over' }, // One to one mapping
+    { from: '^/project/(.*)$', to: '/projecten' }, // Many urls to one
+
   ],
   apollo: {
     clientConfigs: {

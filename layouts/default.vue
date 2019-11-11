@@ -38,7 +38,7 @@ export default {
         "Alleen om de werking van deze website te verbeteren. Deze data wordt niet gedeeld met derden en binnen 2 jaar verwijderd.",
       image: "",
       type: "",
-      timer: 10000,
+      timer: 6000,
     };
     this.$store.commit("notifications/addNotification", notification);
   },

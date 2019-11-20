@@ -1,4 +1,5 @@
-/assets/legal/*  https://wp-studio-alloy-api.s3.eu-central-1.amazonaws.com/2019/10/Algemene-Voorwaarden-Studio-Alloy.pdf
+/assets/legal  /privacy
+/assets/legal/*  /privacy
 /team/*  /over
 /team  /over
 /project/*  /projecten

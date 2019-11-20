@@ -64,20 +64,19 @@ module.exports = {
   modules: [
     // "@nuxtjs/axios",
     "@nuxtjs/apollo",
-    '@nuxtjs/redirect-module',
+    // '@nuxtjs/redirect-module',
   ],
   render: {
     static: {
       maxAge: 1000 * 60 * 60 * 24 * 7
     }
   },
-  redirect: [
-    { from: '^/team', to: '/over' }, // Many urls to one
-    { from: '^/team/(.*)$', to: '/over' }, // Many urls to one
-    { from: '^/werkruimte', to: '/over' }, // One to one mapping
-    { from: '^/project/(.*)$', to: '/projecten' }, // Many urls to one
-
-  ],
+  // redirect: [
+  //   { from: '^/team', to: '/over' }, // Many urls to one
+  //   { from: '^/team/(.*)$', to: '/over' }, // Many urls to one
+  //   { from: '^/werkruimte', to: '/over' }, // One to one mapping
+  //   { from: '^/project/(.*)$', to: '/projecten' }, // Many urls to one
+  // ],
   apollo: {
     clientConfigs: {
       default: '@/apollo/client-configs/default.js'

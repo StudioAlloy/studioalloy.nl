@@ -1,2 +1,26 @@
 /_nuxt/*.js
   Cache-Control: public, s-max-age=604800
+
+[[redirects]]
+  from = "/assets/legal/alloy-algemene-voorwaarden.pdf"
+  to = "https://wp-studio-alloy-api.s3.eu-central-1.amazonaws.com/2019/10/Algemene-Voorwaarden-Studio-Alloy.pdf"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/team"
+  to = "/over"
+  status = 301
+  force = false
+  
+[[redirects]]
+  from = "/team/*"
+  to = "/over"
+  status = 301
+  force = false
+
+[[redirects]]
+  from = "/project/*"
+  to = "/projecten"
+  status = 301
+  force = false

@@ -28,6 +28,9 @@
         <template v-for="(item, index) in dienstBySlug.acfFlex.flex">
           <FlexLoader :item="item" :key="index" />
         </template>
+
+        <Diensten />
+
       </template>
     </div>
 
@@ -40,6 +43,7 @@ import dienstBySlug from "~/apollo/queries/dienstBySlug";
 // Compontents
 import Header from "@/components/default/Header.vue";
 import FlexLoader from "@/components/elements/flex/_FlexLoader.vue";
+import Diensten from "@/components/elements/flex/Diensten.vue";
 
 export default {
   data() {
@@ -50,6 +54,7 @@ export default {
   components: {
     Header,
     FlexLoader,
+    Diensten,
   },
   apollo: {
     dienstBySlug: {

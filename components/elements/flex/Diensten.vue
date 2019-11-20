@@ -14,6 +14,11 @@ import DienstenItem from "@/components/elements/flex/DienstenItem.vue";
 
 export default {
   name: "Diensten",
+  data() {
+    return {
+      slug: this.$route.path,
+    };
+  },
   components: {
     DienstenItem,
   },
@@ -23,9 +28,12 @@ export default {
       query: diensten,
       update(data) {
         const items = data.diensten.nodes;
-
+        const slug = this.slug;
         const itemsFeatured = items.filter(function(item) {
-          return item.acfDiensten.featured;
+          return (
+            item.acfDiensten.featured &&
+            item.slug != slug.replace("/project/", "")
+          );
         });
 
         return itemsFeatured;
@@ -34,6 +42,7 @@ export default {
   },
   mounted() {
     // this.$nextTick(this.animationDiensten);
+    // console.warn(this.slug);
   },
   destroyed() {
     // Destroy ScrollMagic when our component is removed from DOM

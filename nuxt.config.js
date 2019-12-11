@@ -10,6 +10,10 @@ const routerBase =
 module.exports = {
   ...routerBase,
   // Header meta
+  server: {
+    port: 8000, // default: 3000
+    // host: '0.0.0.0' // default: localhost
+  },
   head: {
     title: "Studio Alloy",
     script: [
@@ -85,7 +89,7 @@ module.exports = {
   plugins: [
     { src: '~/plugins/ScrollMagic.js', ssr: false },
     { src: '~/plugins/ogmeta.js', ssr: true },
-    { src: '~plugins/ga.js', mode: 'client' },
+    // { src: '~plugins/ga.js', mode: 'client' },
   ],
   // END 📦 
   manifest: {

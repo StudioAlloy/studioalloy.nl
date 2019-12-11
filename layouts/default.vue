@@ -33,9 +33,9 @@ export default {
   },
   mounted() {
     const notification = {
-      title: "Wij gebruiken cookies!",
+      title: "Hey, guess what? Deze website slaat GEEN cookies op!",
       content:
-        "Alleen om de werking van deze website te verbeteren. Deze data wordt niet gedeeld met derden en binnen 2 jaar verwijderd.",
+        "Waarom zouden wij onnodig digital bezoekerdata verzamelen als we er in de praktijk toch niets mee doen? Overigens weten wij wel heel goed hoe dit moet. Interesse? Stuur een mailtje naar hello@studioalloy.nl of nog leuker, een ansichtkaart per post.",
       image: "",
       type: "",
       timer: 6000,

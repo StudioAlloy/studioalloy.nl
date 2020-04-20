@@ -13,7 +13,7 @@ export default {
   title: "Hangout",
   data() {
     return {
-      url: "https://hangouts.google.com/call/WqrqlgDA8vfQV1_NQ7XFAEEI",
+      url: "https://meet.google.com/cge-jujc-swa",
     };
   },
   created() {

@@ -18,6 +18,21 @@ export default {
   },
   created() {
     if (process.client) {
+      const queries = this.$route.query;
+
+      if (Object.keys(queries).length > 0) {
+        console.warn(JSON.stringify(queries));
+
+        var str = Object.keys(queries)
+          .map(function(key) {
+            return "" + key + "=" + queries[key]; // line break for wrapping only
+          })
+          .join("&");
+
+        this.url = `${this.url}?${str}`;
+      } else {
+        console.warn("nno qeureis");
+      }
       window.location.replace(this.url);
     }
   },

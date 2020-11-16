@@ -23,5 +23,11 @@ export default ({ req, app }) => {
     httpEndpoint: 'https://api.studioalloy.nl/graphql',
     errorHandler: '@/plugins/apollo-error-handler.js',
     cache: new InMemoryCache({ fragmentMatcher }),
+    httpLinkOptions: {
+      fetchOptions: {
+        mode: 'cors' //Cors Needed for external Cross origins, need to allow headers from server
+      },
+      credentials: "omit" //must be omit to support application/json content type 
+    }
   }
 }

@@ -13,7 +13,7 @@
           <h4>Studio Alloy</h4>
           <ul>
             <li><a href="mailto:hello@studioalloy.nl">hello@studioalloy.nl</a></li>
-            <li><a href="tel:+31233020044">023 30 20 044</a></li>
+            <li><a href="tel:+31610114179">06 10 11 41 79</a></li>
           </ul>
         </div>
       </div>

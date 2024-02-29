@@ -4,6 +4,7 @@ query GetToolbox {
       title
       content
       featuredImage {
+        node {
         sourceUrl
         altText
         mediaDetails {
@@ -12,6 +13,7 @@ query GetToolbox {
             width
           }
         }
+      }
       }
     }
   }

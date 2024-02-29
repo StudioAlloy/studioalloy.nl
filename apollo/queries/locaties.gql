@@ -6,6 +6,7 @@ query GetLocaties {
         adres
       }
       featuredImage {
+        node {
         sourceUrl
         altText
         mediaDetails {
@@ -15,6 +16,7 @@ query GetLocaties {
           }
         }
       }
+    }
     }
   }
 }

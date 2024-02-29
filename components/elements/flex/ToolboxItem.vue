@@ -2,8 +2,8 @@
   <div class="alloy-cards alloy-cards--dark alloy-item alloy-item--toolbox">
     <div class="inner">
       <div class="alloy-image">
-        <!-- <img :src="item.featuredImage.sourceUrl" sizes="150px" :srcset="responsiveImage" :alt="`Tool: ${item.title}`" /> -->
-        <img :src="item.featuredImage.sourceUrl" sizes="150px" :alt="`Tool: ${item.title}`" />
+        <!-- <img :src="item.featuredImage.node.sourceUrl" sizes="150px" :srcset="responsiveImage" :alt="`Tool: ${item.title}`" /> -->
+        <img :src="item.featuredImage.node.sourceUrl" sizes="150px" :alt="`Tool: ${item.title}`" />
       </div>
       <h4>{{ item.title }}</h4>
       <div v-html="item.content"></div>
@@ -20,7 +20,7 @@ export default {
   }, // End data
   computed: {
     responsiveImage() {
-      const rawImages = this.item.featuredImage.mediaDetails.sizes;
+      const rawImages = this.item.featuredImage.node.mediaDetails.sizes;
       // Turn the list of 🌅 images in a line that looks like this
       // ${image url} ${image size}w,
       // ${image url} ${image size}w,

@@ -2,7 +2,7 @@
   <div class="alloy-item alloy-item--team">
     <div class="inner">
       <div class="alloy-image">
-        <img :src="item.featuredImage.sourceUrl" sizes="(min-width: 768px) 270px, 100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" />
+        <img :src="item.featuredImage.node.sourceUrl" sizes="(min-width: 768px) 270px, 100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" />
       </div>
       <h4>{{ item.title }}</h4>
       <small v-html="item.excerpt"></small>
@@ -19,7 +19,7 @@ export default {
   }, // End data
   computed: {
     responsiveImage() {
-      const rawImages = this.item.featuredImage.mediaDetails.sizes;
+      const rawImages = this.item.featuredImage.node.mediaDetails.sizes;
       // Turn the list of 🌅 images in a line that looks like this
       // ${image url} ${image size}w,
       // ${image url} ${image size}w,

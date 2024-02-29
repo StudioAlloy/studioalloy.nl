@@ -4,6 +4,7 @@ query GetTeam {
       title
       excerpt
       featuredImage {
+        node{
         sourceUrl
         altText
         mediaDetails {
@@ -12,6 +13,7 @@ query GetTeam {
             width
           }
         }
+      }
       }
     }
   }

@@ -2,11 +2,13 @@
   <div class="alloy-cards alloy-cards--dark alloy-item alloy-item--locatie">
     <div class="inner">
       <div class="alloy-image">
-        <!-- <img :src="item.featuredImage.sourceUrl" :alt="`Tool: ${item.title}`" /> -->
-        <img :src="item.featuredImage.sourceUrl" sizes="(min-width: 1200px) 33vw,
+        <!-- <img :src="item.featuredImage.node.sourceUrl" :alt="`Tool: ${item.title}`" /> -->
+        <img :src="item.featuredImage.node.sourceUrl" sizes="(min-width: 1200px) 33vw,
        (min-width: 768px) 300px,
        (min-width: 576px) 200px,
-       100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" />
+       100vw" 
+       :srcset="responsiveImage" 
+       :alt="`Profile ${item.title}`" />
       </div>
       <div class="alloy-content">
         <h3 class="alloy-title">{{ item.title }}</h3>
@@ -26,7 +28,7 @@ export default {
   }, // End data
   computed: {
     responsiveImage() {
-      const rawImages = this.item.featuredImage.mediaDetails.sizes;
+      const rawImages = this.item.featuredImage.node.mediaDetails.sizes;
       // Turn the list of 🌅 images in a line that looks like this
       // ${image url} ${image size}w,
       // ${image url} ${image size}w,

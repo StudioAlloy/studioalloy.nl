@@ -11,11 +11,13 @@
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
+
 @keyframes slideIn {
   0% {
     opacity: 0;
-    transform: translateY(500px);
+    transform: translateY(250px);
   }
+
   100% {
     animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
     transform: translateY(0);
@@ -24,7 +26,7 @@
 
 .page-leave-to {
   animation-name: slideOut;
-  animation-duration: $base-transition * 3;
+  animation-duration: $base-transition * 2;
   animation-delay: 0s;
   animation-timing-function: ease-out;
   animation-direction: alternate;
@@ -32,16 +34,19 @@
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
+
 @keyframes slideOut {
   0% {
     opacity: 1;
     transform: translateY(0);
   }
+
   100% {
     opacity: 0;
-    transform: translateY(-500px);
+    transform: translateY(-250px);
   }
 }
+
 // Page alternative
 .page-alt-enter-active {
   animation-name: slideInPopAlt;
@@ -53,11 +58,13 @@
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
+
 @keyframes slideInPopAlt {
   0% {
     opacity: 0;
-    transform: translateY(-500px);
+    transform: translateY(-250px);
   }
+
   100% {
     animation-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
     transform: translateY(0);
@@ -74,16 +81,19 @@
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
+
 @keyframes slideOutAlt {
   0% {
     opacity: 1;
     transform: translateY(0);
   }
+
   100% {
     opacity: 0;
-    transform: translateY(-500px);
+    transform: translateY(-250px);
   }
 }
+
 //-----------------------------------------------------//
 // END Page transtions
 //------------------------------------------------------//
@@ -96,16 +106,19 @@
   transition-duration: $base-transition * 2;
   transition-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
 }
+
 .ui-slide-enter,
 .ui-slide-leave-to {
   opacity: 0;
   transform: translateY(300px);
 }
+
 .ui-slide-enter-to,
 .ui-slide-leave {
   opacity: 1;
   transform: translateY(0);
 }
+
 //------------------------------------------------------//
 // END UI transtions /starr
 //------------------------------------------------------//
@@ -120,24 +133,28 @@
   transition-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
 
   @for $i from 1 through 20 {
+
     // &:nth-child(#{$i}n+18),
     &:nth-child(#{$i}) {
       transition-delay: 50ms * $i;
     }
   }
 }
+
 .slide-in-enter,
 .slide-in-leave-to {
   opacity: 0;
   // transform: translateY(100px);
   transform: scale(0);
 }
+
 .slide-in-enter-to,
 .slide-in-leave {
   opacity: 1;
   // transform: translateY(0);
   transform: scale(1);
 }
+
 // END Slide in
 //------------------------------------------------------//
 // Fade transition
@@ -162,9 +179,15 @@
 .fade-leave-active {
   transition: opacity 1000ms;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
   opacity: 0;
 }
+
 // END Fade transition
 .slide-up-enter-active,
 .slide-up-active {
@@ -173,10 +196,16 @@
   transition-duration: $base-transition;
   transition-timing-function: ease;
 }
-.slide-up-enter, .slide-up-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.slide-up-enter,
+.slide-up-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
   opacity: 0;
   transform: translateY(100px);
 }
+
 //------------------------------------------------------//
 // 🎉 Pop transtion
 //------------------------------------------------------//
@@ -186,14 +215,17 @@
   transition-duration: $base-transition * 2, $base-transition * 2;
   transition-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
 }
+
 .pop-enter,
 .pop-leave-to {
   transform: scale(10);
 }
+
 .pop-enter-to,
 .pop-leave {
   transform: scale(0);
 }
+
 // END 🎉 Pop transtion
 
 //------------------------------------------------------//
@@ -205,12 +237,15 @@
   transition-duration: 600ms;
   transition-timing-function: ease;
 }
+
 .fade-out-slide-it-enter {
   opacity: 0;
   transform: translateX(400px);
 }
+
 .fade-out-slide-it-leave-to {
   transform: scale(0.6);
   opacity: 0;
 }
+
 // END Fade out and slide in transition -------------------------------------//

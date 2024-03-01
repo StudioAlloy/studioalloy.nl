@@ -81,10 +81,17 @@ module.exports = {
   //   { from: '^/werkruimte', to: '/over' }, // One to one mapping
   //   { from: '^/project/(.*)$', to: '/projecten' }, // Many urls to one
   // ],
+  // apollo: {
+  //   clientConfigs: {
+  //     default: '@/apollo/client-configs/default.js'
+  //   }
+  // },
   apollo: {
-    clientConfigs: {
-      default: '@/apollo/client-configs/default.js'
-    }
+    clients: {
+      default: {
+        httpEndpoint: 'https://api.studioalloy.nl/graphql'
+      }
+    },
   },
   plugins: [
     { src: '~/plugins/ScrollMagic.js', ssr: false },

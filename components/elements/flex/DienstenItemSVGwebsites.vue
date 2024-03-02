@@ -1,5 +1,5 @@
 <template>
-  <svg id="DienstWebsite" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;" @click="interactiveMorph">
+  <svg id="DienstWebsite" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;" @click="interactiveMorph" ref="trigger">
     <defs>
       <g id=" morph-phone">
         <rect id="morph-phone-header-background" x="470.481" y="186.692" width="136.288" height="213.308" style="fill:#ef162d;" />
@@ -82,6 +82,13 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+let ctx;
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
+
 export default {
   props: ["slug"],
   name: "DienstenItemSVGwebsite",
@@ -90,22 +97,33 @@ export default {
       played: false,
     };
   }, // End data
-  mounted() {
-    this.$nextTick(() => {
-      this.timelineMain();
-      this.tlMorph = new this.$GSAP.TimelineMax();
-    });
+    beforeDestroy() {
+    ctx.revert(); // <- Easy Cleanup!
   },
-  created() {},
-  methods: {
-    timelineMain() {
-      //------------------------------------------------------//
+  mounted() {
+    // this.$nextTick(() => {
+    //   this.timelineMain();
+    //   this.tlMorph = gsap.timeline({});
+    // });
+
+      ctx = gsap.context((self) => {
+//------------------------------------------------------//
       // Timeline ❇️ 🧦 GSAP
       //------------------------------------------------------//
       // Basic values
       const baseTiming = 0.3;
+      const trigger = this.$refs.trigger;
       // Timeline stuff
-      const timelineMain = new this.$GSAP.TimelineMax();
+      const timelineMain = new gsap.timeline({
+                scrollTrigger: {
+          trigger: trigger,
+          start: 'top bottom-=10%',
+          end: 'bottom top',
+          scrub: false,
+          toggleActions: 'play none none none',
+          markers: process.env.NODE_ENV === 'development' ? true : false,
+        }
+      });
       // Base ease full timeline
       timelineMain
         // 💻 laptop animation
@@ -134,7 +152,7 @@ export default {
           {
             scale: 0,
             transformOrigin: "center",
-            ease: Elastic.easeOut.config(1, 0.3),
+            ease: "elastic.out(1, 0.3)",
           },
           "sameTimeThree",
         )
@@ -184,7 +202,7 @@ export default {
           {
             scale: 0,
             transformOrigin: "center",
-            ease: Elastic.easeOut.config(1, 0.3),
+            ease: "elastic.out(1, 0.3)",
           },
           "sameTimeThree",
         )
@@ -207,9 +225,9 @@ export default {
       //------------------------------------------------------//
       // ➰ Looping timeline ️❇️️ 🧦  GSAP
       //------------------------------------------------------//
-      const loopInteractive = new this.$GSAP.TimelineMax({
+      const loopInteractive = gsap.timeline({
         repeat: -1,
-        // yoyo: true,p
+        // yoyo: true,
         repeatDelay: baseTiming * 8,
       });
       function alloyLoopingAnimation() {
@@ -230,7 +248,7 @@ export default {
               // scale: "+=0.2",
               scale: 1,
               transformOrigin: "center",
-              ease: Elastic.easeOut.config(1, 0.3),
+              ease: "elastic.out(1, 0.3)",
             },
             "sameTimeTwo",
           )
@@ -250,7 +268,7 @@ export default {
               // scale: "+=0.2",
               scale: 1,
               transformOrigin: "center",
-              ease: Elastic.easeOut.config(1, 0.3),
+              ease: "elastic.out(1, 0.3)",
             },
             "sameTimeTwo",
           );
@@ -258,18 +276,14 @@ export default {
       }
 
       // END ➰ Looping timeline ️❇️️ 🧦  GSAP -------------------------------------//
-      //------------------------------------------------------//
-      // 🎩 ScrollMagic scene
-      //------------------------------------------------------//
-      const controller = new this.$ScrollMagic.Controller();
-      const scene = new this.$ScrollMagic.Scene({
-        triggerElement: "svg#DienstWebsite",
-        offset: -200,
-        reverse: false,
-      })
-        .setTween(timelineMain)
-        .addTo(controller);
-      // END controllerMagic scene -------------------------------------//
+      }, this.$refs.trigger)
+
+  },
+  created() {},
+  methods: {
+    timelineMain() {
+      
+
     },
     interactiveMorph() {
       const baseTiming = 0.3;
@@ -342,7 +356,7 @@ export default {
               rotation: 360,
               transformOrigin: "center",
               morphSVG: "#DienstWebsite #morph-interactive-two",
-              // ease: Elastic.easeOut.config(1, 0.3),
+              // ease: "elastic.out(1, 0.3)",
             },
             "sameTimeTwo",
             `+=${baseTiming * 2}`,
@@ -357,7 +371,7 @@ export default {
               rotation: 360,
               transformOrigin: "center",
               morphSVG: "#DienstWebsite #morph-phone-interactive-two",
-              // ease: Elastic.easeOut.config(1, 0.3),
+              // ease: "elastic.out(1, 0.3)",
             },
             "sameTimeTwo",
             `+=${baseTiming * 2}`,

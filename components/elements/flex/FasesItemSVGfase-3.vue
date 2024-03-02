@@ -99,6 +99,15 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
+
+
+
 export default {
   name: "FasesItemSVG",
   data() {
@@ -115,7 +124,7 @@ export default {
     },
   },
   mounted() {
-    this.timelineFaseThree = new TimelineMax();
+    this.timelineFaseThree = gsap.timeline({});
   },
   watch: {
     getFasePlayed(values) {
@@ -182,7 +191,7 @@ export default {
           {
             y: -150,
             opacity: 0,
-            ease: Power2.easeOut,
+            // ease: Power2.easeOut,
             stagger: {
               grid: [15, 9],
               each: baseTiming,
@@ -202,25 +211,25 @@ export default {
       // ➰ Looping timeline ️❇️️ 🧦  GSAP
       //------------------------------------------------------//
       function nestedTimelineFaseThreeSlowMove(elm) {
-        const tl = new TimelineMax({
+        const tl = gsap.timeline({
           repeat: -1,
         });
         tl.to(
           "#faseThree #oven #fade",
           baseTiming * 8,
-          { autoAlpha: 1, repeat: 1, yoyo: true, ease: Linear.easeNone },
+          { autoAlpha: 1, repeat: 1, yoyo: true, ease: "none" },
           0,
         );
         return tl;
       }
       function nestedTimelineBubbles(elm) {
-        const tl = new TimelineMax({
+        const tl = gsap.timeline({
           repeat: -1,
         });
         tl.staggerTo("#faseThree #oven #bubbles *", baseTiming * 16, {
           y: -150,
           opacity: 0,
-          ease: Power2.easeOut,
+          ease: "power2.easeOut",
           stagger: {
             grid: [15, 9],
             each: baseTiming * 3,
@@ -236,7 +245,7 @@ export default {
       const resume = () => {
         this.timelineFaseThree.resume();
       };
-      const interactivetl = new TimelineMax();
+      const interactivetl = gsap.timeline({});
       interactivetl
         .to("#faseThree #oven #bubbles *", baseTiming, { opacity: 0 })
         .fromTo(
@@ -245,7 +254,7 @@ export default {
           {
             x: -3,
           },
-          { x: 0, ease: Elastic.easeOut.config(1, 0.1) },
+          { x: 0, ease: "elastic.out(1, 0.1)" },
           "sameTime",
         )
         .set("#faseThree #oven #bubbles *", { clearProps: "y, opacity" })
@@ -255,7 +264,7 @@ export default {
           {
             y: -150,
             opacity: 0,
-            ease: Power2.easeOut,
+            // ease: Power2.easeOut,
             stagger: {
               grid: [15, 9],
               each: 0.1,

@@ -28,6 +28,13 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+let ctx;
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
+
 export default {
   props: ["item"],
   name: "FlexCase",
@@ -48,40 +55,39 @@ export default {
       return images;
     },
   },
+    beforeDestroy() {
+    ctx.revert(); // <- Easy Cleanup!
+  },
   mounted() {
-    this.$nextTick(this.scrollAnimation);
+    // this.$nextTick(this.scrollAnimation);
+    ctx = gsap.context((self) => {
+        //------------------------------------------------------//
+      // Timeline ❇️ 🧦 GSAP
+      //------------------------------------------------------//
+      const trigger = this.$refs.trigger;
+      const q = gsap.utils.selector(trigger);
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: trigger,
+          start: 'top bottom-=10%',
+          end: 'bottom top',
+          scrub: true,
+          toggleActions: 'restart none none none',
+          markers: process.env.NODE_ENV === 'development' ? true : false,
+        }
+      });
+      
+      timeline
+        .to(q('.overlay'), 1, { scaleX: 0 }, "sameTime")
+        .from(q('.alloy-cards'), 2, { y: () => window.innerHeight * 0.25 }, "sameTime");
+      // .fromTo(content, 2, { y: 200 }, { y: -200 }, "sameTime");
+      // END Timeline ❇️ 🧦  GSAP -------------------------------------//
+      }, this.$refs.trigger)
   },
   methods: {
     scrollAnimation() {
-      //------------------------------------------------------//
-      // Timeline ❇️ 🧦 GSAP
-      //------------------------------------------------------//
-      // Basic values
-      const baseTiming = 0.3;
-      // Timeline stuff
-      const timeline = new this.$GSAP.TimelineMax();
-      const trigger = this.$refs.trigger;
-      const overlay = this.$refs.trigger.querySelector(".overlay");
-      const content = this.$refs.trigger.querySelector(".alloy-cards");
-      timeline
-        .to(overlay, 1, { scaleX: 0 }, "sameTime")
-        .from(content, 2, { y: 500 }, "sameTime");
-      // .fromTo(content, 2, { y: 200 }, { y: -200 }, "sameTime");
-      // END Timeline ❇️ 🧦  GSAP -------------------------------------//
-      //------------------------------------------------------//
-      // 🎩 ScrollMagic scene
-      //------------------------------------------------------//
-      const controller = new this.$ScrollMagic.Controller();
-      const scene = new this.$ScrollMagic.Scene({
-        triggerElement: trigger,
-        tweenChanges: true,
-        duration: 500,
-        offset: -300,
-        // reverse: false,
-      })
-        .setTween(timeline)
-        .addTo(controller);
-      // END 🎩 ScrollMagic scene -------------------------------------//
+      
     },
   },
 };

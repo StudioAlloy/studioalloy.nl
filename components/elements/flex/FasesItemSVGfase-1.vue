@@ -1,5 +1,5 @@
 <template>
-  <svg id="faseOne" width="100%" height="100%" viewBox="0 0 650 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+  <svg id="faseOne" width="100%" height="100%" viewBox="0 0 650 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" ref="trigger">
     <g id="fase">
       <g id="base">
         <path d="M330.004,396.139L108.542,524L325.241,649.111L546.703,521.25L330.004,396.139Z" style="fill:#1d2e55;" />
@@ -35,6 +35,13 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+let ctx;
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
+
 export default {
   props: ["slug"],
   name: "FasesItemSVG",
@@ -48,17 +55,25 @@ export default {
       return this.$store.getters["items/getFasePlayed"](this.fase);
     },
   },
+    beforeDestroy() {
+    ctx.revert(); // <- Easy Cleanup!
+  },
   mounted() {
     this.$nextTick(this.faseAnimation);
-  },
-  destroyed() {
-    // Destroy ScrollMagic when our component is removed from DOM
-    // controller = controller.destroy();
-  },
-  methods: {
-    faseAnimation() {
-      // onComplete send to Vuex
-      const timelineComplete = () => {
+
+    ctx = gsap.context((self) => {
+        //------------------------------------------------------//
+      // Timeline ❇️ 🧦 GSAP
+      //------------------------------------------------------//
+      // Basic values
+      const baseTiming = 0.3;
+
+      // Timeline stuff
+      const trigger = this.$refs.trigger;
+      // const timelineFaseOne = new TimelineMax({ onComplete: timelineComplete });
+      const timelineFaseOne = gsap.timeline({
+        onComplete: () =>{
+          // onComplete send to Vuex
         // 🎬 Start playing the looping part of the animation
         timelineFaseOne.add(nestedTimelineFaseOneSlowMove());
 
@@ -68,29 +83,29 @@ export default {
           fase: this.fase,
           date: new Date(),
         });
-      };
-      //------------------------------------------------------//
-      // Timeline ❇️ 🧦 GSAP
-      //------------------------------------------------------//
-      // Basic values
-      const baseTiming = 0.3;
-
-      // Timeline stuff
-      // const timelineFaseOne = new TimelineMax({ onComplete: timelineComplete });
-      const timelineFaseOne = new TimelineMax();
+        },
+        scrollTrigger: {
+          trigger: trigger,
+          start: 'clamp(top bottom-=10%)',
+          end: 'bottom top',
+          scrub: false,
+          toggleActions: 'play none none none',
+          markers: process.env.NODE_ENV === 'development' ? true : false,
+        }
+      });
 
       function nestedTimelineFaseOneSlowMove(elm) {
-        const tl = new TimelineMax({
+        const tl = gsap.timeline({
           repeat: -1,
           yoyo: true,
         });
 
         tl.to("#faseOne #platfrom #box", baseTiming * 4, {
           y: 3,
-          ease: Power0.easeNone,
+          ease: "none",
         }).to("#faseOne #platfrom #box", baseTiming * 4, {
           y: -3,
-          ease: Power0.easeNone,
+          ease: "none",
         });
 
         return tl;
@@ -100,7 +115,7 @@ export default {
         // .timeScale(1.5)
         .staggerFrom("#faseOne #grid *", baseTiming * 6, {
           y: -400,
-          ease: Power2.easeOut,
+          ease: "power2.easeOut",
           stagger: {
             each: 0.15,
           },
@@ -109,27 +124,18 @@ export default {
         .from("#faseOne #platfrom #box", baseTiming, { opacity: 0 })
         .from("#faseOne #platfrom #box", baseTiming * 4, {
           y: -500,
-          ease: Elastic.easeOut.config(0.75, 0.95),
+          ease: "elastic.out(0.75, 0.95)",
         });
       // .add(nestedTimelineFaseOneSlowMove());
-      timelineFaseOne.eventCallback("onComplete", timelineComplete);
+      // timelineFaseOne.eventCallback("onComplete", timelineComplete);
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
-      //------------------------------------------------------//
-      // 🎩 ScrollMagic scene
-      //------------------------------------------------------//
-      const controller = new this.$ScrollMagic.Controller();
-      // {globalSceneOptions: { offset: 600 },}
-      const scene = new this.$ScrollMagic.Scene({
-        triggerElement: "#faseOne",
-        reverse: false,
-        // duration: 300,
-        // tweenChanges: true,
-      })
-        .setTween(timelineFaseOne) // Tells what the time line should be
-        .addTo(controller);
+      }, this.$refs.trigger)
+  },
+  methods: {
+    faseAnimation() {
+      
+      
 
-      // controllerHolder = controller;
-      // END 🎩 ScrollMagic scene -------------------------------------//
     },
   },
 };

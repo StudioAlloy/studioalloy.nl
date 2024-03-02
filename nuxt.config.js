@@ -16,10 +16,10 @@ module.exports = {
   },
   head: {
     title: "Studio Alloy",
-    script: [
-      { src: "/js/DrawSVGPlugin.min.js" },
-      { src: "/js/MorphSVGPlugin.min.js" },
-    ],
+    // script: [
+    //   { src: "/js/DrawSVGPlugin.min.js" },
+    //   { src: "/js/MorphSVGPlugin.min.js" },
+    // ],
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -87,7 +87,7 @@ module.exports = {
     }
   },
   plugins: [
-    { src: '~/plugins/ScrollMagic.js', ssr: false },
+    // { src: '~/plugins/ScrollMagic.js', ssr: false },
     { src: '~/plugins/ogmeta.js', ssr: true },
     // { src: '~plugins/ga.js', mode: 'client' },
   ],
@@ -109,7 +109,18 @@ module.exports = {
   },
   css: ["@/assets/css/main.scss"],
   loading: { color: "#F53" },
+  // buildModules: ['nuxt-gsap-module'],
+  // gsap: {
+  //   extraPlugins: {
+  //     // scrollTrigger: true
+  //   },
+  //   clubPlugins: {
+  //     drawSVG: true,
+  //     morphSVG: true,
+  //   }
+  // },
   build: {
+    transpile: ['gsap'],
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({

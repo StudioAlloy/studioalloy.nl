@@ -1,5 +1,5 @@
 <template>
-  <section class="flex-Toolbox">
+  <section class="flex-Toolbox" ref="trigger">
     <div class="container--medium container-type--toolbox">
       <h3 class="alloy-title alloy-title--large">onze skills</h3>
       <div class="inner">
@@ -14,9 +14,16 @@
 </template>
 
 <script>
-import toolbox from "@/apollo/queries/toolbox";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+let ctx;
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
 
+import toolbox from "@/apollo/queries/toolbox";
 import ToolboxItem from "@/components/elements/flex/ToolboxItem";
+
 
 export default {
   props: ["item"],
@@ -39,42 +46,50 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(this.toolboxAnimation);
-  },
-  methods: {
-    toolboxAnimation() {
-      //------------------------------------------------------//
+    // this.$nextTick(this.toolboxAnimation);
+      ctx = gsap.context((self) => {
+         //------------------------------------------------------//
       // Timeline ❇️ 🧦 GSAP
       //------------------------------------------------------//
       // Basic values
       const baseTiming = 0.3;
+      const trigger = this.$refs.trigger;
       // Timeline stuff
-      const timelineToolbox = new this.$GSAP.TimelineMax();
-      timelineToolbox
-        .from(".flex-Toolbox .alloy-title--large", baseTiming * 2, {
+      const tl = gsap.timeline({
+                scrollTrigger: {
+          trigger: trigger,
+          start: 'top bottom-=10%',
+          end: 'bottom top',
+          scrub: false,
+          toggleActions: 'play none none none',
+          markers: process.env.NODE_ENV === 'development' ? true : false,
+        }
+      });
+      tl.from(".alloy-title--large", {
+          duration: baseTiming * 2,
           y: 100,
           opacity: 0,
-          ease: Power2.easeOut,
-        })
-        .staggerFrom(
-          ".flex-Toolbox .container-type--toolbox > .inner > .item",
-          baseTiming * 2,
-          { y: 100, opacity: 0 },
-          baseTiming / 2,
+          ease: "power2.easeOut",
+        });
+        tl.from(
+          ".container-type--toolbox > .inner > .item",
+          { 
+            duration: baseTiming * 2,
+            y: 100, opacity: 0,
+          stagger: baseTiming / 2,
+          },
           `-=${baseTiming}`,
         );
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
-      //------------------------------------------------------//
-      // 🎩 ScrollMagic scene
-      //------------------------------------------------------//
-      const controller = new this.$ScrollMagic.Controller();
-      const scene = new this.$ScrollMagic.Scene({
-        triggerElement: ".flex-Toolbox",
-        reverse: false,
-      })
-        .setTween(timelineToolbox)
-        .addTo(controller);
-      // END 🎩 ScrollMagic scene -------------------------------------//
+      }, this.$refs.trigger);
+  },
+  beforeDestroy() {
+    ctx.revert(); // <- Easy Cleanup!
+  },
+  methods: {
+    toolboxAnimation() {
+     
+
     },
   },
 };

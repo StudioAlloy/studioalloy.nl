@@ -1,5 +1,5 @@
 <template>
-  <svg id="DienstDatavis" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;" @click="interactiveMorph">
+  <svg id="DienstDatavis" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;" @click="interactiveMorph" ref="trigger">
     <defs>
       <rect id="morph-background" x="97.602" y="45.418" width="506.069" height="309.602" style="fill:#f7f22d;" />
       <ellipse id="morph-interactive" cx="571.147" cy="325.139" rx="13.553" ry="13.405" style="fill:#f53;" />
@@ -71,28 +71,46 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+let ctx;
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
+
 export default {
   props: ["slug"],
   name: "DienstenItemSVGdatavisualisatie",
   data() {
     return {};
   }, // End data
+    beforeDestroy() {
+    ctx.revert(); // <- Easy Cleanup!
+  },
   mounted() {
     // this.$nextTick(this.timelineMain);
-    this.$nextTick(() => {
-      this.timelineMain();
-      this.tlMorph = new this.$GSAP.TimelineMax();
-    });
-  },
-  methods: {
-    timelineMain() {
-      //------------------------------------------------------//
+    // this.$nextTick(() => {
+    //   this.timelineMain();
+    //   this.tlMorph = gsap.timeline({});
+    // });
+    ctx = gsap.context((self) => {
+         //------------------------------------------------------//
       // Timeline ❇️ 🧦 GSAP
       //------------------------------------------------------//
       // Basic values
       const baseTiming = 0.3;
+      const trigger = this.$refs.trigger;
       // Timeline stuf
-      const timelineMain = new this.$GSAP.TimelineMax();
+      const timelineMain = gsap.timeline({
+                scrollTrigger: {
+          trigger: trigger,
+          start: 'top bottom-=10%',
+          end: 'bottom top',
+          scrub: false,
+          toggleActions: 'play none none none',
+          markers: process.env.NODE_ENV === 'development' ? true : false,
+        }
+      });
       // Base ease full timeline
       timelineMain
         // 💻 laptop animation
@@ -103,7 +121,7 @@ export default {
         .from("#DienstDatavis #widget-main", baseTiming * 4, {
           scale: 0,
           transformOrigin: "center",
-          ease: Elastic.easeOut.config(1, 0.5),
+          ease: "elastic.out(1, 0.5)",
         })
         .staggerFromTo(
           "#DienstDatavis #widget-main path",
@@ -119,7 +137,7 @@ export default {
           {
             opacity: 0,
             morphSVG: "#DienstDatavis #morph-graph #morph-graph-top",
-            ease: Elastic.easeOut.config(1, 0.5),
+            ease: "elastic.out(1, 0.5)",
           },
           "sameTime",
         )
@@ -129,7 +147,7 @@ export default {
           {
             opacity: 0,
             morphSVG: "#DienstDatavis #morph-graph #morph-graph-bottom",
-            ease: Elastic.easeOut.config(1, 0.5),
+            ease: "elastic.out(1, 0.5)",
           },
           "sameTime",
         )
@@ -149,7 +167,7 @@ export default {
           {
             scale: 0,
             transformOrigin: "center",
-            ease: Elastic.easeOut.config(1, 0.3),
+            ease: "elastic.out(1, 0.3)",
           },
           "sameTimeTwo",
         )
@@ -166,7 +184,7 @@ export default {
       //------------------------------------------------------//
       // ➰ Looping timeline ️❇️️ 🧦  GSAP
       //------------------------------------------------------//
-      const loopInteractive = new this.$GSAP.TimelineMax({
+      const loopInteractive = gsap.timeline({
         repeat: -1,
         // yoyo: true,
         repeatDelay: baseTiming * 8,
@@ -181,23 +199,16 @@ export default {
             // scale: "+=0.2",
             scale: 1,
             transformOrigin: "center",
-            ease: Elastic.easeOut.config(1, 0.3),
+            ease: "elastic.out(1, 0.3)",
           });
         return loopInteractive;
       }
       // END ➰ Looping timeline ️❇️️ 🧦  GSAP -------------------------------------//
-      //------------------------------------------------------//
-      // 🎩 ScrollMagic scene
-      //------------------------------------------------------//
-      const controller = new this.$ScrollMagic.Controller();
-      const scene = new this.$ScrollMagic.Scene({
-        triggerElement: "svg#DienstDatavis",
-        offset: -200,
-        reverse: false,
-      })
-        .setTween(timelineMain)
-        .addTo(controller);
-      // ENDcontrollerMagic scene -------------------------------------//
+      }, this.$refs.trigger)
+  },
+  methods: {
+    timelineMain() {
+     
     },
     interactiveMorph() {
       const baseTiming = 0.3;
@@ -206,7 +217,7 @@ export default {
         // "circle, rect, ellipse, line, polygon, polyline",
         "rect, ellipse",
       );
-      // const tlMorph = new this.$GSAP.TimelineMax();
+      // const tlMorph = new this.$gsap.timeline();
       // What 🔁 direction should the animation play ----------------------------------------- /
       // this.tlMorph.eventCallback("onComplete", tlDirection);
       const tlDirection = () => {

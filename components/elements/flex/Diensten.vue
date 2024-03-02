@@ -45,7 +45,6 @@ export default {
     // console.warn(this.slug);
   },
   destroyed() {
-    // Destroy ScrollMagic when our component is removed from DOM
     // controller = controller.destroy();
   },
   methods: {
@@ -56,7 +55,7 @@ export default {
       // // Basic values
       // const baseTiming = 0.3;
       // // Timeline stuff
-      // const timelineDiensten = new this.$GSAP.TimelineMax();
+      // const timelineDiensten = new this.$gsap.timeline();
       // timelineDiensten.staggerFrom(
       //   ".container-type--Diensten > .inner > *",
       //   baseTiming * 2,
@@ -67,17 +66,6 @@ export default {
       //   baseTiming,
       // );
       // // END Timeline ❇️ 🧦  GSAP -------------------------------------//
-      // //------------------------------------------------------//
-      // // 🎩 ScrollMagic scene
-      // //------------------------------------------------------//
-      // const controller = new this.$ScrollMagic.Controller();
-      // const scene = new this.$ScrollMagic.Scene({
-      //   triggerElement: ".container-type--Diensten",
-      //   reverse: false,
-      // })
-      //   .setTween(timelineDiensten)
-      //   .addTo(controller);
-      // // END controllerMagic scene -------------------------------------//
     },
   },
 };

@@ -69,6 +69,15 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
+
+
+
 export default {
   name: "FasesItemSVG",
   data() {
@@ -85,7 +94,7 @@ export default {
     },
   },
   mounted() {
-    this.timelineFaseTwo = new TimelineMax();
+    this.timelineFaseTwo = gsap.timeline({});
   },
   watch: {
     getFasePlayed(values) {
@@ -116,7 +125,7 @@ export default {
       this.timelineFaseTwo
         .to("#faseTwo #prev #boxPrev", baseTiming * 3, {
           y: 18,
-          ease: Power4.easeIn,
+          // ease: Power4.easeIn,
         })
         .from(
           "#faseTwo #fase #basePrev",
@@ -136,7 +145,7 @@ export default {
         .from(
           "#faseTwo #modules #bottom",
           baseTiming * 4,
-          { y: -400, ease: Elastic.easeOut.config(0.75, 0.95) },
+          { y: -400, ease: "elastic.out(0.75, 0.95)" },
           `-=${baseTiming}`,
         )
         .from("#faseTwo #modules #middle", baseTiming, { opacity: 0 })
@@ -163,42 +172,42 @@ export default {
       // ➰ Looping timeline ️❇️️ 🧦  GSAP
       //------------------------------------------------------//
       function nestedTimelineFaseTwoSlowMove(elm) {
-        const tl = new TimelineMax({
+        const tl = gsap.timeline({
           repeat: -1,
           yoyo: true,
         });
         tl.to("#faseTwo #modules #bottom", baseTiming * 4, {
           y: 3,
-          ease: Power0.easeNone,
+          ease: "none",
         })
           .to(
             "#faseTwo #modules #middle",
             baseTiming * 4,
-            { y: 3, ease: Power0.easeNone },
+            { y: 3, ease: "none" },
             `-=${baseTiming * 3}`,
           )
           .to(
             "#faseTwo #modules #top",
             baseTiming * 4,
-            { y: 3, ease: Power0.easeNone },
+            { y: 3, ease: "none" },
             `-=${baseTiming * 2}`,
           )
           .to(
             "#faseTwo #modules #bottom",
             baseTiming * 4,
-            { y: -3, ease: Power0.easeNone },
+            { y: -3, ease: "none" },
             `-=${baseTiming * 1}`,
           )
           .to(
             "#faseTwo #modules #middle",
             baseTiming * 4,
-            { y: -3, ease: Power0.easeNone },
+            { y: -3, ease: "none" },
             `-=${baseTiming * 2}`,
           )
           .to(
             "#faseTwo #modules #top",
             baseTiming * 4,
-            { y: -3, ease: Power0.easeNone },
+            { y: -3, ease: "none" },
             `-=${baseTiming * 3}`,
           );
         return tl;
@@ -211,30 +220,30 @@ export default {
       const resume = () => {
         this.timelineFaseTwo.resume();
       };
-      const interactivetl = new TimelineMax();
+      const interactivetl = gsap.timeline({});
       interactivetl
         .to(
           "#faseTwo #fase #modules #top",
           baseTiming,
-          { y: -40, ease: Power0.easeNone },
+          { y: -40, ease: "none" },
           "sameTime",
         )
         .to(
           "#faseTwo #fase #modules #bottom",
           baseTiming,
-          { y: 40, ease: Power0.easeNone },
+          { y: 40, ease: "none" },
           "sameTime",
         )
         .to(
           "#faseTwo #fase #modules #top",
           0.1,
-          { y: 0, ease: Power0.easeNone },
+          { y: 0, ease: "none" },
           "sameTimeTwo",
         )
         .to(
           "#faseTwo #fase #modules #bottom",
           0.1,
-          { y: 0, ease: Power0.easeNone },
+          { y: 0, ease: "none" },
           "sameTimeTwo",
         )
         .fromTo(
@@ -242,11 +251,11 @@ export default {
           baseTiming * 8,
           {
             y: -20,
-            ease: Elastic.easeOut.config(1, 0.1),
+            ease: "elastic.out(1, 0.1)",
           },
           {
             y: 0,
-            ease: Elastic.easeOut.config(1, 0.1),
+            ease: "elastic.out(1, 0.1)",
           },
         )
         .add(resume);

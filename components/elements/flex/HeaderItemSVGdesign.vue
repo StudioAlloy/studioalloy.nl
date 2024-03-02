@@ -1,5 +1,5 @@
 <template>
-  <svg id="header-animation" viewBox="0 0 500 500" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+  <svg id="header-animation" viewBox="0 0 500 500" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;" ref="trigger">
     <defs>
       <g id="dev-morph">
         <path id="dev-base-screen-morph" d="M99.819,474.083L390.947,306L390.947,306L99.819,474.083L99.819,474.083Z" style="fill:#f221b7;" />
@@ -156,23 +156,44 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+let ctx;
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
+
 export default {
   props: ["slug"],
   name: "HeaderItemSVG",
   data() {
     return {};
   }, // End data
+    beforeDestroy() {
+    ctx.revert(); // <- Easy Cleanup!
+  },
   mounted() {
+    ctx = gsap.context((self) => {
     // Basic values
     const baseTiming = 0.3;
-
+const trigger = this.$refs.trigger;
     // Timeline stuf
-    const timelineMain = new this.$GSAP.TimelineMax({
+    const timelineMain = gsap.timeline({
       repeat: -1,
+              scrollTrigger: {
+                id: "header",
+          trigger: '#default-Header',
+          start: 'top top+=10%',
+          end: 'bottom top',
+          scrub: false,
+          toggleActions: 'play pause play pause',
+          markers: process.env.NODE_ENV === 'development' ? true : false,
+        }
     });
     // Base ease full timeline
 
     timelineMain
+    .set("#header-animation #dev #dev-text path", { autoAlpha: 0 })
       //------------------------------------------------------//
       // 🖌 Design animation
       //------------------------------------------------------//
@@ -215,7 +236,7 @@ export default {
         {
           scale: 0,
           transformOrigin: "center",
-          ease: Elastic.easeOut.config(1, 0.3),
+          ease: "elastic.out(1, 0.3)",
         },
         "sameTimeTwo",
       )
@@ -258,7 +279,7 @@ export default {
         delay: 2,
         y: -400,
         opacity: 0,
-        ease: Power4.easeOut,
+        ease: "power4.easeOut",
       })
       // END 🖌 Design animation -------------------------------------//
       //------------------------------------------------------//
@@ -292,12 +313,15 @@ export default {
         y: 40,
         opacity: 0,
       })
-      .staggerFromTo(
+      .set("#header-animation #dev #dev-text path", { autoAlpha: 1 })
+      .fromTo(
         "#header-animation #dev #dev-text path",
-        baseTiming,
+        
         { drawSVG: "100% 100%" },
-        { drawSVG: "100%" },
-        0.2,
+        { drawSVG: "100%",
+        duration: baseTiming, 
+        stagger: 0.2,
+        },
         "sameTimeDevTwo",
       )
       .staggerFromTo(
@@ -312,7 +336,7 @@ export default {
         delay: 2,
         y: -400,
         opacity: 0,
-        ease: Power4.easeOut,
+        ease: "power4.easeOut",
       })
       // END 💻 Development animation -------------------------------------//
 
@@ -322,15 +346,16 @@ export default {
       .from("#header-animation #data", baseTiming * 4, {
         y: 400,
         opacity: 0,
-        ease: Power4.easeOut,
+        ease: "power4.easeOut",
       })
       .to("#header-animation #data", baseTiming * 4, {
         delay: 2,
         y: -400,
         opacity: 0,
-        ease: Power4.easeOut,
+        ease: "power4.easeOut",
       });
     // END 💾 Data animation -------------------------------------//
+    }, this.$refs.trigger)
   },
 };
 </script>

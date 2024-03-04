@@ -1,6 +1,7 @@
 # dependencies
 node_modules
 .npmrc
+yarn.lock
 # logs
 npm-debug.log
 

@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/mitchelvaneijgen/.nvm/versions/node/v14.18.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js install
+  /Users/mitchelvaneijgen/.nvm/versions/node/v14.18.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add @gsap/shockingly gsap@npm:@gsap/shockingly
 
 PATH: 
   /Users/mitchelvaneijgen/.gem/ruby/3.1.3/bin:/Users/mitchelvaneijgen/.rubies/ruby-3.1.3/lib/ruby/gems/3.1.0/bin:/Users/mitchelvaneijgen/.rubies/ruby-3.1.3/bin:/usr/local/opt/ruby/bin:/Users/mitchelvaneijgen/.nvm/versions/node/v14.18.0/bin:/opt/homebrew/bin:/Users/mitchelvaneijgen/.node/bin:/Users/mitchelvaneijgen/.nvm/versions/node/v10.16.3/bin:/Users/mitchelvaneijgen/.nvm/versions/node/v10.16.3/bin:/Users/mitchelvaneijgen/bin:/usr/local/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/mitchelvaneijgen/.gem/ruby/3.1.3/bin:/usr/local/opt/ruby/bin:/opt/homebrew/bin:/Users/mitchelvaneijgen/.node/bin:/Users/mitchelvaneijgen/.nvm/versions/node/v10.16.3/bin:/Users/mitchelvaneijgen/bin
@@ -14,12 +14,12 @@ Platform:
   darwin arm64
 
 Trace: 
-  TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received [Object: null prototype]
-      at new NodeError (internal/errors.js:322:7)
-      at validateString (internal/validators.js:124:11)
-      at Object.isAbsolute (path.js:1133:5)
-      at module.exports.exports.default (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:97087:16)
-      at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:51330:63
+  Error: Failed to replace env in config: ${PRIVJS_TOKEN}
+      at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:94933:13
+      at String.replace (<anonymous>)
+      at envReplace (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:94928:16)
+      at Function.normalizeConfig (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:31938:69)
+      at NpmRegistry.<anonymous> (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:31968:34)
       at Generator.next (<anonymous>)
       at step (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:310:30)
       at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:321:13
@@ -27,7 +27,7 @@ Trace:
 npm manifest: 
   {
     "name": "studioalloy",
-    "version": "1.0.0",
+    "version": "2.0.1",
     "description": "WIJ MAKEN IMPACT MET PIXELS",
     "author": "Mitchel van Eijgen <mvaneijgen@gmail.com>",
     "private": true,
@@ -36,7 +36,7 @@ npm manifest:
       "build": "nuxt build",
       "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
       "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
-      "start": "nuxt start",
+      "start": "nuxt start", 
       "generate": "nuxt generate",
       "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
       "precommit": "npm run lint"
@@ -44,9 +44,8 @@ npm manifest:
     "dependencies": {
       "@nuxtjs/apollo": "^4.0.0-rc8.2",
       "graphql-tag": "^2.10.1",
-      "gsap": "^2.1.3",
-      "nuxt": "^2.0.0",
-      "scrollmagic": "^2.0.7"
+      "gsap": "npm:@gsap/shockingly",
+      "nuxt": "^2.0.0"
     },
     "devDependencies": {
       "babel-eslint": "^8.2.1",
@@ -55,15 +54,9 @@ npm manifest:
       "eslint-loader": "^2.1.1",
       "eslint-plugin-vue": "^4.0.0",
       "imports-loader": "^0.8.0",
+      "nuxt-gsap-module": "^2.0.0",
       "sass": "^1.57.1",
       "sass-loader": "^7.0.3"
-    },
-    "optionalDependencies": {
-      "fsevents": {
-        "os": [
-          "darwin"
-        ]
-      }
     }
   }
 
@@ -5137,10 +5130,10 @@ Lockfile:
     dependencies:
       iterall "^1.2.2"
   
-  gsap@^2.1.3:
-    version "2.1.3"
-    resolved "https://registry.yarnpkg.com/gsap/-/gsap-2.1.3.tgz#c63ee3a50f0b7dc3b46ed0845bb0f09049feb944"
-    integrity sha512-8RFASCqi2FOCBuv7X4o7M6bLdy+1hbR0azg+MG7zz+EVsI+OmJblYsTk0GEepQd2Jg/ItMPiVTibF7r3EVxjZQ==
+  gsap@^3.11.5, "gsap@npm:@gsap/shockingly":
+    version "3.12.5"
+    resolved "https://npm.greensock.com/@gsap%2fshockingly/-/shockingly-3.12.5.tgz#e1ee9b13c2fd4120d9bdbbe3dac338e5fae75126"
+    integrity sha512-JoZp6iYvOC+wkwl8zfXSqSrYCcuzTntaULCL08YMa1vonrYcr9D0K3EUe9PNpw7FYK1chjSwjjgcw3zS/O2SWg==
   
   gzip-size@^5.0.0:
     version "5.1.1"
@@ -6920,6 +6913,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
     integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
   
+  nuxt-gsap-module@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/nuxt-gsap-module/-/nuxt-gsap-module-2.0.0.tgz#83ea71f7c797aea726773a353e1bd067b4864e41"
+    integrity sha512-QRoyO8y1dZXR9FniR/I5/MuNwOANbpwqiGiV6E+7lat50cm2OVu+e5nYjnjlvM5BGoPE3gnvaYwuAL8TY+U7UA==
+    dependencies:
+      gsap "^3.11.5"
+  
   nuxt@^2.0.0:
     version "2.10.2"
     resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.10.2.tgz#15ade22dfe281095865df18e6f6e861fcad1ff95"
@@ -8598,11 +8598,6 @@ Lockfile:
     dependencies:
       ajv "^6.10.2"
       ajv-keywords "^3.4.1"
-  
-  scrollmagic@^2.0.7:
-    version "2.0.7"
-    resolved "https://registry.yarnpkg.com/scrollmagic/-/scrollmagic-2.0.7.tgz#4139216f3849d226e38b3ef1e5dbbacf25190b35"
-    integrity sha512-Qu23XB3YTBhqbnTIkyVhVAEP/7r2APvW+QFfxCpd6LvJ5byCnlvSMzSeBdpyKbDKXBxVWGE9XFXUTvue3B7VrQ==
   
   semver-diff@^2.0.0:
     version "2.1.0"

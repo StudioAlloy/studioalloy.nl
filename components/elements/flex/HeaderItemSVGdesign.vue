@@ -195,7 +195,7 @@ const trigger = this.$refs.trigger;
 
     timelineMain
     .set(trigger, { autoAlpha: 1 })
-    .set("#header-animation #dev #dev-text path", { autoAlpha: 0 })
+      .set(["#header-animation #dev #dev-text path", "#header-animation #dev #minimap-text *"], { autoAlpha: 0 })
       //------------------------------------------------------//
       // 🖌 Design animation
       //------------------------------------------------------//
@@ -321,6 +321,11 @@ const trigger = this.$refs.trigger;
         duration: baseTiming,
         stagger: 0.2,
       }, "sameTimeDevTwo")
+      .from("#header-animation #dev #minimap-text *", {
+        autoAlpha: 0,
+        duration: baseTiming,
+        stagger: 0.2,
+      }, "sameTimeDevTwo")
       .fromTo(
         "#header-animation #dev #dev-text path",
         { drawSVG: "100% 100%" },
@@ -330,12 +335,12 @@ const trigger = this.$refs.trigger;
         },
         "sameTimeDevTwo",
       )
-      .staggerFromTo(
+      .fromTo(
         "#header-animation #dev #minimap-text *",
-        baseTiming,
         { drawSVG: "100% 100%" },
-        { drawSVG: "100%" },
-        0.2,
+        { drawSVG: "100%",
+              duration: baseTiming, 
+        stagger: 0.2,},
         "sameTimeDevTwo",
       )
       .to("#header-animation #dev", baseTiming * 4, {

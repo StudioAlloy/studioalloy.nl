@@ -59,7 +59,7 @@ export default {
     ctx.revert(); // <- Easy Cleanup!
   },
   mounted() {
-    this.$nextTick(this.faseAnimation);
+    // this.$nextTick(this.faseAnimation);
 
     ctx = gsap.context((self) => {
         //------------------------------------------------------//
@@ -94,22 +94,6 @@ export default {
         }
       });
 
-      function nestedTimelineFaseOneSlowMove(elm) {
-        const tl = gsap.timeline({
-          repeat: -1,
-          yoyo: true,
-        });
-
-        tl.to("#faseOne #platfrom #box", baseTiming * 4, {
-          y: 3,
-          ease: "none",
-        }).to("#faseOne #platfrom #box", baseTiming * 4, {
-          y: -3,
-          ease: "none",
-        });
-
-        return tl;
-      }
       timelineFaseOne
         .timeScale(1.5)
         // .timeScale(1.5)
@@ -126,17 +110,30 @@ export default {
           y: -500,
           ease: "elastic.out(0.75, 0.95)",
         });
+
+      function nestedTimelineFaseOneSlowMove(elm) {
+        const tl = gsap.timeline({
+          repeat: -1,
+          yoyo: true,
+        });
+
+        tl.to("#faseOne #platfrom #box", baseTiming * 4, {
+          y: 3,
+          ease: "none",
+        }).to("#faseOne #platfrom #box", baseTiming * 4, {
+          y: -3,
+          ease: "none",
+        });
+
+        return tl;
+      }
+    
       // .add(nestedTimelineFaseOneSlowMove());
       // timelineFaseOne.eventCallback("onComplete", timelineComplete);
       // END Timeline ❇️ 🧦  GSAP -------------------------------------//
       }, this.$refs.trigger)
   },
   methods: {
-    faseAnimation() {
-      
-      
-
-    },
   },
 };
 </script>

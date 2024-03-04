@@ -103,7 +103,7 @@ export default {
   mounted() {
     // this.$nextTick(() => {
     //   this.timelineMain();
-    //   this.tlMorph = gsap.timeline({});
+      this.tlMorph = gsap.timeline({});
     // });
 
       ctx = gsap.context((self) => {

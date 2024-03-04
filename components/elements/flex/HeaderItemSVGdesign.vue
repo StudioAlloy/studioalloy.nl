@@ -174,6 +174,7 @@ export default {
   },
   mounted() {
     ctx = gsap.context((self) => {
+
     // Basic values
     const baseTiming = 0.3;
 const trigger = this.$refs.trigger;
@@ -182,17 +183,18 @@ const trigger = this.$refs.trigger;
       repeat: -1,
               scrollTrigger: {
                 id: "header",
-          trigger: '#default-Header',
-          start: 'top top+=10%',
+          trigger: trigger,
+          start: 'top-=20% top+=10%',
           end: 'bottom top',
           scrub: false,
-          toggleActions: 'play pause play pause',
+          toggleActions: 'play pause play none',
           markers: process.env.NODE_ENV === 'development' ? true : false,
         }
     });
     // Base ease full timeline
 
     timelineMain
+    .set(trigger, { autoAlpha: 1 })
     .set("#header-animation #dev #dev-text path", { autoAlpha: 0 })
       //------------------------------------------------------//
       // 🖌 Design animation
@@ -309,14 +311,18 @@ const trigger = this.$refs.trigger;
         },
         `-=${baseTiming}`,
       )
-      .from("#header-animation #dev #dev-minimap", baseTiming * 2, {
+      .from("#header-animation #dev #dev-minimap", {
+        duration: baseTiming * 2,
         y: 40,
         opacity: 0,
       })
-      .set("#header-animation #dev #dev-text path", { autoAlpha: 1 })
+      .from("#header-animation #dev #dev-text path", {
+        autoAlpha: 0,
+        duration: baseTiming,
+        stagger: 0.2,
+      }, "sameTimeDevTwo")
       .fromTo(
         "#header-animation #dev #dev-text path",
-        
         { drawSVG: "100% 100%" },
         { drawSVG: "100%",
         duration: baseTiming, 
@@ -359,3 +365,9 @@ const trigger = this.$refs.trigger;
   },
 };
 </script>
+
+<style scoped>
+#header-animation {
+  visibility: hidden;
+}
+</style>

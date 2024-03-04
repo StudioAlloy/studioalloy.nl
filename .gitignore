@@ -1,6 +1,6 @@
 # dependencies
 node_modules
-# .npmrc
+.npmrc
 # logs
 npm-debug.log
 
@@ -10,3 +10,4 @@ docs
 
 # Nuxt generate
 dist
+.npmrc

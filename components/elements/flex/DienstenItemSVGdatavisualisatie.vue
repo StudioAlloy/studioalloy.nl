@@ -91,7 +91,7 @@ export default {
     // this.$nextTick(this.timelineMain);
     // this.$nextTick(() => {
     //   this.timelineMain();
-    //   this.tlMorph = gsap.timeline({});
+      this.tlMorph = gsap.timeline({});
     // });
     ctx = gsap.context((self) => {
          //------------------------------------------------------//
@@ -207,9 +207,6 @@ export default {
       }, this.$refs.trigger)
   },
   methods: {
-    timelineMain() {
-     
-    },
     interactiveMorph() {
       const baseTiming = 0.3;
       /* Convert un-morphable shapes to path ----------------------------------------- */

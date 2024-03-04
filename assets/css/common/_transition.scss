@@ -15,7 +15,7 @@
 @keyframes slideIn {
   0% {
     opacity: 0;
-    transform: translateY(250px);
+    transform: translateY(100px);
   }
 
   100% {
@@ -43,7 +43,7 @@
 
   100% {
     opacity: 0;
-    transform: translateY(-250px);
+    transform: translateY(-100px);
   }
 }
 
@@ -62,7 +62,7 @@
 @keyframes slideInPopAlt {
   0% {
     opacity: 0;
-    transform: translateY(-250px);
+    transform: translateY(-100px);
   }
 
   100% {
@@ -90,7 +90,7 @@
 
   100% {
     opacity: 0;
-    transform: translateY(-250px);
+    transform: translateY(-100px);
   }
 }
 
@@ -103,14 +103,14 @@
 .ui-slide-enter-active,
 .ui-slide-leave-active {
   transition: transform, opacity;
-  transition-duration: $base-transition * 2;
+  transition-duration: $base-transition;
   transition-timing-function: cubic-bezier(0.87, -0.41, 0.19, 1.44);
 }
 
 .ui-slide-enter,
 .ui-slide-leave-to {
   opacity: 0;
-  transform: translateY(300px);
+  transform: translateY(100px);
 }
 
 .ui-slide-enter-to,
@@ -177,7 +177,7 @@
 // }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 1000ms;
+  transition: opacity 300ms;
 }
 
 .fade-enter,

@@ -31,7 +31,7 @@ export default {
 
         this.url = `${this.url}?${str}`;
       } else {
-        console.warn("nno qeureis");
+        console.warn("no qeureis");
       }
       window.location.replace(this.url);
     }

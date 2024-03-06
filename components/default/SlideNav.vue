@@ -158,6 +158,7 @@ export default {
         width: 100%;
         background-color: $brand-light;
         transform: scaleX(0);
+        opacity: 0;
         transform-origin: left center;
         transition: transform;
         transition-duration: $base-transition;
@@ -169,11 +170,13 @@ export default {
       &.nuxt-link-exact-active {
         &:before {
           transform: scaleX(1);
+          opacity: 1;
         }
       }
       &:hover {
         &:after {
           transform: scaleX(1);
+          opacity: 1;
         }
       }
     }

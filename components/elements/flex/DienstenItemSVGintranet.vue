@@ -1,5 +1,5 @@
 <template>
-  <svg id="DienstIntranet" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;" @click="interactiveMorph">
+  <svg id="DienstIntranet" viewBox="0 0 700 400" style="fill-rule:evenodd;clip-rule:evenodd;" @click="interactiveMorph" ref="trigger">
     <g id="base">
       <g id="bar">
         <path d="M68.337,15.557L627.663,15.557C628.893,15.557 629.339,15.685 629.789,15.925C630.238,16.165 630.591,16.518 630.832,16.967C631.072,17.417 631.2,17.863 631.2,19.092L631.2,45.89L64.8,45.89L64.8,19.092C64.8,17.863 64.928,17.417 65.168,16.967C65.409,16.518 65.762,16.165 66.211,15.925C66.661,15.685 67.107,15.557 68.337,15.557Z" style="fill:#e2e3e5;fill-rule:nonzero;" />
@@ -107,6 +107,15 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+let ctx;
+gsap.registerPlugin(ScrollTrigger,DrawSVGPlugin,MorphSVGPlugin);
+
+
+
 export default {
   props: ["slug"],
   name: "DienstenItemSVGintranet",
@@ -114,20 +123,29 @@ export default {
     return {};
   }, // End data
   mounted() {
-    this.$nextTick(() => {
-      this.timelineMain();
-      this.tlMorph = new this.$GSAP.TimelineMax();
-    });
-  },
-  methods: {
-    timelineMain() {
-      //------------------------------------------------------//
+    // this.$nextTick(() => {
+    //   this.timelineMain();
+      this.tlMorph = gsap.timeline({});
+    // });
+
+      ctx = gsap.context((self) => {
+        //------------------------------------------------------//
       // Timeline ❇️ 🧦 GSAP
       //------------------------------------------------------//
       // Basic values
       const baseTiming = 0.3;
+      const trigger = this.$refs.trigger;
       // Timeline stuf
-      const timelineMain = new this.$GSAP.TimelineMax();
+      const timelineMain = gsap.timeline({
+                scrollTrigger: {
+          trigger: trigger,
+          start: 'top bottom-=10%',
+          end: 'bottom top',
+          scrub: false,
+          toggleActions: 'play none none none',
+          markers: process.env.NODE_ENV === 'development' ? true : false,
+        }
+      });
       // Base ease full timeline
       timelineMain
         .from("#DienstIntranet #base", baseTiming * 2, { y: 500 })
@@ -145,7 +163,7 @@ export default {
         .from("#DienstIntranet #interactive", baseTiming * 4, {
           scale: 0,
           transformOrigin: "center",
-          ease: Elastic.easeOut.config(1, 0.3),
+          ease: "elastic.out(1, 0.3)",
         })
         .staggerFrom(
           "#DienstIntranet #design > *",
@@ -173,7 +191,7 @@ export default {
       //------------------------------------------------------//
       // ➰ Looping timeline ️❇️️ 🧦  GSAP
       //------------------------------------------------------//
-      const loopInteractive = new this.$GSAP.TimelineMax({
+      const loopInteractive = gsap.timeline({
         repeat: -1,
         // yoyo: true,
         repeatDelay: baseTiming * 8,
@@ -188,24 +206,18 @@ export default {
             // scale: "+=0.2",
             scale: 1,
             transformOrigin: "center",
-            ease: Elastic.easeOut.config(1, 0.3),
+            ease: "elastic.out(1, 0.3)",
           });
         return loopInteractive;
       }
-
-      // END ➰ Looping timeline ️❇️️ 🧦  GSAP -------------------------------------//
-      //------------------------------------------------------//
-      // 🎩 ScrollMagic scene
-      //------------------------------------------------------//
-      const controller = new this.$ScrollMagic.Controller();
-      const scene = new this.$ScrollMagic.Scene({
-        triggerElement: "svg#DienstIntranet",
-        offset: -200,
-        reverse: false,
-      })
-        .setTween(timelineMain)
-        .addTo(controller);
-      // ENDcontrollerMagic scene -------------------------------------//
+      }, this.$refs.trigger);
+  },
+  beforeDestroy() {
+    ctx.revert(); // <- Easy Cleanup!
+  },
+  methods: {
+    timelineMain() {
+      
     },
     interactiveMorph() {
       const baseTiming = 0.3;
@@ -254,7 +266,7 @@ export default {
           .from("#DienstIntranet #animate-in #button", baseTiming * 2, {
             scale: 0,
             transformOrigin: "center",
-            ease: Elastic.easeOut.config(1, 0.3),
+            ease: "elastic.out(1, 0.3)",
           })
           .add(function() {
             tlDirection();

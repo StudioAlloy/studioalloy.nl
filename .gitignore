@@ -1,6 +1,7 @@
 # dependencies
 node_modules
-
+.npmrc
+yarn.lock
 # logs
 npm-debug.log
 
@@ -10,3 +11,4 @@ docs
 
 # Nuxt generate
 dist
+.npmrc

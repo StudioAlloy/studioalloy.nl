@@ -2,10 +2,10 @@
   <div class="alloy-item alloy-item--team">
     <div class="inner">
       <div class="alloy-image">
-        <img :src="item.featuredImage.node.sourceUrl" sizes="(min-width: 768px) 270px, 100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" width="270px" height="270px"/>
+        <img :src="$archiveAsset(item.featuredImage.node.sourceUrl)" sizes="(min-width: 768px) 270px, 100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" width="270px" height="270px"/>
       </div>
       <h4>{{ item.title }}</h4>
-      <small v-html="item.excerpt"></small>
+      <small v-html="$archiveHtml(item.excerpt)"></small>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
       // ${image url} ${image size}w,
       // ${image url} ${image size}w
       const mapImages = rawImages.map(
-        image => `${image.sourceUrl} ${image.width}w`,
+        image => `${this.$archiveAsset(image.sourceUrl)} ${image.width}w`,
       );
       const images = mapImages;
       return images;

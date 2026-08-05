@@ -3,9 +3,9 @@
     <div class="alloy-cards alloy-item alloy-item--diensten-other">
       <div class="inner">
         <h4 class="alloy-title col-40">
-          <nuxt-link :to="`/project/${item.slug}`"><span v-html="item.title"></span></nuxt-link>
+          <nuxt-link :to="`/project/${item.slug}`"><span v-html="$archiveHtml(item.title)"></span></nuxt-link>
         </h4>
-        <span v-html="item.excerpt"></span>
+        <span v-html="$archiveHtml(item.excerpt)"></span>
         <nuxt-link :to="`/project/${item.slug}`" class="btn">Lees meer</nuxt-link>
       </div>
     </div>

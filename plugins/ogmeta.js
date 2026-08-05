@@ -1,6 +1,8 @@
 import Vue from 'vue'
 
-export default ({ route }) => {
+export default () => {
+  const archiveUrl = 'https://at-alloy.nl/2025'
+
   Vue.mixin({
     head() {
       return {
@@ -8,7 +10,7 @@ export default ({ route }) => {
           {
             hid: `og:url`,
             property: 'og:url',
-            content: 'https://studioalloy.nl' + route.fullPath
+            content: archiveUrl + this.$route.fullPath
           }
         ]
       }

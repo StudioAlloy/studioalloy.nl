@@ -11,6 +11,8 @@
     "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt generate",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "generate:archive": "nuxt generate && node scripts/prepare-static-archive.js",
+    "verify:archive": "node scripts/verify-static-archive.js",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },

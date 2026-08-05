@@ -5,7 +5,7 @@
       <span class="spacer col-60"></span>
 
       <h2 class="alloy-title col-40">
-        <nuxt-link :to="`/project/${item.slug}`"><span v-html="item.title"></span></nuxt-link>
+        <nuxt-link :to="`/project/${item.slug}`"><span v-html="$archiveHtml(item.title)"></span></nuxt-link>
       </h2>
 
     </div>
@@ -14,7 +14,7 @@
       <div class="container-col">
 
         <div class="alloy-content col-40">
-          <span v-html="item.excerpt"></span>
+          <span v-html="$archiveHtml(item.excerpt)"></span>
           <div class="alloy-btn-group">
             <nuxt-link :to="`/project/${item.slug}`" class="btn btn--alt">Lees meer</nuxt-link>
           </div>

@@ -2,7 +2,7 @@
   <section class="flex-Content">
     <div class="container--small">
       <div class="inner">
-        <div v-html="item.content"></div>
+        <div v-html="$archiveHtml(item.content)"></div>
       </div>
     </div>
   </section>

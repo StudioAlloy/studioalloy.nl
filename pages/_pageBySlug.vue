@@ -6,7 +6,7 @@
         <div class="flex-Content container--small">
           <div class="inner">
             <h1>{{pageBySlug.title}}</h1>
-            <div class="alloy-intro" v-html="pageBySlug.content"></div>
+            <div class="alloy-intro" v-html="$archiveHtml(pageBySlug.content)"></div>
           </div>
         </div>
 

@@ -7,8 +7,8 @@
         <!-- <div class="content-container--small flex-Content"> -->
         <div class="container--small flex-Content">
           <div class="inner">
-            <h1 v-html="dienstBySlug.title"></h1>
-            <div class="alloy-intro" v-html="dienstBySlug.content"></div>
+            <h1 v-html="$archiveHtml(dienstBySlug.title)"></h1>
+            <div class="alloy-intro" v-html="$archiveHtml(dienstBySlug.content)"></div>
           </div>
         </div>
         <div class="container--small">
@@ -21,7 +21,7 @@
         </div>
         <div class="container--small background--light flex-Content alloy-intro-light">
           <div class="inner">
-            <div v-html="dienstBySlug.acfDiensten.whiteContent"></div>
+            <div v-html="$archiveHtml(dienstBySlug.acfDiensten.whiteContent)"></div>
           </div>
         </div>
 

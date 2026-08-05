@@ -3,7 +3,7 @@
     <div class="inner">
       <div class="alloy-image">
         <!-- <img :src="item.featuredImage.node.sourceUrl" :alt="`Tool: ${item.title}`" /> -->
-        <img :src="item.featuredImage.node.sourceUrl" sizes="(min-width: 1200px) 33vw,
+        <img :src="$archiveAsset(item.featuredImage.node.sourceUrl)" sizes="(min-width: 1200px) 33vw,
        (min-width: 768px) 300px,
        (min-width: 576px) 200px,
        100vw" 
@@ -12,7 +12,7 @@
       </div>
       <div class="alloy-content">
         <h3 class="alloy-title">{{ item.title }}</h3>
-        <span v-html="item.acfLocaties.adres"></span>
+        <span v-html="$archiveHtml(item.acfLocaties.adres)"></span>
         <strong>{{ item.title }}</strong>
       </div>
     </div>
@@ -34,7 +34,7 @@ export default {
       // ${image url} ${image size}w,
       // ${image url} ${image size}w
       const mapImages = rawImages.map(
-        image => `${image.sourceUrl} ${image.width}w`,
+        image => `${this.$archiveAsset(image.sourceUrl)} ${image.width}w`,
       );
       const images = mapImages;
       return images;

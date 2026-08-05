@@ -7,12 +7,12 @@
 
           <div class="alloy-cards">
             <div class="inner">
-              <div v-html="item.content"></div>
+              <div v-html="$archiveHtml(item.content)"></div>
             </div>
           </div>
           <div class="image-container">
             <div class="alloy-image">
-              <img :src="item.image.sourceUrl" sizes="(min-width: 1200px) 1000px,
+              <img :src="$archiveAsset(item.image.sourceUrl)" sizes="(min-width: 1200px) 1000px,
        (min-width: 768px) 300px,
        (min-width: 576px) 200px,
        100vw" :srcset="responsiveImage" :alt="`Profile ${item.title}`" />
@@ -49,7 +49,7 @@ export default {
       // ${image url} ${image size}w,
       // ${image url} ${image size}w
       const mapImages = rawImages.map(
-        image => `${image.sourceUrl} ${image.width}w`,
+        image => `${this.$archiveAsset(image.sourceUrl)} ${image.width}w`,
       );
       const images = mapImages;
       return images;
